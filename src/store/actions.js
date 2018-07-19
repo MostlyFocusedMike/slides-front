@@ -7,9 +7,9 @@ export const addTest = (num) => {
 }
 
 export const loadVideo = (videoId) => {
-  // this is possible becuase of thunk
+  // CHANGE HERE BETWEEN NORMALIZED OR NOT DATA
   return dispatch => {
-    videoAdapter.getOne(videoId)
+    videoAdapter.getOneNormalized(videoId)
       .then(video =>{
       dispatch({type: types.LOAD_VIDEO, video: video})
     })

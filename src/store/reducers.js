@@ -1,5 +1,4 @@
 import * as types from "./types"
-
 const initState = {
   test: 0,
   user: {

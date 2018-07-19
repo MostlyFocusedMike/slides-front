@@ -8,17 +8,10 @@ class App extends Component {
     console.log(this.props);
     return (
       <div className="App">
-       {this.props.video.youtubeVid}
-       <button onClick={() => this.props.loadVideo(11)}>click</button>
+       <button onClick={() => this.props.loadVideo(11)}>load video</button>
        <br />
        <br />
-       {this.props.user.username}
-       <button onClick={() => this.props.loadUser(18)}>click</button>
-      {this.props.user.videos ? (
-        this.props.user.videos.map(video => {
-          return <h1>{video.youtubeVid}</h1>
-        })
-      ):null}
+       <button onClick={() => this.props.loadUser(18)}>load user</button>
 
       </div>
     );
