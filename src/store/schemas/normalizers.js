@@ -2,9 +2,7 @@ import { normalize} from 'normalizr';
 import {videoSchema} from "./index"
 
 function normalizeVideo(video) {
-
-  let vid = normalize(video, videoSchema);
-  debugger
+  return normalize(video, videoSchema);
 }
 
 export default normalizeVideo
