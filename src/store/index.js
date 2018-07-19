@@ -9,7 +9,7 @@ export default store
 
 // this lets you import action creators from 
 // './store' and not './store/actions
-export {addTest, loadVideo} from "./actions"
+export * from "./actions"
 
 
 

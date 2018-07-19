@@ -2,6 +2,13 @@ import * as types from "./types"
 
 const initState = {
   test: 0,
+  user: {
+    id: "",
+    username: "Loading name",
+    bio: "Loading Bio",
+    picLink: "Loading",
+    videos: []
+  },
   video: {
     id: "",
     desc: "Loading",
@@ -30,6 +37,11 @@ export default function videoReducer( state = initState, action) {
       return {
         ...state,
         video: action.video 
+      }   
+    case types.LOAD_USER:
+      return {
+        ...state,
+        user: action.user 
       }
     case types.ADD_TEST:
       return {
