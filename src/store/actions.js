@@ -6,7 +6,6 @@ export const addTest = (num) => {
   return {type: types.ADD_TEST, num: num}
 }
 
-
 export const loadVideo = (videoId) => {
   // this is possible becuase of thunk
   return dispatch => {
@@ -25,7 +24,7 @@ export const loadUser = (userId) => {
   }
 }
 
-export const deserializeOrder = (video) => {
+export const deserializeVideo = (video) => {
     return {
       type: types.DESERIALIZE_VIDEO,
       video: video    
