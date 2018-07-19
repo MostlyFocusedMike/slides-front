@@ -8,7 +8,7 @@ class App extends Component {
     console.log(this.props);
     return (
       <div className="App">
-       <button onClick={() => this.props.loadVideo(11)}>load video</button>
+       <button onClick={() => this.props.loadVideo(12)}>load video</button>
        <br />
        <br />
        <button onClick={() => this.props.loadUser(18)}>load user</button>
