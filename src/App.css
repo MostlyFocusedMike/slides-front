@@ -1,4 +1,4 @@
-form input[type="submit"] {
+form button {
   background: #4d94ff;
   color: white;
   border: none;
@@ -6,9 +6,9 @@ form input[type="submit"] {
   margin: .5rem auto;
   display: block;
   transition: background 150ms; }
-  form input[type="submit"]:hover {
+  form button:hover {
     background: #1D88E3; }
-  form input[type="submit"]:active {
+  form button:active {
     background: #6EB0E8; }
 
 form {

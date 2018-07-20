@@ -8,15 +8,23 @@ class SignUpForm extends React.Component {
     confirmation: ""
   }
 
-  onChange = (e) => {
+  handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     })
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(this.state);
+  }
+
   render() {
     return (
-      <form onChange={this.onChange}>
+      <form 
+        onChange={this.handleChange} 
+        onSubmit={this.handleSubmit}
+      >
         <label htmlFor="username">Username</label>
         <input 
           id="username" 
@@ -45,6 +53,7 @@ class SignUpForm extends React.Component {
           type="password"
           value={this.state.confirmation}
         />
+        <button>Submit</button>
       </form>
     )
   }

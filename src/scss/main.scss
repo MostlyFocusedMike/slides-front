@@ -36,7 +36,7 @@ $bor: 2px solid black;
   input {
     
   }
-  input[type="submit"] {
+  button {
     @extend %basic-button;
   }
 }
