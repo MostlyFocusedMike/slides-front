@@ -1,11 +1,16 @@
 import React from 'react'
 
 class SignUpForm extends React.Component {
-  state = {
-    username: "",
-    email: "",
-    password: "",
-    confirmation: ""
+  constructor() {
+    super()
+
+    this.initState = {
+      username: "",
+      email: "",
+      password: "",
+      confirmation: ""
+    }
+    this.state = this.initState
   }
 
   handleChange = (e) => {
@@ -17,7 +22,13 @@ class SignUpForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     console.log(this.state);
+    this.handleClear(e)
   }
+  handleClear = (e) => {
+    e.preventDefault()
+    this.setState(this.initState)
+  }
+
 
   render() {
     return (
@@ -54,6 +65,7 @@ class SignUpForm extends React.Component {
           value={this.state.confirmation}
         />
         <button>Submit</button>
+        <button onClick={this.handleClear}>Clear</button>
       </form>
     )
   }
