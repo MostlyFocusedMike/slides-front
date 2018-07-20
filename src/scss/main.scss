@@ -29,6 +29,16 @@ $bor: 2px solid black;
   min-width: 360px;
   border: $bor;
   margin: 1rem auto;
+  label {
+    display: block;
+    margin-top: 1rem;
+  }
+  input {
+    
+  }
+  input[type="submit"] {
+    @extend %basic-button;
+  }
 }
 %basic-link {
   width: 100%;

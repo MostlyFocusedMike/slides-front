@@ -1,8 +1,24 @@
+form input[type="submit"] {
+  background: #4d94ff;
+  color: white;
+  border: none;
+  padding: .3rem .7rem;
+  margin: .5rem auto;
+  display: block;
+  transition: background 150ms; }
+  form input[type="submit"]:hover {
+    background: #1D88E3; }
+  form input[type="submit"]:active {
+    background: #6EB0E8; }
+
 form {
   width: 50%;
   min-width: 360px;
   border: 2px solid black;
   margin: 1rem auto; }
+  form label {
+    display: block;
+    margin-top: 1rem; }
 
 html, body {
   margin: 0;
