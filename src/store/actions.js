@@ -25,8 +25,18 @@ export const loadUser = (userId) => {
 }
 
 export const deserializeVideo = (video) => {
-    return {
-      type: types.DESERIALIZE_VIDEO,
-      video: video    
-    }
+  return {
+    type: types.DESERIALIZE_VIDEO,
+    video: video    
   }
+}
+
+export const createUser = (user) => {
+  return dispatch => {
+    userAdapter.create(user).then(response =>{
+      if (response.id) {
+        dispatch({type: types.CREATE_USER, currentUser: response })
+      }
+    })
+  }
+}

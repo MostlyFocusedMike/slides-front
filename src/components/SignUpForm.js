@@ -1,5 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux';
+
+import {createUser} from '../store'
 import {userAdapter} from '../adapters'
+
 
 class SignUpForm extends React.Component {
   constructor() {
@@ -28,8 +32,7 @@ class SignUpForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     console.log(this.state);
-    userAdapter.create(this.state)
-      .then(console.log)
+    this.props.createUser(this.state)
     this.handleClear(e)
   }
   handleClear = (e) => {
@@ -79,4 +82,11 @@ class SignUpForm extends React.Component {
   }
 }
 
-export default SignUpForm
+const mapDispatchToProps = (dispatch) => ({ // the () give us implicit return
+  // addTest: function(num) {
+  createUser(user) {
+    dispatch(createUser(user))
+  }
+})
+
+export default connect(null, mapDispatchToProps)(SignUpForm)
