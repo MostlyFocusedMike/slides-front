@@ -24,6 +24,12 @@ $bor: 2px solid black;
   }
 }
 
+%basic-form {
+  width: 50%;
+  min-width: 360px;
+  border: $bor;
+  margin: 1rem auto;
+}
 %basic-link {
   width: 100%;
   text-align: center;
@@ -106,4 +112,8 @@ nav {
   #nav-logo {
     margin-right: auto; 
   }
+}
+
+form {
+  @extend %basic-form;
 }

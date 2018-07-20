@@ -23,3 +23,35 @@ body:before {
   white-space: pre;
   font-family: monospace;
   content: "Errno::ENOENT: No such file or directory @ rb_sysopen - scss/main.scss"; }
+html, body {
+  margin: 0;
+  padding: 0; }
+
+nav {
+  background: #0C0032;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 1rem;
+  margin: 0; }
+  nav a {
+    text-decoration: none;
+    width: 100px;
+    padding: 12px;
+    background: #111;
+    textDecoration: none;
+    color: white;
+    text-align: center;
+    width: auto;
+    transition: background 150ms; }
+    nav a:visited {
+      background: #0C0032; }
+    nav a:hover {
+      background: #190061; }
+    nav a:active {
+      background: #240090; }
+  nav #nav-logo {
+    margin-right: auto; }
+
+/*# sourceMappingURL=App.css.map */

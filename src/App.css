@@ -1,3 +1,9 @@
+form {
+  width: 50%;
+  min-width: 360px;
+  border: 2px solid black;
+  margin: 1rem auto; }
+
 html, body {
   margin: 0;
   padding: 0; }
