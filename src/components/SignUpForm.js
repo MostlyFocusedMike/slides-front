@@ -1,27 +1,35 @@
 import React from 'react'
+import {userAdapter} from '../adapters'
 
 class SignUpForm extends React.Component {
   constructor() {
     super()
 
     this.initState = {
-      username: "",
-      email: "",
-      password: "",
-      confirmation: ""
+      user: {
+        username: "",
+        email: "",
+        password: "",
+        password_confirmation: ""
+      }
     }
     this.state = this.initState
   }
 
   handleChange = (e) => {
     this.setState({
+      user: {
+      ...this.state.user,
       [e.target.name]: e.target.value
+      }
     })
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
     console.log(this.state);
+    userAdapter.create(this.state)
+      .then(console.log)
     this.handleClear(e)
   }
   handleClear = (e) => {
@@ -57,10 +65,10 @@ class SignUpForm extends React.Component {
           type="password"
           value={this.state.password}
         />
-        <label htmlFor="confirmation">Password Confirmation</label>
+        <label htmlFor="password_confirmation">Password Confirmation</label>
         <input 
-          id="confirmation" 
-          name="confirmation"
+          id="password_confirmation" 
+          name="password_confirmation"
           type="password"
           value={this.state.confirmation}
         />
