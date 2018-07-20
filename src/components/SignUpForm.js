@@ -35,6 +35,7 @@ class SignUpForm extends React.Component {
     this.props.createUser(this.state)
     this.handleClear(e)
   }
+
   handleClear = (e) => {
     e.preventDefault()
     this.setState(this.initState)
@@ -52,28 +53,28 @@ class SignUpForm extends React.Component {
           id="username" 
           name="username" 
           type="text"
-          value={this.state.username}
+          value={this.state.user.username}
         /> 
         <label htmlFor="email">Email</label>
         <input 
           id="email" 
           name="email"
           type="text"
-          value={this.state.email}
+          value={this.state.user.email}
         />
         <label htmlFor="password">Password</label>
         <input 
           id="password" 
           name="password"
           type="password"
-          value={this.state.password}
+          value={this.state.user.password}
         />
         <label htmlFor="password_confirmation">Password Confirmation</label>
         <input 
           id="password_confirmation" 
           name="password_confirmation"
           type="password"
-          value={this.state.confirmation}
+          value={this.state.user.password_confirmation}
         />
         <button>Submit</button>
         <button onClick={this.handleClear}>Clear</button>
