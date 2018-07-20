@@ -1,9 +1,15 @@
 import thunk from "redux-thunk"
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import videoReducer from './reducers'
 
 
-const store = createStore(videoReducer, applyMiddleware(thunk));
+function configureStore(){
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    return createStore(videoReducer, composeEnhancers(applyMiddleware(thunk))
+  );
+}
+
+const store = configureStore()
 
 export default store
 
