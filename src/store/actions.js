@@ -35,8 +35,9 @@ export const createUser = (user) => {
   return dispatch => {
     userAdapter.create(user).then(response =>{
       if (response.id) {
+        localStorage.token = response.token
         dispatch({type: types.CREATE_USER, currentUser: response })
-      }
+      } 
     })
   }
 }

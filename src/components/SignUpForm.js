@@ -1,4 +1,5 @@
 import React from 'react'
+import {Redirect} from 'react-router'
 import { connect } from 'react-redux';
 
 import {createUser} from '../store'
@@ -33,7 +34,6 @@ class SignUpForm extends React.Component {
     e.preventDefault()
     console.log(this.state);
     this.props.createUser(this.state)
-    this.handleClear(e)
   }
 
   handleClear = (e) => {
@@ -48,6 +48,8 @@ class SignUpForm extends React.Component {
         onChange={this.handleChange} 
         onSubmit={this.handleSubmit}
       >
+        {console.log("User: ", this.props.currentUser.id)}
+        {this.props.currentUser.id ? <Redirect to="/" /> : null}
         <label htmlFor="username">Username</label>
         <input 
           id="username" 
@@ -83,11 +85,14 @@ class SignUpForm extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({ // the () give us implicit return
+const mapState = (state) => ({
+  currentUser: state.currentUser
+})
+const mapDispatch = (dispatch) => ({ // the () give us implicit return
   // addTest: function(num) {
   createUser(user) {
     dispatch(createUser(user))
   }
 })
 
-export default connect(null, mapDispatchToProps)(SignUpForm)
+export default connect(mapState, mapDispatch)(SignUpForm)
