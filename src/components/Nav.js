@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {connect} from 'react-redux'
 
-const Nav = () => {
+const Nav = (props) => {
   const loggedIn = !!localStorage.token
-  console.log(loggedIn);
+  console.log(props.currentUser);
   return (  
     <nav>
       <Link to='/' id="nav-logo">Slides</Link>
@@ -12,7 +13,7 @@ const Nav = () => {
       <Link to='/users'>Users</Link>
       {loggedIn ? (
         <div>
-          <Link to='/'>Profile</Link>
+          <Link to={`/users/${props.currentUser.id}`}>Profile</Link>
         </div>
       ) : (
         <div>
@@ -23,4 +24,9 @@ const Nav = () => {
     </nav>
   )
 }
-export default Nav
+
+const mapState = (state) => ({
+  currentUser: state.currentUser
+})
+
+export default connect(mapState)(Nav)
