@@ -53,7 +53,7 @@ class LogInForm extends React.Component {
         />
         <label>Password</label>
         <input 
-          type="text"
+          type="password"
           name="password"
           id="password"
           value={this.state.user.password}
