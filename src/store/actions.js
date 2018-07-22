@@ -47,9 +47,14 @@ export const reauthUser = (token) => {
     })
   }
 }
-
+export const logIn = (user) => {
+  console.log("Log in action");
+  return (dispatch) => {
+    userAdapter.logIn(user).then(response => {
+      setCurrentUserHelper(response, dispatch) 
+  })
+}
 export const logOut = () => {
-  console.log("log action");
   localStorage.token = ""
   return ({
     type: types.SET_CURRENT_USER,

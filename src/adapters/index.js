@@ -42,6 +42,18 @@ export class userAdapter {
     return fetch(`${url}/api/v1/current_user`, options)
       .then(r => r.json())
   }
+  static logIn(user) {
+    let options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    }
+    return fetch(`${url}/api/v1/login`, options)
+      .then(r => r.json())
+
+  }
 }
 
 // seems ridiculous now, if it never uses more, dry it up
