@@ -31,7 +31,6 @@ class SignUpForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state);
     this.props.createUser(this.state)
   }
 
@@ -47,7 +46,6 @@ class SignUpForm extends React.Component {
         onChange={this.handleChange} 
         onSubmit={this.handleSubmit}
       >
-        {console.log("User: ", this.props.currentUser.id)}
         {this.props.currentUser.id ? <Redirect to="/" /> : null}
         <label htmlFor="username">Username</label>
         <input 

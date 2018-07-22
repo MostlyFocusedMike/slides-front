@@ -13,12 +13,12 @@ const routes = (props) => {
   return (
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route exact path="/signup" component={SignUpPage} />
-      <Route exact path="/login" component={LoginPage} />
       <Route exact path="/videos" component={VideosPage} />
       <Route exact path="/videos/:id" component={VideoPage} />
       <Route exact path="/users" component={UsersPage} />
       <Route exact path="/users/:id" component={UserPage} />
+      <Route exact path="/signup" component={SignUpPage} />
+      <Route exact path="/login" component={LoginPage} />
       <Route path="*" component={NoMatch} />
     </Switch>
   )

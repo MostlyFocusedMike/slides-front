@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect} from 'react-router'
+import {Redirect, withRouter} from 'react-router'
 import { connect } from 'react-redux';
 import './App.css';
 import Routes from './routes'
@@ -31,4 +31,4 @@ const mapDispatch = (dispatch) => ({ // the () give us implicit return
   }
 })
 
-export default connect(null, mapDispatch)(App)
+export default withRouter(connect(null, mapDispatch)(App))
