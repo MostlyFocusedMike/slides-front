@@ -52,7 +52,8 @@ export const logIn = (user) => {
   return (dispatch) => {
     userAdapter.logIn(user).then(response => {
       setCurrentUserHelper(response, dispatch) 
-  })
+    })
+  }
 }
 export const logOut = () => {
   localStorage.token = ""
