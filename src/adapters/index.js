@@ -39,7 +39,7 @@ export class userAdapter {
         'Authorization': token
       }
     }
-    return fetch('http://localhost:3000/api/v1/current_user', options)
+    return fetch(`${url}/api/v1/current_user`, options)
       .then(r => r.json())
   }
 }
