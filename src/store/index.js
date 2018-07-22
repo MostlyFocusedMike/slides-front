@@ -10,7 +10,6 @@ function configureStore(){
 }
 
 const store = configureStore()
-
 export default store
 
 // this lets you import action creators from 

@@ -91,6 +91,7 @@ const mapState = (state) => ({
 const mapDispatch = (dispatch) => ({ // the () give us implicit return
   // addTest: function(num) {
   createUser(user) {
+    console.log("dispatch was called");
     dispatch(createUser(user))
   }
 })
