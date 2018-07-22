@@ -4,27 +4,17 @@ import { connect } from 'react-redux';
 import './App.css';
 import Routes from './routes'
 import Nav from './components/Nav'
+import {reauthUser} from './store'
 
 class App extends React.Component {
   getCurrentUser = () => {
     const token = localStorage.getItem('token')
     if (token) {
-      const options =   {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': token
-        }
-      }
-      fetch('http://localhost:3000/api/v1/current_user', options)
-        .then(resp => resp.json())
-        .then(user => {
-        })
+      this.props.reauthUser(token)
     }
   }
   render() {
-    console.log(this.props);
-    // this.getCurrentUser()
+    this.getCurrentUser()
     return (
       <div className="App">
         <Nav />
@@ -34,8 +24,11 @@ class App extends React.Component {
   }
 }
 
-const mapState = (state) => ({
-  currentUser: state.currentUser
+const mapDispatch = (dispatch) => ({ // the () give us implicit return
+  // addTest: function(num) {
+  reauthUser(user) {
+    dispatch(reauthUser(user))
+  }
 })
 
-export default connect(mapState)(App)
+export default connect(null, mapDispatch)(App)

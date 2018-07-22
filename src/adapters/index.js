@@ -30,6 +30,18 @@ export class userAdapter {
     return fetch(`${url}/users`, options)
       .then(r => r.json())
   }
+
+  static reauth(token) {
+    const options = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': token
+      }
+    }
+    return fetch('http://localhost:3000/api/v1/current_user', options)
+      .then(r => r.json())
+  }
 }
 
 // seems ridiculous now, if it never uses more, dry it up

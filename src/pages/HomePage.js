@@ -1,7 +1,7 @@
 import React from "react" 
 import { connect } from 'react-redux';
 
-import {loadVideo, loadUser} from '../store'
+import {loadVideo} from '../store'
 
 class Home extends React.Component {
   render() {
@@ -11,7 +11,6 @@ class Home extends React.Component {
        <button onClick={() => this.props.loadVideo(12)}>load video</button>
        <br />
        <br />
-       <button onClick={() => this.props.loadUser(18)}>load user</button>
       </div>
     )
   }
@@ -23,4 +22,4 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps, {loadVideo,loadUser})(Home);
+export default connect(mapStateToProps, {loadVideo})(Home);

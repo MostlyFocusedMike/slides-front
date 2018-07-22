@@ -3,7 +3,6 @@ import {Redirect} from 'react-router'
 import { connect } from 'react-redux';
 
 import {createUser} from '../store'
-import {userAdapter} from '../adapters'
 
 
 class SignUpForm extends React.Component {
@@ -91,7 +90,7 @@ const mapState = (state) => ({
 const mapDispatch = (dispatch) => ({ // the () give us implicit return
   // addTest: function(num) {
   createUser(user) {
-    console.log("dispatch was called");
+    console.log("the form is about to dispatch create");
     dispatch(createUser(user))
   }
 })

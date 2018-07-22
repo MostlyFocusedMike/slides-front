@@ -16,13 +16,13 @@ export const loadVideo = (videoId) => {
   }
 }
 
-export const loadUser = (userId) => {
-  return dispatch => {
-    userAdapter.getOne(userId).then(user =>{
-      dispatch({type: types.LOAD_USER, user: user})
-    })
-  }
-}
+// export const loadUser = (userId) => {
+//   return dispatch => {
+//     userAdapter.getOne(userId).then(user =>{
+//       dispatch({type: types.LOAD_USER, user: user})
+//     })
+//   }
+// }
 
 export const deserializeVideo = (video) => {
   return {
@@ -31,13 +31,26 @@ export const deserializeVideo = (video) => {
   }
 }
 
+function loadCurrentUser(response, dispatch) {
+  if (response.user.id) {
+    if (response.token) {
+      localStorage.token = response.token
+    }
+    dispatch({type: types.CREATE_USER, currentUser: response.user })
+  }
+}
 export const createUser = (user) => {
   return dispatch => {
     userAdapter.create(user).then(response =>{
-      if (response.user.id) {
-        localStorage.token = response.token
-        dispatch({type: types.CREATE_USER, currentUser: response.user })
-      } 
+      loadCurrentUser(response, dispatch) 
+    })
+  }
+}
+
+export const reauthUser = (token) => {
+  return dispatch => {
+    userAdapter.reauth(token).then(response =>{
+      loadCurrentUser(response, dispatch) 
     })
   }
 }
