@@ -1,13 +1,7 @@
 import * as types from "./types"
 const initState = {
   test: 0,
-  currentUser: {
-    id: "",
-    username: "Loading name",
-    bio: "Loading Bio",
-    picLink: "Loading",
-    videos: []
-  },
+  currentUser: {},
   video: {
     id: "",
     desc: "Loading",
@@ -42,6 +36,12 @@ export default function videoReducer( state = initState, action) {
         ...state,
         currentUser: action.currentUser
       }   
+    case types.LOG_OUT: 
+      console.log("log reducer");
+      return {
+        ...state,
+        currentUser: action.currentUser
+      }
     // case types.LOAD_USER:
     //   return {
     //     ...state,
