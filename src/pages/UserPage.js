@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {logOut} from '../store'
 
 const UserPage = (props) => {
-  console.log(props.match.params);
   return (
     <div>
       <h1>{props.currentUser.username}</h1>
@@ -18,7 +17,6 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
   logOut() {
-    console.log("dispatch log");
     dispatch(logOut())
   }
 })

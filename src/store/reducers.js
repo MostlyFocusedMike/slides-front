@@ -31,22 +31,11 @@ export default function videoReducer( state = initState, action) {
         ...state,
         video: action.video 
       }   
-    case types.CREATE_USER:
+    case types.SET_CURRENT_USER:
       return {
         ...state,
         currentUser: action.currentUser
       }   
-    case types.LOG_OUT: 
-      console.log("log reducer");
-      return {
-        ...state,
-        currentUser: action.currentUser
-      }
-    // case types.LOAD_USER:
-    //   return {
-    //     ...state,
-    //     user: action.user 
-    //   }
     case types.ADD_TEST:
       return {
         ...state,

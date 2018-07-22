@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 
 const Nav = (props) => {
   const loggedIn = !!localStorage.token
-  console.log(props.currentUser);
   return (  
     <nav>
       <Link to='/' id="nav-logo">Slides</Link>

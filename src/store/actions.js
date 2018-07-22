@@ -16,14 +16,6 @@ export const loadVideo = (videoId) => {
   }
 }
 
-// export const loadUser = (userId) => {
-//   return dispatch => {
-//     userAdapter.getOne(userId).then(user =>{
-//       dispatch({type: types.LOAD_USER, user: user})
-//     })
-//   }
-// }
-
 export const deserializeVideo = (video) => {
   return {
     type: types.DESERIALIZE_VIDEO,
@@ -31,18 +23,19 @@ export const deserializeVideo = (video) => {
   }
 }
 
-function loadCurrentUser(response, dispatch) {
+function setCurrentUserHelper(response, dispatch) {
   if (response.user.id) {
     if (response.token) {
       localStorage.token = response.token
     }
-    dispatch({type: types.CREATE_USER, currentUser: response.user })
+    dispatch({type: types.SET_CURRENT_USER, currentUser: response.user })
   }
 }
+
 export const createUser = (user) => {
   return dispatch => {
     userAdapter.create(user).then(response =>{
-      loadCurrentUser(response, dispatch) 
+      setCurrentUserHelper(response, dispatch) 
     })
   }
 }
@@ -50,7 +43,7 @@ export const createUser = (user) => {
 export const reauthUser = (token) => {
   return (dispatch) => {
     userAdapter.reauth(token).then(response =>{
-      loadCurrentUser(response, dispatch) 
+      setCurrentUserHelper(response, dispatch) 
     })
   }
 }
@@ -59,7 +52,7 @@ export const logOut = () => {
   console.log("log action");
   localStorage.token = ""
   return ({
-    type: types.LOG_OUT,
+    type: types.SET_CURRENT_USER,
     currentUser: {}
   })
 }
