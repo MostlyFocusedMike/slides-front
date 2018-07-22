@@ -1,4 +1,8 @@
 import React from 'react'
+import {Redirect} from 'react-router'
+import { connect } from 'react-redux';
+import {logIn} from '../store'
+
 
 class LogInForm extends React.Component {
   constructor() {
@@ -24,6 +28,7 @@ class LogInForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    this.props.logIn(this.state)
   }
 
   handleClear = (e) => {
@@ -57,5 +62,16 @@ class LogInForm extends React.Component {
     )
   }
 }
+const mapState = (state) => ({
+  currentUser: state.currentUser
+})
+const mapDispatch = (dispatch) => ({ // the () give us implicit return
+  // addTest: function(num) {
+  logIn(user) {
+    console.log("the form is about to dispatch log in");
+    dispatch(logIn(user))
+  }
+})
 
-export default LogInForm
+
+export default connect(mapState, mapDispatch)(LogInForm)
