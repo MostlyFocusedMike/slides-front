@@ -37,11 +37,13 @@ class LogInForm extends React.Component {
   }
 
   render() {
+    const {currentUser} = this.props
     return (
       <form
         onChange={this.handleChange} 
         onSubmit={this.handleSubmit}
       >
+        {currentUser.id ? <Redirect to={`/users/${currentUser.id}`} /> : null}
         <label>Username</label>
         <input 
           type="text"
