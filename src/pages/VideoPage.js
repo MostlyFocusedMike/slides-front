@@ -65,7 +65,7 @@ class VideoPage extends React.Component {
   render() {
     const {match:{params: {id}}, videoInfo } = this.props
     if (!!videoInfo.entities) {
-      let ytVid = videoInfo.entities.self[id].youtube_vid
+      let ytVid = videoInfo.entities.videos[id].youtube_vid
       return (
         <div>
           <h1>VideoPage</h1>

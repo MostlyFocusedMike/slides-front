@@ -5,7 +5,7 @@ const sectionSchema = new schema.Entity('sections');
 const slideSchema = new schema.Entity('slides',{
   sections: [sectionSchema]
 });
-const videoSchema = new schema.Entity('self', {
+const videoSchema = new schema.Entity('videos', {
   slides: [slideSchema]
 });
 
