@@ -2,7 +2,8 @@ import * as types from "./types"
 const initState = {
   test: 0,
   currentUser: {},
-  video: {} 
+  videoInfo: {},
+  videoPlayer: {} 
 }
 export default function videoReducer( state = initState, action) {
   switch (action.type) {

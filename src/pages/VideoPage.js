@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {loadVideo} from '../store'
+import VideoShowPlayer from '../components/VideoShowPlayer'
 
 
 
@@ -14,6 +15,7 @@ class VideoPage extends React.Component {
     return (
       <div>
         <h1>VideoPage</h1>
+        <VideoShowPlayer />
       </div>
     )
   }
