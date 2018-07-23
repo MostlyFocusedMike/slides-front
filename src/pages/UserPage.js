@@ -30,7 +30,7 @@ class UserPage extends React.Component {
     }
   }
   render() {
-    const {username, bio, "pic_link": picLink} = this.state.user
+    const {username, bio, "pic_link": picLink, videos} = this.state.user
     // we won't load anything until our fetch is complete
     if (this.state.shouldLoad) {
       return (
@@ -42,6 +42,11 @@ class UserPage extends React.Component {
               <button onClick={this.props.logOut}>Log Out</button> 
             ) : null
           }
+          {videos.map(video => {
+            return <img src={`http://img.youtube.com/vi/2g811Eo7K8U/mqdefault.jpg`} />
+
+          })
+          }
         </div>
       )
     } else {
@@ -49,6 +54,7 @@ class UserPage extends React.Component {
     }
   }
 }
+      // <img src={`http://img.youtube.com/vi/2g811Eo7K8U/mqdefault.jpg`} />}
 
 const mapState = (state) => ({
   currentUser: state.currentUser
