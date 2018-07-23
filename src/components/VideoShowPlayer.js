@@ -2,9 +2,6 @@ import React from 'react';
 import YouTube from 'react-youtube';
  
 class Player extends React.Component {
-  test() {
-  console.log("hey");
-  }
   render() {
     const opts = {
       height: '390',
@@ -19,6 +16,8 @@ class Player extends React.Component {
       <YouTube
         videoId="2g811Eo7K8U"
         opts={opts}
+        onReady={this.props.setVideo}
+        onStateChange={this.props.handlePlayState}
       />
         </div>
       
@@ -30,5 +29,3 @@ class Player extends React.Component {
 export default Player 
       // <img src={`http://img.youtube.com/vi/2g811Eo7K8U/mqdefault.jpg`} />}
 
-        // onReady={this.props.setVideo}
-        // onStateChange={this.props.handlePlayState}

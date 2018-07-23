@@ -68,7 +68,11 @@ class VideoPage extends React.Component {
     return (
       <div>
         <h1>VideoPage</h1>
-        <VideoShowPlayer />
+        <VideoShowPlayer 
+          handlePlayState={this.handlePlayState} 
+          logTime={this.logTime} 
+          setVideo={this.setVideo}
+        />
         <NavButtons
           jumpTo={this.jumpTo}
           playPause={this.playPause}
