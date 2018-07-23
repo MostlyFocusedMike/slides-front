@@ -12,7 +12,7 @@ const Nav = (props) => {
       <Link to='/users'>Users</Link>
       {loggedIn ? (
         <div>
-          <Link to={`/users/${props.currentUser.id}`}>Profile</Link>
+          <Link to={`/users/${props.currentUser.username}`}>Profile</Link>
         </div>
       ) : (
         <div>

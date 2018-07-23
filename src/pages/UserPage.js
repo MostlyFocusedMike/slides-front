@@ -3,6 +3,9 @@ import {connect} from 'react-redux'
 import {logOut} from '../store'
 
 class UserPage extends React.Component {
+  componentDidMount() {
+    console.log(this.props);
+  }
   render() {
     return (
       <div>

@@ -43,7 +43,7 @@ class LogInForm extends React.Component {
         onChange={this.handleChange} 
         onSubmit={this.handleSubmit}
       >
-        {currentUser.id ? <Redirect to={`/users/${currentUser.id}`} /> : null}
+        {currentUser.id ? <Redirect to={`/users/${currentUser.username}`} /> : null}
         <label>Username</label>
         <input 
           type="text"
