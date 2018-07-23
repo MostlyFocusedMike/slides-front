@@ -1,4 +1,5 @@
 import React from 'react' 
+import SectionCard from '../components/SectionCard'
 
 const SectionsContainer = (props) => {
   const allSections = Object.values(props.realData.sections)
@@ -11,7 +12,7 @@ const SectionsContainer = (props) => {
   return (
     <div>
     {selectedSections.map(section => {
-      return <h3>{section.content}</h3>
+      return <SectionCard section={section} />
       })
     }
     </div>
