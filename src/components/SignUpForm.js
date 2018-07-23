@@ -46,7 +46,7 @@ class SignUpForm extends React.Component {
         onChange={this.handleChange} 
         onSubmit={this.handleSubmit}
       >
-        {currentUser.id ? <Redirect to={`/users/${currentUser.id}`} /> : null}
+        {currentUser.id ? <Redirect to={`/users/${currentUser.username}`} /> : null}
         <label htmlFor="username">Username</label>
         <input 
           id="username" 

@@ -28,19 +28,16 @@ class UserPage extends React.Component {
   render() {
     const {user, shouldLoad} = this.state
     // we won't load anything until our fetch is complete
-    if (shouldLoad) {
-      return (
+    return (
+      shouldLoad ?
         <div>
           <ProfileInfoCard user={user} />
           {this.props.currentUser.username === user.username ? 
             <button onClick={this.props.logOut}>Log Out</button> : null
           }
           <VideoPreviewsContainer user={user} />
-        </div>
-      )
-    } else {
-      return null
-    }
+        </div> : null
+    )
   }
 }
 
@@ -48,9 +45,4 @@ const mapState = (state) => ({
   currentUser: state.currentUser
 })
 
-const mapDispatch = (dispatch) => ({
-  logOut() {
-    dispatch(logOut())
-  }
-})
-export default connect(mapState, mapDispatch)(UserPage)
+export default connect(mapState, {logOut})(UserPage)
