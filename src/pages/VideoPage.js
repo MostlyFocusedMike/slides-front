@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {loadVideo} from '../store'
 import VideoShowPlayer from '../components/VideoShowPlayer'
+import Notes from '../components/Notes';
+import NavButtons from '../components/NavButtons';
 
 class VideoPage extends React.Component {
   state = {
@@ -67,6 +69,14 @@ class VideoPage extends React.Component {
       <div>
         <h1>VideoPage</h1>
         <VideoShowPlayer />
+        <NavButtons
+          jumpTo={this.jumpTo}
+          playPause={this.playPause}
+          time={this.state.time}
+        />
+        <Notes
+          time={this.state.time}
+        />
       </div>
     )
   }
