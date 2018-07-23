@@ -10,11 +10,11 @@ class Player extends React.Component {
         autoplay: 0
       }
     };
- 
+     console.log();
     return (
       <div>
       <YouTube
-        videoId="2g811Eo7K8U"
+        videoId={this.props.youtubeVid}
         opts={opts}
         onReady={this.props.setVideo}
         onStateChange={this.props.handlePlayState}

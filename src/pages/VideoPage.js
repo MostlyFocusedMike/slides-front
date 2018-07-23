@@ -9,7 +9,8 @@ class VideoPage extends React.Component {
   state = {
     playState: 0,
     video: {},
-    time: 0
+    time: 0,
+    loadPage: false
   }
 
   handlePlayState = (e) => {
@@ -39,7 +40,8 @@ class VideoPage extends React.Component {
   // that way other components will have access to it
   setVideo = (e) => {
     this.setState({
-      video: e.target
+      video: e.target,
+      loadPage: true
     })
   }
   jumpTo = (e) => {
@@ -63,34 +65,39 @@ class VideoPage extends React.Component {
   }
 
   render() {
-    console.log(this.props.match);
-    console.log(this.props.video);
-    return (
-      <div>
-        <h1>VideoPage</h1>
-        <VideoShowPlayer 
-          handlePlayState={this.handlePlayState} 
-          logTime={this.logTime} 
-          setVideo={this.setVideo}
-        />
-        <NavButtons
-          jumpTo={this.jumpTo}
-          playPause={this.playPause}
-          time={this.state.time}
-        />
-        <Notes
-          time={this.state.time}
-        />
-      </div>
-    )
+    const {match:{params: {id}}, videoInfo } = this.props
+    if (!!videoInfo.entities) {
+      let ytVid = videoInfo.entities.self[id].youtube_vid
+      return (
+        <div>
+          <h1>VideoPage</h1>
+          <VideoShowPlayer
+            youtubeVid={ytVid}
+            handlePlayState={this.handlePlayState}
+            logTime={this.logTime}
+            setVideo={this.setVideo}
+          />
+          <NavButtons
+            jumpTo={this.jumpTo}
+            playPause={this.playPause}
+            time={this.state.time}
+          />
+          <Notes
+            time={this.state.time}
+          />
+        </div>
+      )
+    } else {
+      return null
+    }
+
   }
 }
 
 
-
 const mapState = (state) => ({
   currentUser: state.currentUser,
-  video: state.video
+  videoInfo: state.videoInfo
 })
 
 const mapDispatch = (dispatch) => ({

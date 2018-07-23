@@ -10,7 +10,7 @@ export default function videoReducer( state = initState, action) {
     case types.LOAD_VIDEO:
       return {
         ...state,
-        video: action.video 
+        videoInfo: action.video 
       }   
     case types.SET_CURRENT_USER:
       return {
