@@ -30,6 +30,10 @@ class Notes extends React.Component {
     return selectedSlideId ? slides[selectedSlideId] : slides[vid.slides[vid.slides.length - 1]]
   }
 
+  displaySlide = () => {
+    let slide = this.pickSlide() 
+    return <h1>{slide.title}</h1>
+  }
   displayNote = () => {
     let note = this.pickNote() 
     console.log("selected slide", this.pickSlide());
@@ -53,8 +57,7 @@ class Notes extends React.Component {
     console.log(this.props);
     return (
       <div> 
-        {this.makeSlides()}
-        {this.displayNote()}
+        {this.displaySlide()}
       </div>
     )
   }
