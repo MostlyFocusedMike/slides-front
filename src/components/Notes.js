@@ -31,16 +31,17 @@ class Notes extends React.Component {
 
   // this will eventually be a component
   displaySections(slide, realData) {
-    const {sections} = this.props.realData
-    let selectedSections = []
-    Object.values(sections).map(section => {
-      if (slide.sections.includes(section.id)) {
-        return selectedSections.push(section)
-      } 
+    const allSections = Object.values(this.props.realData.sections)
+    let selectedSections = allSections.filter(section => {
+      return slide.sections.includes(section.id)
     })
+    // pretty sure sorting isn't necessary, but just to be safe
+    const orderThem = (a,b) => a.order - b.order
+    selectedSections.sort(orderThem)
     console.log(selectedSections);
     return (
-      <div></div>
+      <div>
+      </div>
     )
   }
   
