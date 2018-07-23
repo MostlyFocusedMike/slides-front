@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {loadVideo} from '../store'
 import VideoShowPlayer from '../components/VideoShowPlayer'
-import Notes from '../components/Notes';
+import SlideCard from '../components/SlideCard';
 import NavButtons from '../components/NavButtons';
 
 class VideoPage extends React.Component {
@@ -80,7 +80,7 @@ class VideoPage extends React.Component {
             playPause={this.playPause}
             time={this.state.time}
           />
-          <Notes
+          <SlideCard
             time={this.state.time}
             realData={videoInfo.entities}
             videoId={id}

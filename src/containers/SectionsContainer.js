@@ -1,8 +1,6 @@
 import React from 'react' 
 
 const SectionsContainer = (props) => {
-  console.log("props", props);
-
   const allSections = Object.values(props.realData.sections)
   let selectedSections = allSections.filter(section => {
     return props.slide.sections.includes(section.id)
@@ -10,7 +8,6 @@ const SectionsContainer = (props) => {
   // pretty sure sorting isn't necessary, but just to be safe
   const orderThem = (a,b) => a.order - b.order
   selectedSections.sort(orderThem)
-  console.log(selectedSections);
   return (
     <div>
     {selectedSections.map(section => {

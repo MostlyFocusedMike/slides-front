@@ -2,7 +2,7 @@ import React from "react"
 import Data from "../data"
 import SectionsContainer from '../containers/SectionsContainer'
 
-class Notes extends React.Component {
+class SlideCard extends React.Component {
 
   pickSlide = () => {
     let {time} = this.props
@@ -27,13 +27,8 @@ class Notes extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-    return (
-      <div> 
-        {this.displaySlide()}
-      </div>
-    )
+    return this.displaySlide() 
   }
 }
 
-export default Notes 
+export default SlideCard 
