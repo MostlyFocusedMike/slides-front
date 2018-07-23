@@ -1,11 +1,8 @@
 import React from "react" 
 import Data from "../data"
+import SectionsContainer from '../containers/SectionsContainer'
 
 class Notes extends React.Component {
-
-  handleClick = () => {
-    this.props.jumpTo(10)
-  }
 
   pickSlide = () => {
     let {time} = this.props
@@ -24,27 +21,11 @@ class Notes extends React.Component {
     return (
       <div class="slide">
         <h1>{slide.title}</h1>
-        {this.displaySections(slide, this.props.realData)}
+        <SectionsContainer slide={slide} realData={this.props.realData} />
       </div>
     )
   }
 
-  // this will eventually be a component
-  displaySections(slide, realData) {
-    const allSections = Object.values(this.props.realData.sections)
-    let selectedSections = allSections.filter(section => {
-      return slide.sections.includes(section.id)
-    })
-    // pretty sure sorting isn't necessary, but just to be safe
-    const orderThem = (a,b) => a.order - b.order
-    selectedSections.sort(orderThem)
-    console.log(selectedSections);
-    return (
-      <div>
-      </div>
-    )
-  }
-  
   render() {
     console.log(this.props);
     return (
