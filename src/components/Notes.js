@@ -21,9 +21,29 @@ class Notes extends React.Component {
 
   displaySlide = () => {
     let slide = this.pickSlide() 
-    return <h1>{slide.title}</h1>
+    return (
+      <div class="slide">
+        <h1>{slide.title}</h1>
+        {this.displaySections(slide, this.props.realData)}
+      </div>
+    )
   }
 
+  // this will eventually be a component
+  displaySections(slide, realData) {
+    const {sections} = this.props.realData
+    let selectedSections = []
+    Object.values(sections).map(section => {
+      if (slide.sections.includes(section.id)) {
+        return selectedSections.push(section)
+      } 
+    })
+    console.log(selectedSections);
+    return (
+      <div></div>
+    )
+  }
+  
   render() {
     console.log(this.props);
     return (
