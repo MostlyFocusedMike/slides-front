@@ -2,21 +2,24 @@ import React from "react"
 import Data from "../data"
 
 class NavButtons extends React.Component {
-  back = () => {
+  navButtonHelper() {
    const {time} = this.props
    let places = Data.notes.map(note => note.time)
    let currentSpot = places.find(place => time <= place)
    currentSpot = currentSpot === undefined ? places[places.length - 1] : currentSpot
-   let currentIndex = places.indexOf(currentSpot) 
+   return places.indexOf(currentSpot) 
+  }
+  back = () => {
+   const {time} = this.props
+   let places = Data.notes.map(note => note.time)
+   let currentIndex = this.navButtonHelper()
    return currentIndex === 0 ? 0 : places[currentIndex - 1]
   }
 
   next = () => {
    const {time} = this.props
    let places = Data.notes.map(note => note.time)
-   let currentSpot = places.find(place => time <= place)
-   currentSpot = currentSpot === undefined ? places[places.length - 1] : currentSpot
-   let currentIndex = places.indexOf(currentSpot)
+   let currentIndex = this.navButtonHelper()
    return places[currentIndex + 1] || places[places.length - 1]
   }
 
