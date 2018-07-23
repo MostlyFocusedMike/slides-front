@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {logOut} from '../store'
 import {userAdapter} from '../adapters'     
-import VideoPreviewCard from '../components/VideoPreviewCard'     
+import VideoPreviewsContainer from '../containers/VideoPreviewsContainer'     
 import ProfileInfoCard from '../components/ProfileInfoCard'     
 // we need direct access to the adapter, 
 // since we areusing it to edit local state
@@ -26,18 +26,16 @@ class UserPage extends React.Component {
     }
   }
   render() {
-    const {username, videos} = this.state.user
+    const {user, shouldLoad} = this.state
     // we won't load anything until our fetch is complete
-    if (this.state.shouldLoad) {
+    if (shouldLoad) {
       return (
         <div>
-          <ProfileInfoCard user={this.state.user} />
-          {this.props.currentUser.username === username ? (
-              <button onClick={this.props.logOut}>Log Out</button> 
-            ) : null
+          <ProfileInfoCard user={user} />
+          {this.props.currentUser.username === user.username ? 
+            <button onClick={this.props.logOut}>Log Out</button> : null
           }
-          <h2>Here are all of {username}'s projects</h2>
-          {videos.map(video => <VideoPreviewCard video={video} key={video.id}/>)}
+          <VideoPreviewsContainer user={user} />
         </div>
       )
     } else {
