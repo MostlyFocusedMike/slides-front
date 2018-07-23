@@ -38,7 +38,10 @@ class UserPage extends React.Component {
           <img src={picLink} />
           <h1>{username}</h1>
           <h2>{bio}</h2>
-          <button onClick={this.props.logOut}>Log Out</button> 
+          {this.props.currentUser.username === username ? (
+              <button onClick={this.props.logOut}>Log Out</button> 
+            ) : null
+          }
         </div>
       )
     } else {
