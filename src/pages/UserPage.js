@@ -3,42 +3,35 @@ import {connect} from 'react-redux'
 import {logOut} from '../store'
 import {userAdapter} from '../adapters'     
 import VideoPreviewCard from '../components/VideoPreviewCard'     
+import ProfileInfoCard from '../components/ProfileInfoCard'     
 // we need direct access to the adapter, 
 // since we areusing it to edit local state
 
 class UserPage extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      user: {}, 
-      shouldLoad: false
-    }
+    this.state = {user: {}, shouldLoad: false}
   }
   componentDidMount() {
     userAdapter.getOne(this.props.match.params.username)
       .then(user => {
-        this.setState({
-          user,
-          shouldLoad: true
-        })
+        this.setState({ user, shouldLoad: true })
       })
   }
   componentDidUpdate(prevProps, prevState) {
     let currentProfile = this.props.match.params.username
     if (prevState.user.username !== currentProfile) {
       userAdapter.getOne(currentProfile)
-        .then(user => this.setState({ user }))
+        .then(user => this.setState({user}))
     }
   }
   render() {
-    const {username, bio, "pic_link": picLink, videos} = this.state.user
+    const {username, videos} = this.state.user
     // we won't load anything until our fetch is complete
     if (this.state.shouldLoad) {
       return (
         <div>
-          <img src={picLink} alt={username} />
-          <h1>{username}</h1>
-          <h2>{bio}</h2>
+          <ProfileInfoCard user={this.state.user} />
           {this.props.currentUser.username === username ? (
               <button onClick={this.props.logOut}>Log Out</button> 
             ) : null
@@ -52,7 +45,6 @@ class UserPage extends React.Component {
     }
   }
 }
-      // <img src={`http://img.youtube.com/vi/2g811Eo7K8U/mqdefault.jpg`} />}
 
 const mapState = (state) => ({
   currentUser: state.currentUser
