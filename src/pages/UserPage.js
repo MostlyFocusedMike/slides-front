@@ -1,54 +1,43 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router'
 import {logOut} from '../store'
+import {userAdapter} from '../adapters'     
+// we need direct access to the adapter, 
+// since we areusing it to edit local state
 
 class UserPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: {
-        id: 0,
-        username: "",
-        bio: "",
-        pic_link: "",
-        videos: []
-      }, 
+      user: {}, 
       shouldLoad: false
     }
   }
   componentDidMount() {
-    console.log(this.props.match.params);
-    fetch(`http://localhost:3000/users/${this.props.match.params.username}`)
-      .then(r=>r.json())
+    userAdapter.getOne(this.props.match.params.username)
       .then(user => {
         this.setState({
           user,
           shouldLoad: true
-        }, () => console.log(this.state))
+        })
       })
   }
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.user.username !== this.props.match.params.username) {
-      console.log(this.props.match.params);
-      fetch(`http://localhost:3000/users/${this.props.match.params.username}`)
-        .then(r=>r.json())
-        .then(user => {
-          this.setState({
-            user,
-            shouldLoad: true
-          }, () => console.log(this.state))
-        })
+    let currentProfile = this.props.match.params.username
+    if (prevState.user.username !== currentProfile) {
+      userAdapter.getOne(currentProfile)
+        .then(user => this.setState({ user }))
     }
   }
   render() {
     const {username, bio, "pic_link": picLink} = this.state.user
+    // we won't load anything until our fetch is complete
     if (this.state.shouldLoad) {
       return (
         <div>
           <img src={picLink} />
-          <h1>{this.state.user.username}</h1>
-          <h2>{this.state.user.bio}</h2>
+          <h1>{username}</h1>
+          <h2>{bio}</h2>
           <button onClick={this.props.logOut}>Log Out</button> 
         </div>
       )
@@ -67,4 +56,4 @@ const mapDispatch = (dispatch) => ({
     dispatch(logOut())
   }
 })
-export default withRouter(connect(mapState, mapDispatch)(UserPage))
+export default connect(mapState, mapDispatch)(UserPage)

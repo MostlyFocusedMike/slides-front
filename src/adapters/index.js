@@ -16,8 +16,8 @@ export class videoAdapter {
   }
 }
 export class userAdapter {
-  static getOne(route) {
-    return fetch(`${url}/users/${route}`).then(r=>r.json());
+  static getOne(username) {
+    return fetch(`${url}/users/${username}`).then(r=>r.json());
   }
   static create(user) {
     let options = {
