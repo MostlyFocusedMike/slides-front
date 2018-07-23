@@ -9,12 +9,14 @@ class Notes extends React.Component {
 
   pickSlide = () => {
     let {time} = this.props
-    const slideIds = this.props.realData.videos[this.props.videoId].slides
-    const {slides} = this.props.realData
-    let selectedSlideId = slideIds.find((slideId, index, ids) => {
+    const {slides, videos} = this.props.realData
+    const slideIds = videos[this.props.videoId].slides
+    let slideId = slideIds.find((foo, index, ids) => {
+      // the current slideID should be the one right before the first slide whose 
+      // start time is greater than the current video time
       return time < slides[(ids[index + 1] || ids[ids.length -1])].start
     })
-    return selectedSlideId ? slides[selectedSlideId] : slides[slideIds[slideIds.length - 1]]
+    return slideId ? slides[slideId] : slides[slideIds[slideIds.length - 1]]
   }
 
   displaySlide = () => {
