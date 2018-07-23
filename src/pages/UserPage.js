@@ -5,7 +5,7 @@ import {userAdapter} from '../adapters'
 import VideoPreviewsContainer from '../containers/VideoPreviewsContainer'     
 import ProfileInfoCard from '../components/ProfileInfoCard'     
 // we need direct access to the adapter, 
-// since we areusing it to edit local state
+// since we are using it to edit local state
 
 class UserPage extends React.Component {
   constructor(props) {
@@ -41,8 +41,6 @@ class UserPage extends React.Component {
   }
 }
 
-const mapState = (state) => ({
-  currentUser: state.currentUser
-})
+const mapState = (state) => ({currentUser: state.currentUser})
 
 export default connect(mapState, {logOut})(UserPage)
