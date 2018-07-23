@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {logOut} from '../store'
 import {userAdapter} from '../adapters'     
+import VideoPreviewCard from '../components/VideoPreviewCard'     
 // we need direct access to the adapter, 
 // since we areusing it to edit local state
 
@@ -35,18 +36,15 @@ class UserPage extends React.Component {
     if (this.state.shouldLoad) {
       return (
         <div>
-          <img src={picLink} />
+          <img src={picLink} alt={username} />
           <h1>{username}</h1>
           <h2>{bio}</h2>
           {this.props.currentUser.username === username ? (
               <button onClick={this.props.logOut}>Log Out</button> 
             ) : null
           }
-          {videos.map(video => {
-            return <img src={`http://img.youtube.com/vi/2g811Eo7K8U/mqdefault.jpg`} />
-
-          })
-          }
+          <h2>Here are all of {username}'s projects</h2>
+          {videos.map(video => <VideoPreviewCard video={video} key={video.id}/>)}
         </div>
       )
     } else {
