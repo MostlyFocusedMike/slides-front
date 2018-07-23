@@ -1,17 +1,21 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router'
 import {logOut} from '../store'
 
 class UserPage extends React.Component {
-  state = {
-    user: {
-      id: 0,
-      username: "loading",
-      bio: "loading",
-      pic_link: "loading",
-      videos: []
-    }, 
-    shouldLoad: false
+  constructor(props) {
+    super(props)
+    this.state = {
+      user: {
+        id: 0,
+        username: "",
+        bio: "",
+        pic_link: "",
+        videos: []
+      }, 
+      shouldLoad: false
+    }
   }
   componentDidMount() {
     console.log(this.props.match.params);
@@ -23,6 +27,19 @@ class UserPage extends React.Component {
           shouldLoad: true
         }, () => console.log(this.state))
       })
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.user.username !== this.props.match.params.username) {
+      console.log(this.props.match.params);
+      fetch(`http://localhost:3000/users/${this.props.match.params.username}`)
+        .then(r=>r.json())
+        .then(user => {
+          this.setState({
+            user,
+            shouldLoad: true
+          }, () => console.log(this.state))
+        })
+    }
   }
   render() {
     const {username, bio, "pic_link": picLink} = this.state.user
@@ -50,4 +67,4 @@ const mapDispatch = (dispatch) => ({
     dispatch(logOut())
   }
 })
-export default connect(mapState, mapDispatch)(UserPage)
+export default withRouter(connect(mapState, mapDispatch)(UserPage))
