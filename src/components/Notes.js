@@ -9,7 +9,6 @@ class Notes extends React.Component {
 
   pickNote = () => {
    const {time} = this.props
-    console.log(time);
    let obj = Data.notes.find(note => {
      let nextIndex = Data.notes.indexOf(note) + 1
      let nextNote = Data.notes[nextIndex] || Data.notes[Data.notes.length -1]
@@ -29,9 +28,18 @@ class Notes extends React.Component {
     }
   }
 
+  makeSlides() {
+    let vid = this.props.realData.self[this.props.videoId]
+    const {slides, sections} = this.props.realData
+    return vid.slides.map(slideId => {
+      return <h1>{slides[slideId].title}</h1>
+    })
+  }
   render() {
+    console.log(this.props);
     return (
       <div> 
+        {this.makeSlides()}
         {this.displayNote()}
       </div>
     )

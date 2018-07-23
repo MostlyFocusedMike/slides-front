@@ -82,6 +82,8 @@ class VideoPage extends React.Component {
           />
           <Notes
             time={this.state.time}
+            realData={videoInfo.entities}
+            videoId={id}
           />
         </div>
       )
