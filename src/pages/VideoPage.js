@@ -9,15 +9,13 @@ class VideoPage extends React.Component {
   state = {
     playState: 0,
     video: {},
-    time: 0,
-    loadPage: false
+    time: 0
   }
 
   handlePlayState = (e) => {
     this.setState({
       playState: e.data,
     }, () => this.logTime(e))
-    console.log(e.data);
   }
 
   logTime = (e) => {

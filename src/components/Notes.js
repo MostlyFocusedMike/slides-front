@@ -9,7 +9,12 @@ class Notes extends React.Component {
 
   pickNote = () => {
    const {time} = this.props
-   let obj = Data.notes.find(note => time <= note.time)
+    console.log(time);
+   let obj = Data.notes.find(note => {
+     let nextIndex = Data.notes.indexOf(note) + 1
+     let nextNote = Data.notes[nextIndex] || Data.notes[Data.notes.length -1]
+     return time < nextNote.time
+   })
    return obj ? obj : Data.notes[Data.notes.length -1]
   }
 
