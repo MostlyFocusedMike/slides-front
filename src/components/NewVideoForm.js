@@ -1,8 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import YouTube from 'react-youtube';
 
 class NewVideoForm extends React.Component {
   state = {
+    loadPreview: false,
     slideId: 1,
     sectionId: 1, //video id will always be 0 for these forms, but slides and sections need to increment
     entities: {
@@ -38,8 +40,16 @@ class NewVideoForm extends React.Component {
     }
   }
 
-  handleVideoChange = (e) => {
+  handleLoadPreview = () => {
     this.setState({
+      loadPreview: true
+    })
+  }
+
+  handleVideoChange = (e) => {
+    let previewVal = e.target.name === "youtube_vid" ? false : true
+    this.setState({
+      loadPreview: previewVal,
       entities: {
         ...this.state.entities,
         videos: {
@@ -53,15 +63,29 @@ class NewVideoForm extends React.Component {
     })
   }
 
-  handleSubmit = (e) => {
+  handleFormSubmit = (e) => {
+    e.preventDefault()
+  }
+  handleFieldSubmit = (e) => {
+    // fieldsets seem to not submit forms, and activate inputs
     e.preventDefault()
   }
   render() {
     console.log(this.state);
     const {videos: {0: {youtube_vid, desc, start}}, sections, slides} = this.state.entities
+    const opts = {
+      height: '240',
+      width: '426',
+      playerVars: {
+        autoplay: 0
+      }
+    };
     return (
-      <form onSubmit={this.handleSubmit}>
-        <fieldset onChange={this.handleVideoChange}>
+      <form onSubmit={this.handleFormSubmit}>
+        <fieldset 
+          onSubmit={this.handleFieldSubmit}
+          onChange={this.handleVideoChange}
+        >
           <legend>Select the video</legend>
           <label htmlFor="youtube_vid">youtube id (MVP ONLY)</label>
           <input type="text" 
@@ -75,7 +99,19 @@ class NewVideoForm extends React.Component {
             id="desc"
             value={desc}
           />
-          <button>Load Preview Video</button>
+          
+          <div>
+          {this.state.loadPreview ? 
+          (<YouTube
+            videoId={youtube_vid}
+            opts={opts}
+          /> ) : (
+            <button onClick={this.handleLoadPreview}>Load Preview Video</button> 
+            )
+          }
+      
+
+          </div>
         </fieldset>
       
 
