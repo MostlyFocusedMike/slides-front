@@ -5,6 +5,7 @@ import LoginPage from '../pages/LoginPage'
 import SignUpPage from '../pages/SignUpPage'
 import VideosPage from '../pages/VideosPage'
 import VideoPage from '../pages/VideoPage'
+import NewVideoPage from '../pages/NewVideoPage'
 import UsersPage from '../pages/UsersPage'
 import UserPage from '../pages/UserPage'
 import NoMatch from '../pages/NoMatch'
@@ -14,6 +15,7 @@ const routes = (props) => {
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route exact path="/videos" component={VideosPage} />
+      <Route exact path="/videos/new" component={NewVideoPage} />
       <Route exact path="/videos/:id" component={VideoPage} />
       <Route exact path="/users" component={UsersPage} />
       <Route exact path="/users/:username" component={UserPage} />

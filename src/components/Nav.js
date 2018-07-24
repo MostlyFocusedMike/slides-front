@@ -13,6 +13,7 @@ const Nav = (props) => {
       {loggedIn ? (
         <div>
           <Link to={`/users/${props.currentUser.username}`}>Profile</Link>
+          <Link to='/videos/new'>Make One!</Link>
         </div>
       ) : (
         <div>
