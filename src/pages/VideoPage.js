@@ -22,8 +22,8 @@ class VideoPage extends React.Component {
     if (this.state.playState === 1) {
       this.setState({
         time: Math.floor(e.target.getCurrentTime())
-      }) // immediately fix the timecode 
-      this.time = setInterval(() => { //check each escond the video plays 
+      }) // immediately fix the timecode
+      this.time = setInterval(() => { //check each escond the video plays
         this.setState({
           time: Math.floor(e.target.getCurrentTime())
         }, () => console.log(this.state.time))
@@ -32,9 +32,9 @@ class VideoPage extends React.Component {
       clearInterval(this.time)
     }
   }
-  
-  // e.target from the Player component is the only way to access the video 
-  // so we need to bring it up to the top state as soon as it's loaded 
+
+  // e.target from the Player component is the only way to access the video
+  // so we need to bring it up to the top state as soon as it's loaded
   // that way other components will have access to it
   setVideo = (e) => {
     this.setState({
@@ -51,7 +51,7 @@ class VideoPage extends React.Component {
   }
 
   playPause = () => {
-    this.state.playState === 1 ?  this.state.video.pauseVideo() 
+    this.state.playState === 1 ?  this.state.video.pauseVideo()
       : this.state.video.playVideo()
   }
 
@@ -85,7 +85,7 @@ class VideoPage extends React.Component {
           />
           <SlideCard
             time={this.state.time}
-            realData={videoInfo.entities}
+            entities={videoInfo.entities}
             videoId={id}
           />
         </div>
@@ -109,4 +109,3 @@ const mapDispatch = (dispatch) => ({
   }
 })
 export default connect(mapState, {loadVideo})(VideoPage)
-

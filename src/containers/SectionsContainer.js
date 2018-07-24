@@ -2,7 +2,7 @@ import React from 'react'
 import SectionCard from '../components/SectionCard'
 
 const SectionsContainer = (props) => {
-  const allSections = Object.values(props.realData.sections)
+  const allSections = Object.values(props.entities.sections)
   let selectedSections = allSections.filter(section => {
     return props.slide.sections.includes(section.id)
   })

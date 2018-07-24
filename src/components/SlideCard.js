@@ -1,12 +1,11 @@
 import React from "react" 
-import Data from "../data"
 import SectionsContainer from '../containers/SectionsContainer'
 
 class SlideCard extends React.Component {
 
   pickSlide = () => {
     let {time} = this.props
-    const {slides, videos} = this.props.realData
+    const {slides, videos} = this.props.entities
     const slideIds = videos[this.props.videoId].slides
     let slideId = slideIds.find((foo, index, ids) => {
       // the current slideID should be the one right before the first slide whose 
@@ -21,7 +20,7 @@ class SlideCard extends React.Component {
     return (
       <div class="slide">
         <h1>{slide.title}</h1>
-        <SectionsContainer slide={slide} realData={this.props.realData} />
+        <SectionsContainer slide={slide} entities={this.props.entities} />
       </div>
     )
   }
