@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 class NewVideoPage extends React.Component {
   state = {
@@ -11,7 +12,7 @@ class NewVideoPage extends React.Component {
           desc: "Video description here",
           youtube_vid: "",
           topics: {selected: [], others: []},
-          // user: this.props.currentUser
+          user: this.props.currentUser
           // slides: [0] // not sure if i actually need this, we'll see
         }
       },
@@ -38,6 +39,7 @@ class NewVideoPage extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <h1>New Video Page</h1>
@@ -45,4 +47,8 @@ class NewVideoPage extends React.Component {
     )
   }
 }
-export default NewVideoPage
+
+const mapState = (state) => ({
+  currentUser: state.currentUser
+})
+export default connect(mapState)(NewVideoPage)
