@@ -12,7 +12,7 @@ const SectionsContainer = (props) => {
   return (
     <div>
     {selectedSections.map(section => {
-      return <SectionCard section={section} />
+      return <SectionCard section={section} key={section.id}/>
       })
     }
     </div>

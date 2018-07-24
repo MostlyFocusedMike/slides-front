@@ -103,9 +103,9 @@ const mapState = (state) => ({
   videoInfo: state.videoInfo
 })
 
-const mapDispatch = (dispatch) => ({
-  loadVideo(videoId) {
-    dispatch(loadVideo(videoId))
-  }
-})
+// const mapDispatch = (dispatch) => ({
+//   loadVideo(videoId) {
+//     dispatch(loadVideo(videoId))
+//   }
+// })
 export default connect(mapState, {loadVideo})(VideoPage)

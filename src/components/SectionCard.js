@@ -25,6 +25,8 @@ class SectionCard extends React.Component {
             </figure>
           )
         }
+      default:
+        return <p>Error loading section</p>
     }
   }
 

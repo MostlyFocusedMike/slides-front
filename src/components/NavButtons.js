@@ -10,7 +10,8 @@ class NavButtons extends React.Component {
   findCurrentIndex() {
     let startTimes = this.startTimes()
     let currentSpot = startTimes.find(startTime => this.props.time <= startTime)
-    currentSpot === undefined ? currentSpot = startTimes[startTimes.length - 1] : null
+    currentSpot = currentSpot === undefined ? 
+      startTimes[startTimes.length - 1] : currentSpot
     return startTimes.indexOf(currentSpot) 
   }
 
