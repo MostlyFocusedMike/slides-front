@@ -54,4 +54,14 @@ nav {
 img {
   height: 10rem; }
 
+.slide {
+  margin: 1rem;
+  background: #EEE;
+  padding: .1rem;
+  border: 2px solid black; }
+  .slide .slide-data {
+    background: #DDD;
+    padding: .1rem .5rem;
+    margin: 0 0 1rem; }
+
 /*# sourceMappingURL=App.css.map */

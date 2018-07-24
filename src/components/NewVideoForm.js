@@ -102,18 +102,44 @@ class NewVideoForm extends React.Component {
           
           <div>
           {this.state.loadPreview ? 
-          (<YouTube
-            videoId={youtube_vid}
-            opts={opts}
-          /> ) : (
-            <button onClick={this.handleLoadPreview}>Load Preview Video</button> 
+            ( <YouTube
+                videoId={youtube_vid}
+                opts={opts}
+              /> 
+            ) : (
+              <button onClick={this.handleLoadPreview}>Load Preview</button> 
             )
           }
-      
-
           </div>
         </fieldset>
-      
+        <fieldset>
+          <legend>Create Your Slides</legend>
+          <div className="slide">
+            <div className="slide-data"> 
+              <label htmlFor="start-0">Slide Title:</label>
+              <input type="text" 
+                data-id="0"
+                data-key="title"
+                className="title"
+                name="title-0"
+                id="title-0"
+                value={youtube_vid}
+              />
+              <label htmlFor="start-0">Start:</label>
+              <input type="text" 
+                data-id="0"
+                data-key="start"
+                className="start"
+                name="start-0"
+                id="start-0"
+                value={youtube_vid}
+              />
+            </div>
+            <div className="sections">
+            </div>
+          </div>
+        </fieldset>
+        <button>Create Video Project</button>
 
       </form>
     )
