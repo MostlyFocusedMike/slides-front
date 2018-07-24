@@ -5,7 +5,7 @@ const initState = {
   videoInfo: {},
   videoPlayer: {} 
 }
-export default function videoReducer( state = initState, action) {
+export default function videoReducer(state = initState, action) {
   switch (action.type) {
     case types.LOAD_VIDEO:
       return {

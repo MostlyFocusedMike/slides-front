@@ -9,8 +9,8 @@ class NewVideoForm extends React.Component {
       videos: {
         0: {
           id: 0,
-          desc: "Video description here",
-          youtube_vid: "YouTube Id Here",
+          desc: "",
+          youtube_vid: "",
           topics: {selected: [], others: []},
           user: this.props.currentUser
           // slides: [0] // not sure if i actually need this, we'll see
@@ -21,7 +21,7 @@ class NewVideoForm extends React.Component {
           id: 86,
           video_id: 0,
           start: 0,
-          title: "Slide One Title Here"
+          title: ""
         }
       },
       sections: {
@@ -30,12 +30,27 @@ class NewVideoForm extends React.Component {
           slide_id: 0,
           kind: 0,
           order: 0,
-          content: "Content here",
-          desc: "Description here",
+          content: "",
+          desc: "",
           show_desc: false
         }
       }
     }
+  }
+
+  handleVideoChange = (e) => {
+    this.setState({
+      entities: {
+        ...this.state.entities,
+        videos: {
+          ...this.state.entities.videos,
+          0: {
+            ...this.state.entities.videos[0],
+            [e.target.name]: e.target.value
+          }
+        }
+      }
+    })
   }
 
   handleSubmit = (e) => {
@@ -46,9 +61,9 @@ class NewVideoForm extends React.Component {
     const {videos: {0: {youtube_vid, desc, start}}, sections, slides} = this.state.entities
     return (
       <form onSubmit={this.handleSubmit}>
-        <fieldset>
+        <fieldset onChange={this.handleVideoChange}>
           <legend>Select the video</legend>
-          <label htmlFor="youtube_vid">youtube id</label>
+          <label htmlFor="youtube_vid">youtube id (MVP ONLY)</label>
           <input type="text" 
             name="youtube_vid"
             id="youtube_vid"
@@ -62,6 +77,8 @@ class NewVideoForm extends React.Component {
           />
           <button>Load Preview Video</button>
         </fieldset>
+      
+
       </form>
     )
   }
