@@ -43,14 +43,22 @@ class NewVideoForm extends React.Component {
   }
   render() {
     console.log(this.state);
-    const {videos, sections, slides} = this.state.entities
+    const {videos: {0: {youtube_vid, desc, start}}, sections, slides} = this.state.entities
     return (
       <form onSubmit={this.handleSubmit}>
         <fieldset>
           <legend>Select the video</legend>
-          <label>youtube id</label>
+          <label htmlFor="youtube_vid">youtube id</label>
           <input type="text" 
-            value={videos[0].youtube_vid}
+            name="youtube_vid"
+            id="youtube_vid"
+            value={youtube_vid}
+          />
+          <label htmlFor="desc">Video Description</label>
+          <input type="text"
+            name="desc"
+            id="desc"
+            value={desc}
           />
           <button>Load Preview Video</button>
         </fieldset>
