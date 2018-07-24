@@ -65,6 +65,23 @@ class NewVideoForm extends React.Component {
     })
   }
 
+  handleSectionChange = (e) => {
+    console.log(e.target);
+    console.log(this.state);
+    this.setState({
+      entities: {
+        ...this.state.entities,
+        sections: {
+          ...this.state.entities.sections,
+          [e.target.dataset.id]: {
+            ...this.state.entities.sections[[e.target.dataset.id]],
+            [e.target.dataset.key]: e.target.value
+          }
+        }
+      }
+    })
+  }
+
   handleFormSubmit = (e) => {
     e.preventDefault()
   }
@@ -138,9 +155,12 @@ class NewVideoForm extends React.Component {
               />
             </div>
             { slides[0].sections.map(section => {
-                 return <SectionForm 
-                          section={sections[0]}
-                        />
+                 return (
+                   <SectionForm 
+                    section={sections[0]}
+                    handleSectionChange={this.handleSectionChange}
+                   />
+                 )
               })
             }
           </div>

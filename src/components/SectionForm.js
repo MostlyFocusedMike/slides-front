@@ -6,27 +6,28 @@ class SectionForm extends React.Component {
   // }
   
   renderInputs = (kind) => {
-    switch(kind) {
+    switch(parseInt(kind, 10)) {
       case 0: // text
         return (
           <label> Text </label> 
         )
       case 1:
         return (
-          <label> Text </label> 
+          <label> Code </label> 
         )
       case 2:
         return (
-          <label> Text </label> 
+          <label> Link </label> 
         )
       case 3:
         return (
-          <label> Text </label> 
+          <label> Picture </label> 
         )
       default:
         return <p>Error loading section</p>
     }
   }
+
 
   render() {
     console.log("props", this.props);
@@ -35,8 +36,9 @@ class SectionForm extends React.Component {
       <div className="section">
         <label>Type: </label>
         <select 
-          onChange={this.handleChange}
+          onChange={this.props.handleSectionChange}
           data-key="kind"
+          data-id={section.id}
         >
           <option value="0">Text</option>
           <option value="1">Code</option>
