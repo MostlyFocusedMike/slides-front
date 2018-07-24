@@ -1,5 +1,4 @@
 import React from "react"
-import Data from "../data"
 
 class NavButtons extends React.Component {
   constructor(props) {
@@ -13,29 +12,25 @@ class NavButtons extends React.Component {
     return slides.map(slide => slide.start)
   }
 
-  navButtonHelper() {
-   const {time} = this.props
-   let places = Data.notes.map(note => note.time)
-   let currentSpot = places.find(place => time <= place)
-   currentSpot = currentSpot === undefined ? places[places.length - 1] : currentSpot
-   return places.indexOf(currentSpot) 
+  findCurrentIndex() {
+    const startTimes = this.startTimes()
+    const {time} = this.props
+    let currentSpot = startTimes.find(startTime => time <= startTime)
+    currentSpot = currentSpot === undefined ? startTimes[startTimes.length - 1] : currentSpot
+    return startTimes.indexOf(currentSpot) 
   }
   back = () => {
-   const {time} = this.props
-   let places = Data.notes.map(note => note.time)
-   let currentIndex = this.navButtonHelper()
-   return currentIndex === 0 ? 0 : places[currentIndex - 1]
+   let currentIndex = this.findCurrentIndex()
+   return currentIndex === 0 ? 0 : this.startTimes()[currentIndex - 1]
   }
 
   next = () => {
-   const {time} = this.props
-   let places = Data.notes.map(note => note.time)
-   let currentIndex = this.navButtonHelper()
-   return places[currentIndex + 1] || places[places.length - 1]
+   let startTimes = this.startTimes()
+   let currentIndex = this.findCurrentIndex()
+   return startTimes[currentIndex + 1] || startTimes[startTimes.length - 1]
   }
 
   render() {
-    console.log(this.props.realData);
     this.startTimes()
     return (
       <div className="nav-buttons">
