@@ -2,16 +2,14 @@ import React from "react"
 
 class NavButtons extends React.Component {
   startTimes() {
-    let {slides, videoId} = this.props
-    return Object.values(slides)
-      .filter(slide => slide.video_id === parseInt(videoId, 10))
+    return Object.values(this.props.slides)
+      .filter(slide => slide.video_id === parseInt(this.props.videoId, 10))
       .map(slide => slide.start)
   }
 
   findCurrentIndex() {
     let startTimes = this.startTimes()
-    let {time} = this.props
-    let currentSpot = startTimes.find(startTime => time <= startTime)
+    let currentSpot = startTimes.find(startTime => this.props.time <= startTime)
     currentSpot === undefined ? currentSpot = startTimes[startTimes.length - 1] : null
     return startTimes.indexOf(currentSpot) 
   }
