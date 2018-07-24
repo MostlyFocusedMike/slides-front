@@ -45,6 +45,7 @@ class VideoPage extends React.Component {
   jumpTo = (e) => {
     // doesn't play nice with string
     let place = parseInt(e.target.dataset.time, 10)
+    console.log(e.target.dataset.time);
     this.state.video.seekTo(place, true) // time in seconds to go to, and whether you want to allow it to go into unbuffered territory
     this.setState({ time: place })
   }
@@ -76,6 +77,8 @@ class VideoPage extends React.Component {
             setVideo={this.setVideo}
           />
           <NavButtons
+            realData={videoInfo.entities}
+            videoId={id}
             jumpTo={this.jumpTo}
             playPause={this.playPause}
             time={this.state.time}
