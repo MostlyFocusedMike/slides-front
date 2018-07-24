@@ -10,7 +10,7 @@ class NewVideoForm extends React.Component {
         0: {
           id: 0,
           desc: "Video description here",
-          youtube_vid: "",
+          youtube_vid: "YouTube Id Here",
           topics: {selected: [], others: []},
           user: this.props.currentUser
           // slides: [0] // not sure if i actually need this, we'll see
@@ -38,11 +38,22 @@ class NewVideoForm extends React.Component {
     }
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault()
+  }
   render() {
     console.log(this.state);
+    const {videos, sections, slides} = this.state.entities
     return (
-      <form>
-        <label>New video form</label>
+      <form onSubmit={this.handleSubmit}>
+        <fieldset>
+          <legend>Select the video</legend>
+          <label>youtube id</label>
+          <input type="text" 
+            value={videos[0].youtube_vid}
+          />
+          <button>Load Preview Video</button>
+        </fieldset>
       </form>
     )
   }
