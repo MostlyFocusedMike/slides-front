@@ -77,7 +77,7 @@ class VideoPage extends React.Component {
             setVideo={this.setVideo}
           />
           <NavButtons
-            realData={videoInfo.entities}
+            slides={videoInfo.entities.slides}
             videoId={id}
             jumpTo={this.jumpTo}
             playPause={this.playPause}

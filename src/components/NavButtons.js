@@ -1,52 +1,49 @@
 import React from "react"
 
 class NavButtons extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  
   startTimes() {
-    let slides = Object.values(this.props.realData.slides).filter(slide => {
-     return slide.video_id === parseInt(this.props.videoId, 10)
-    })
-    return slides.map(slide => slide.start)
+    let {slides, videoId} = this.props
+    return Object.values(slides)
+      .filter(slide => slide.video_id === parseInt(videoId, 10))
+      .map(slide => slide.start)
   }
 
   findCurrentIndex() {
-    const startTimes = this.startTimes()
-    const {time} = this.props
+    let startTimes = this.startTimes()
+    let {time} = this.props
     let currentSpot = startTimes.find(startTime => time <= startTime)
-    currentSpot = currentSpot === undefined ? startTimes[startTimes.length - 1] : currentSpot
+    currentSpot === undefined ? currentSpot = startTimes[startTimes.length - 1] : null
     return startTimes.indexOf(currentSpot) 
   }
-  back = () => {
+
+  back() {
    let currentIndex = this.findCurrentIndex()
    return currentIndex === 0 ? 0 : this.startTimes()[currentIndex - 1]
   }
 
-  next = () => {
+  next() {
    let startTimes = this.startTimes()
    let currentIndex = this.findCurrentIndex()
    return startTimes[currentIndex + 1] || startTimes[startTimes.length - 1]
   }
 
   render() {
-    this.startTimes()
+    let {jumpTo, playPause} = this.props
     return (
       <div className="nav-buttons">
-        <button data-time={this.back()} onClick={this.props.jumpTo}>Back</button>
+        <button data-time={this.back()} onClick={jumpTo}>Back</button>
         {this.startTimes()
           .map((startTime,idx) => (
           <button 
-              onClick={this.props.jumpTo}
+              onClick={jumpTo}
               data-time={startTime}
               key={startTime}
             >{idx + 1}
             </button>
           ))
         }
-        <button onClick={this.props.playPause}>Play/Pause</button>
-        <button data-time={this.next()} onClick={this.props.jumpTo}>Next</button>
+        <button onClick={playPause}>Play/Pause</button>
+        <button data-time={this.next()} onClick={jumpTo}>Next</button>
       </div>
     )
   }
