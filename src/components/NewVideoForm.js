@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import YouTube from 'react-youtube';
+import SectionForm from './SectionForm';
 
 class NewVideoForm extends React.Component {
   state = {
@@ -135,8 +136,7 @@ class NewVideoForm extends React.Component {
                 value={youtube_vid}
               />
             </div>
-            <div className="sections">
-            </div>
+            <SectionForm />
           </div>
         </fieldset>
         <button>Create Video Project</button>
