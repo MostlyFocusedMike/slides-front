@@ -27,16 +27,17 @@ class SectionForm extends React.Component {
         return <p>Error loading section</p>
     }
   }
-
+  handleChange = (e) => {
+    this.props.handleSectionChange(e, this.props.section.id)
+  }
 
   render() {
-    console.log("props", this.props);
     const {section} = this.props
     return (
       <div className="section">
         <label>Type: </label>
         <select 
-          onChange={this.props.handleSectionChange}
+          onChange={this.handleChange}
           data-key="kind"
           data-id={section.id}
         >

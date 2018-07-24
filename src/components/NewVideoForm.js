@@ -65,16 +65,14 @@ class NewVideoForm extends React.Component {
     })
   }
 
-  handleSectionChange = (e) => {
-    console.log(e.target);
-    console.log(this.state);
+  handleSectionChange = (e, id) => {
     this.setState({
       entities: {
         ...this.state.entities,
         sections: {
           ...this.state.entities.sections,
-          [e.target.dataset.id]: {
-            ...this.state.entities.sections[[e.target.dataset.id]],
+          [id]: {
+            ...this.state.entities.sections[id],
             [e.target.dataset.key]: e.target.value
           }
         }
