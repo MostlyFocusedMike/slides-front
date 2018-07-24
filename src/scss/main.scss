@@ -143,5 +143,15 @@ img {
   }
   .section {
     @extend .slide-data;
+    textarea {
+      display: block;
+      width: 80%;
+      margin: 1rem auto;
+    }
+    .code-snippet {
+      font-family: monospace;
+      color: green;
+      background: black;
+    }
   }
 }

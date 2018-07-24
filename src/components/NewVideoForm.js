@@ -66,6 +66,7 @@ class NewVideoForm extends React.Component {
   }
 
   handleSectionChange = (e, id) => {
+    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     this.setState({
       entities: {
         ...this.state.entities,
@@ -73,7 +74,7 @@ class NewVideoForm extends React.Component {
           ...this.state.entities.sections,
           [id]: {
             ...this.state.entities.sections[id],
-            [e.target.dataset.key]: e.target.value
+            [e.target.dataset.key]: value
           }
         }
       }

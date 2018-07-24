@@ -63,5 +63,13 @@ img {
     background: #DDD;
     padding: .1rem .5rem;
     margin: 0 0 1rem; }
+  .slide .section textarea {
+    display: block;
+    width: 80%;
+    margin: 1rem auto; }
+  .slide .section .code-snippet {
+    font-family: monospace;
+    color: green;
+    background: black; }
 
 /*# sourceMappingURL=App.css.map */
