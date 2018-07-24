@@ -24,7 +24,8 @@ class NewVideoForm extends React.Component {
           id: 86,
           video_id: 0,
           start: 0,
-          title: ""
+          title: "",
+          sections: [0]
         }
       },
       sections: {
@@ -136,7 +137,12 @@ class NewVideoForm extends React.Component {
                 value={youtube_vid}
               />
             </div>
-            <SectionForm />
+            { slides[0].sections.map(section => {
+                 return <SectionForm 
+                          section={sections[0]}
+                        />
+              })
+            }
           </div>
         </fieldset>
         <button>Create Video Project</button>
