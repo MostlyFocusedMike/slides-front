@@ -25,7 +25,7 @@ class NewVideoForm extends React.Component {
           video_id: 0,
           start: 0,
           title: "",
-          sections: [0]
+          sections: [0,1]
         }
       },
       sections: {
@@ -33,6 +33,15 @@ class NewVideoForm extends React.Component {
           id: 0,
           slide_id: 0,
           kind: 0,
+          order: 0,
+          content: "",
+          desc: "",
+          show_desc: false
+        },
+        1: {
+          id: 1,
+          slide_id: 0,
+          kind: 1,
           order: 0,
           content: "",
           desc: "",
@@ -81,7 +90,8 @@ class NewVideoForm extends React.Component {
   }
   
   handleSectionChange = (e, id) => {
-    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    const value = e.target.type === 'checkbox' ? 
+      e.target.checked : e.target.value;
     this.setState({
       entities: {
         ...this.state.entities,

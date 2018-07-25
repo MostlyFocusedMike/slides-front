@@ -2,34 +2,38 @@ import React from 'react'
 import SectionForm from './SectionForm';
 
 class SlideForm extends React.Component {
+  handleChange = (e) => {
+    this.props.handleSlideChange(e, this.props.slide.id)
+  }
   render() {
     const {videos, videos: {0: {youtube_vid, desc, start}}, sections, slides, slide} = this.props
-    console.log("slide", slide);
-    console.log("slides", slides);
     return (
-      <fieldset>
-      <legend>Create Your Slides</legend>
-      <div className="slide">
+    <div className="slide">
+      <fieldset onChange={this.handleChange} >
+      <legend>Slide Info</legend>
         <div className="slide-data">
-          <label htmlFor="start-0">Slide Title:</label>
+          <label htmlFor={`title-${slide.id}`}>Slide Title:</label>
           <input type="text"
-            data-id="0"
+            data-id={slide.id}
             data-key="title"
             className="title"
-            name="title-0"
-            id="title-0"
-            value={youtube_vid}
+            name={`title-${slide.id}`}
+            id={`title-${slide.id}`}
+            value={slides[slide.id].title}
           />
-          <label htmlFor="start-0">Start:</label>
+          <label htmlFor={`start-${slide.id}`}>Start:</label>
           <input type="text"
-            data-id="0"
+            data-id={slide.id}
             data-key="start"
             className="start"
-            name="start-0"
-            id="start-0"
-            value={youtube_vid}
+            name={`start-${slide.id}`}
+            id={`start-${slide.id}`}
+            value={slides[slide.id].start}
           />
         </div>
+      </fieldset>
+      <fieldset>
+        <legend>Sections</legend>
         { slides[slide.id].sections.map(sectionId => {
              return (
                <SectionForm
@@ -39,8 +43,8 @@ class SlideForm extends React.Component {
              )
           })
         }
-      </div>
-    </fieldset>
+      </fieldset>
+    </div>
   )
   }
 }
