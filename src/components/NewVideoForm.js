@@ -145,24 +145,26 @@ class NewVideoForm extends React.Component {
 
   newSection = (e, slideId) => {
     e.preventDefault()
+    // this.sectionId is coming from the form constructor, slideId from the actual section
+    const {slides, sections} = this.state.entities
     this.setState({
       entities: {
         ...this.state.entities,
         slides: {
-          ...this.state.entities.slides,
+          ...slides,
           [slideId]: {
-            ...this.state.entities.slides[slideId], 
-            sections: [...this.state.entities.slides[slideId].sections,
+            ...slides[slideId], 
+            sections: [...slides[slideId].sections,
                        this.sectionId]
           }
         },
         sections: {
-          ...this.state.entities.sections,
+          ...sections,
           [this.sectionId]: {
             id: this.sectionId,
             slide_id: slideId,
             kind: 0,
-            order: this.state.entities.slides[slideId].sections.length +1,
+            order: slides[slideId].sections.length +1,
             content: "",
             desc: "",
             show_desc: false
