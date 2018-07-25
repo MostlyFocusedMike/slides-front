@@ -10,6 +10,7 @@ class NewVideoForm extends React.Component {
     fireRedirect: null,
     loadPreview: false,
     slideId: 1,
+    currentOrder: 2,
     sectionId: 1, //video id will always be 0 for these forms, but slides and sections need to increment
     entities: {
       videos: {
@@ -28,7 +29,7 @@ class NewVideoForm extends React.Component {
           video_id: 0,
           start: 0,
           title: "",
-          sections: [0,1]
+          sections: [0]
         }
       },
       sections: {
@@ -36,16 +37,7 @@ class NewVideoForm extends React.Component {
           id: 0,
           slide_id: 0,
           kind: 0,
-          order: 0,
-          content: "",
-          desc: "",
-          show_desc: false
-        },
-        1: {
-          id: 1,
-          slide_id: 0,
-          kind: 1,
-          order: 0,
+          order: 1,
           content: "",
           desc: "",
           show_desc: false

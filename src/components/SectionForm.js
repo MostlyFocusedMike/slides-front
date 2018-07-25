@@ -91,7 +91,7 @@ class SectionForm extends React.Component {
   }
 
   render() {
-    const {section} = this.props
+    const {id, kind, order} = this.props.section
     return (
       <div className="section">
         <label>Type: </label>
@@ -104,7 +104,14 @@ class SectionForm extends React.Component {
           <option value="2">Link</option>
           <option value="3">Picture</option>
         </select>
-       {this.renderInputs(section.kind)}
+        <label htmlFor={`order-${id}`}>Order: </label>
+        <input
+          onChange={this.handleChange}
+          id={`order-${id}`}
+          value={order}
+          data-key="order"
+        />
+       {this.renderInputs(kind)}
       </div>
     )
   }
