@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import YouTube from 'react-youtube';
-import SectionForm from './SectionForm';
+import SlideForm from './SlideForm';
 
 class NewVideoForm extends React.Component {
   state = {
@@ -10,18 +10,18 @@ class NewVideoForm extends React.Component {
     sectionId: 1, //video id will always be 0 for these forms, but slides and sections need to increment
     entities: {
       videos: {
-        0: {
+        0: { 
           id: 0,
           desc: "",
           youtube_vid: "",
           topics: {selected: [], others: []},
-          user: this.props.currentUser
-          // slides: [0] // not sure if i actually need this, we'll see
+          user: this.props.currentUser,
+          slides: [0] // not sure if i actually need this, we'll see
         }
       },
       slides: {
         0: {
-          id: 86,
+          id: 0,
           video_id: 0,
           start: 0,
           title: "",
@@ -65,6 +65,21 @@ class NewVideoForm extends React.Component {
     })
   }
 
+  handleSlideChange = (e, id) => {
+    this.setState({
+      entities: {
+        ...this.state.entities,
+        slides: {
+          ...this.state.entities.slides,
+          [id]: {
+            ...this.state.entities.slides[id],
+            [e.target.dataset.key]: e.target.value
+          }
+        }
+      }
+    })
+  }
+  
   handleSectionChange = (e, id) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     this.setState({
@@ -90,7 +105,7 @@ class NewVideoForm extends React.Component {
   }
   render() {
     console.log(this.state);
-    const {videos: {0: {youtube_vid, desc, start}}, sections, slides} = this.state.entities
+    const {videos, videos: {0: {youtube_vid, desc, start}}, sections, slides} = this.state.entities
     const opts = {
       height: '240',
       width: '426',
@@ -130,40 +145,19 @@ class NewVideoForm extends React.Component {
           }
           </div>
         </fieldset>
-        <fieldset>
-          <legend>Create Your Slides</legend>
-          <div className="slide">
-            <div className="slide-data"> 
-              <label htmlFor="start-0">Slide Title:</label>
-              <input type="text" 
-                data-id="0"
-                data-key="title"
-                className="title"
-                name="title-0"
-                id="title-0"
-                value={youtube_vid}
-              />
-              <label htmlFor="start-0">Start:</label>
-              <input type="text" 
-                data-id="0"
-                data-key="start"
-                className="start"
-                name="start-0"
-                id="start-0"
-                value={youtube_vid}
-              />
-            </div>
-            { slides[0].sections.map(section => {
-                 return (
-                   <SectionForm 
-                    section={sections[0]}
-                    handleSectionChange={this.handleSectionChange}
-                   />
-                 )
-              })
-            }
-          </div>
-        </fieldset>
+        { videos[0].slides.map(slideId => {
+             return (
+               <SlideForm 
+                videos={videos}
+                slide={slides[slideId]}
+                slides={slides}
+                sections={sections}
+                handleSectionChange={this.handleSectionChange}
+                handleSlideChange={this.handleSlideChange}
+               />
+             )
+          })
+        }
         <button>Create Video Project</button>
 
       </form>
