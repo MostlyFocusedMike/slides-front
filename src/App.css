@@ -69,7 +69,8 @@ img {
     margin: 1rem auto; }
   .slide .section .code-snippet {
     font-family: monospace;
-    color: green;
-    background: black; }
+    color: lightgreen;
+    background: black;
+    height: 20rem; }
 
 /*# sourceMappingURL=App.css.map */
