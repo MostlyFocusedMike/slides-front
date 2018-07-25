@@ -5,6 +5,9 @@ class SlideForm extends React.Component {
   handleChange = (e) => {
     this.props.handleSlideChange(e, this.props.slide.id)
   }
+  handleNewSection = (e) => {
+    this.props.newSection(e, this.props.slide.id)
+  }
   render() {
     const {videos, videos: {0: {youtube_vid, desc, start}}, sections, slides, slide} = this.props
     return (
@@ -38,11 +41,13 @@ class SlideForm extends React.Component {
              return (
                <SectionForm
                 section={sections[sectionId]}
+                newSection={this.newSection}
                 handleSectionChange={this.props.handleSectionChange}
                />
              )
           })
         }
+        <button onClick={this.handleNewSection}>New Section</button>
       </fieldset>
     </div>
   )

@@ -9,7 +9,6 @@ class NewVideoForm extends React.Component {
   constructor(props) {
     super(props)
     this.slideId = 1,
-    this.currentOrder = 2,
     this.sectionId = 1, //video id will always be 0 for these forms, but slides and sections need to increment
     this.state = {
       fireRedirect: null,
@@ -129,7 +128,6 @@ class NewVideoForm extends React.Component {
                     this.slideId]
           }
         },
-
         slides: {
           ...this.state.entities.slides,
           [this.slideId]: {
@@ -143,7 +141,36 @@ class NewVideoForm extends React.Component {
       }
     })
     this.slideId++
-    console.log("slide id", this.slideId);
+  }
+
+  newSection = (e, slideId) => {
+    e.preventDefault()
+    this.setState({
+      entities: {
+        ...this.state.entities,
+        slides: {
+          ...this.state.entities.slides,
+          [slideId]: {
+            ...this.state.entities.slides[slideId], 
+            sections: [...this.state.entities.slides[slideId].sections,
+                       this.sectionId]
+          }
+        },
+        sections: {
+          ...this.state.entities.sections,
+          [this.sectionId]: {
+            id: this.sectionId,
+            slide_id: slideId,
+            kind: 0,
+            order: 1, // needs to become dynamic somehow
+            content: "",
+            desc: "",
+            show_desc: false
+          }
+        }
+      }
+    })
+    this.sectionId++
   }
 
   render() {
@@ -201,6 +228,7 @@ class NewVideoForm extends React.Component {
                 sections={sections}
                 handleSectionChange={this.handleSectionChange}
                 handleSlideChange={this.handleSlideChange}
+                newSection={this.newSection}
                />
              )
           })

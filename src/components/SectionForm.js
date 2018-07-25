@@ -89,6 +89,9 @@ class SectionForm extends React.Component {
   handleChange = (e) => {
     this.props.handleSectionChange(e, this.props.section.id)
   }
+  handleNewSection = (e) => {
+    this.props.newSection(e, this.props.slideId)
+  }
 
   render() {
     const {id, kind, order} = this.props.section
@@ -112,6 +115,7 @@ class SectionForm extends React.Component {
           data-key="order"
         />
        {this.renderInputs(kind)}
+       
       </div>
     )
   }
