@@ -35,9 +35,7 @@ class VideoPreviewFieldset extends React.Component {
               videoId={this.props.youtube_vid}
               opts={opts}
             /> 
-          ) : (
-            <button onClick={this.props.handleLoadPreview}>Load Preview</button> 
-          )
+          ) : (<p>Load a YouTube Video to see a preview</p>)
         }
         </div>
       </fieldset>

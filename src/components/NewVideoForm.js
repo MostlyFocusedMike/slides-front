@@ -49,15 +49,15 @@ class NewVideoForm extends React.Component {
     }
   }
 
-  handleLoadPreview = () => {
+  handleLoadPreview = (e) => {
+    e.preventDefault()
     this.setState({
       loadPreview: true
     })
-    this.setUser()
   }
 
   handleVideoChange = (e) => {
-    let previewVal = e.target.name === "youtube_vid" ? false : true
+    let previewVal = e.target.value.length >= 11
     this.setState({
       loadPreview: previewVal,
       entities: {
