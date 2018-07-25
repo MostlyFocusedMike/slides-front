@@ -37,7 +37,7 @@ By far, the toughest part of this project was handling the actual creation of th
 That means if you have a slide at 1:23, but want to put in a new one at 1:00, the form needs to update to reflect that. And of course, everything needs to be able to be deleted. At the time of writing, I'm currently working on all these features, but they should all make it to the release since they are necessary for basic CRUD.
 
 ## MVP 1.1 and beyond
-Currently, I'm focusing on implementing all the features needed just to make a video presentation, but once the basic functionality is there, it moves on to the student/teacher segment. Because I can keep track of the timecode, the next set of features work with timed questions. In the next iteration, I would like to implement a nice heat map feature for teachers. They will be able see exactly where in the video the most students were confused, then add slides to answer the questions that the original video missed. 
+Currently, I'm focusing on implementing all the features needed just to make a video presentation, but once the basic functionality is there, it moves on to the student/teacher segment. Because I can keep track of the timecode, the next set of features work with timed questions. In the next iteration, I would like to implement a nice "heat map" feature for teachers. They will be able see exactly where in the video the students asked questions, then add slides to answer the questions that the original video missed. 
 
 
 
