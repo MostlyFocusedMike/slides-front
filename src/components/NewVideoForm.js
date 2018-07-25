@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import YouTube from 'react-youtube';
 import SlideForm from './SlideForm';
+import {videoAdapter} from '../adapters';
 
 class NewVideoForm extends React.Component {
   state = {
@@ -108,6 +109,7 @@ class NewVideoForm extends React.Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault()
+    videoAdapter.create(this.state.entities)
   }
   handleFieldSubmit = (e) => {
     // fieldsets seem to not submit forms, and activate inputs

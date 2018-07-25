@@ -14,7 +14,19 @@ export class videoAdapter {
         return normalizeVideo(video)
       })
   }
+  static create(video) {
+    let options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(video)
+    }
+    return fetch(`${url}/videos`, options)
+      .then(r => r.json())
+  }
 }
+
 export class userAdapter {
   static getOne(username) {
     return fetch(`${url}/users/${username}`).then(r=>r.json());
