@@ -12,6 +12,11 @@ export default function videoReducer(state = initState, action) {
         ...state,
         videoInfo: action.video 
       }   
+    case types.CLEAR_VIDEO:
+      return {
+        ...state,
+        videoInfo: {}
+      }
     case types.SET_CURRENT_USER:
       return {
         ...state,

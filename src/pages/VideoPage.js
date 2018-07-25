@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {loadVideo} from '../store'
+import {loadVideo, clearVideo} from '../store'
 import VideoShowPlayer from '../components/VideoShowPlayer'
 import SlideCard from '../components/SlideCard';
 import NavButtons from '../components/NavButtons';
@@ -9,7 +9,7 @@ class VideoPage extends React.Component {
   state = {
     playState: 0,
     video: {},
-    time: 0
+    time: 0,
   }
 
   handlePlayState = (e) => {
@@ -38,8 +38,7 @@ class VideoPage extends React.Component {
   // that way other components will have access to it
   setVideo = (e) => {
     this.setState({
-      video: e.target,
-      loadPage: true
+      video: e.target
     })
   }
   jumpTo = (e) => {
@@ -61,6 +60,10 @@ class VideoPage extends React.Component {
 
   componentDidMount() {
     this.props.loadVideo(this.props.match.params.id)
+  }
+
+  componentWillUnmount() {
+    this.props.clearVideo()
   }
 
   render() {
@@ -108,4 +111,4 @@ const mapState = (state) => ({
 //     dispatch(loadVideo(videoId))
 //   }
 // })
-export default connect(mapState, {loadVideo})(VideoPage)
+export default connect(mapState, {loadVideo, clearVideo})(VideoPage)

@@ -23,6 +23,13 @@ export const deserializeVideo = (video) => {
   }
 }
 
+export const clearVideo = () => {
+  return {
+    type: types.CLEAR_VIDEO
+  }
+}
+
+
 function setCurrentUserHelper(response, dispatch) {
   if (response.user.id) {
     if (response.token) {

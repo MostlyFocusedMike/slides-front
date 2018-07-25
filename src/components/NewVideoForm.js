@@ -1,11 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 import YouTube from 'react-youtube';
 import SlideForm from './SlideForm';
 import {videoAdapter} from '../adapters';
 
 class NewVideoForm extends React.Component {
   state = {
+    fireRedirect: null,
     loadPreview: false,
     slideId: 1,
     sectionId: 1, //video id will always be 0 for these forms, but slides and sections need to increment
@@ -110,6 +112,9 @@ class NewVideoForm extends React.Component {
   handleFormSubmit = (e) => {
     e.preventDefault()
     videoAdapter.create(this.state.entities)
+      .then(videoId => {
+        this.setState({fireRedirect: videoId.id}) 
+      })
   }
   handleFieldSubmit = (e) => {
     // fieldsets seem to not submit forms, and activate inputs
@@ -127,6 +132,9 @@ class NewVideoForm extends React.Component {
     };
     return (
       <form onSubmit={this.handleFormSubmit}>
+        {this.state.fireRedirect ? 
+          <Redirect to={`/videos/${this.state.fireRedirect}`} /> : null
+        }
         <fieldset 
           onSubmit={this.handleFieldSubmit}
           onChange={this.handleVideoChange}
