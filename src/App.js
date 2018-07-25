@@ -13,8 +13,12 @@ class App extends React.Component {
       this.props.reauthUser(token)
     }
   }
-  render() {
+
+  componentDidMount() {
     this.getCurrentUser()
+  }
+
+  render() {
     return (
       <div className="App">
         <Nav />
@@ -23,6 +27,10 @@ class App extends React.Component {
     );
   }
 }
+
+const mapState = (state) => ({
+  currentUser: state.currentUser
+})
 
 const mapDispatch = (dispatch) => ({ // the () give us implicit return
   // addTest: function(num) {

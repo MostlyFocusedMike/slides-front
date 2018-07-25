@@ -53,4 +53,3 @@ class SlideForm extends React.Component {
 }
 
 export default SlideForm
-

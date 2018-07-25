@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import YouTube from 'react-youtube';
 import SlideForm from './SlideForm';
+import VideoPreviewFieldset from './VideoPreviewFieldset';
 import {videoAdapter} from '../adapters';
 
 class NewVideoForm extends React.Component {
@@ -52,6 +53,7 @@ class NewVideoForm extends React.Component {
     this.setState({
       loadPreview: true
     })
+    this.setUser()
   }
 
   handleVideoChange = (e) => {
@@ -114,6 +116,7 @@ class NewVideoForm extends React.Component {
   handleFieldSubmit = (e) => {
     // fieldsets seem to not submit forms, and activate inputs
     e.preventDefault()
+    this.setUser()
   }
 
   newSlide = (e) => {
@@ -175,51 +178,36 @@ class NewVideoForm extends React.Component {
     this.sectionId++
   }
 
+ componentDidUpdate = (prevProps) => {
+   if (prevProps.currentUser.id !== this.props.currentUser.id) {
+     this.setState({
+        entities: {
+          ...this.state.entities,
+          videos: {
+            0: {
+              ...this.state.entities.videos[0],
+              user: this.props.currentUser
+            }
+          }
+        }
+      })
+    }
+  }
+
   render() {
-    console.log(this.state);
     const {videos, videos: {0: {youtube_vid, desc, start}}, sections, slides} = this.state.entities
-    const opts = {
-      height: '240',
-      width: '426',
-      playerVars: {
-        autoplay: 0
-      }
-    };
     return (
       <form onSubmit={this.handleFormSubmit}>
         {this.state.fireRedirect ? 
           <Redirect to={`/videos/${this.state.fireRedirect}`} /> : null
         }
-        <fieldset 
-          onSubmit={this.handleFieldSubmit}
-          onChange={this.handleVideoChange}
-        >
-          <legend>Select the video</legend>
-          <label htmlFor="youtube_vid">youtube id (MVP ONLY)</label>
-          <input type="text" 
-            name="youtube_vid"
-            id="youtube_vid"
-            value={youtube_vid}
-          />
-          <label htmlFor="desc">Video Description</label>
-          <input type="text"
-            name="desc"
-            id="desc"
-            value={desc}
-          />
-          
-          <div>
-          {this.state.loadPreview ? 
-            ( <YouTube
-                videoId={youtube_vid}
-                opts={opts}
-              /> 
-            ) : (
-              <button onClick={this.handleLoadPreview}>Load Preview</button> 
-            )
-          }
-          </div>
-        </fieldset>
+        <VideoPreviewFieldset
+          handleFieldSubmit={this.handleFieldSubmit}
+          handleVideoChange={this.handleVideoChange}
+          loadPreview={this.state.loadPreview}
+          youtube_vid={youtube_vid}
+          desc={desc}
+        />
         { videos[0].slides.map(slideId => {
              return (
                <SlideForm 
