@@ -6,41 +6,44 @@ import SlideForm from './SlideForm';
 import {videoAdapter} from '../adapters';
 
 class NewVideoForm extends React.Component {
-  state = {
-    fireRedirect: null,
-    loadPreview: false,
-    slideId: 1,
-    currentOrder: 2,
-    sectionId: 1, //video id will always be 0 for these forms, but slides and sections need to increment
-    entities: {
-      videos: {
-        0: { 
-          id: 0,
-          desc: "",
-          youtube_vid: "",
-          topics: {selected: [], others: []},
-          user: this.props.currentUser,
-          slides: [0] // not sure if i actually need this, we'll see
-        }
-      },
-      slides: {
-        0: {
-          id: 0,
-          video_id: 0,
-          start: 0,
-          title: "",
-          sections: [0]
-        }
-      },
-      sections: {
-        0: {
-          id: 0,
-          slide_id: 0,
-          kind: 0,
-          order: 1,
-          content: "",
-          desc: "",
-          show_desc: false
+  constructor(props) {
+    super(props)
+    this.slideId = 1,
+    this.currentOrder = 2,
+    this.sectionId = 1, //video id will always be 0 for these forms, but slides and sections need to increment
+    this.state = {
+      fireRedirect: null,
+      loadPreview: false,
+      entities: {
+        videos: {
+          0: { 
+            id: 0,
+            desc: "",
+            youtube_vid: "",
+            topics: {selected: [], others: []},
+            user: props.currentUser,
+            slides: [0] // not sure if i actually need this, we'll see
+          }
+        },
+        slides: {
+          0: {
+            id: 0,
+            video_id: 0,
+            start: 0,
+            title: "",
+            sections: [0]
+          }
+        },
+        sections: {
+          0: {
+            id: 0,
+            slide_id: 0,
+            kind: 0,
+            order: 1,
+            content: "",
+            desc: "",
+            show_desc: false
+          }
         }
       }
     }
@@ -108,10 +111,41 @@ class NewVideoForm extends React.Component {
         this.setState({fireRedirect: videoId.id}) 
       })
   }
+
   handleFieldSubmit = (e) => {
     // fieldsets seem to not submit forms, and activate inputs
     e.preventDefault()
   }
+
+  newSlide = (e) => {
+    e.preventDefault() 
+    this.setState({
+      entities: {
+        ...this.state.entities,
+        videos: {
+          0: {
+            ...this.state.entities.videos[0],
+            slides: [...this.state.entities.videos[0].slides,
+                    this.slideId]
+          }
+        },
+
+        slides: {
+          ...this.state.entities.slides,
+          [this.slideId]: {
+            id: this.slideId,
+            video_id: 0,
+            start: this.slideId,
+            title: "",
+            sections: []
+          }
+        }
+      }
+    })
+    this.slideId++
+    console.log("slide id", this.slideId);
+  }
+
   render() {
     console.log(this.state);
     const {videos, videos: {0: {youtube_vid, desc, start}}, sections, slides} = this.state.entities
@@ -157,6 +191,7 @@ class NewVideoForm extends React.Component {
           }
           </div>
         </fieldset>
+        <button onClick={this.newSlide}>Make new slide</button>
         { videos[0].slides.map(slideId => {
              return (
                <SlideForm 
