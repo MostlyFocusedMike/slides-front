@@ -21,7 +21,7 @@ class NewVideoForm extends React.Component {
             youtube_vid: "",
             topics: {selected: [], others: []},
             user: props.currentUser,
-            slides: [0] // not sure if i actually need this, we'll see
+            slides: [0] 
           }
         },
         slides: {
@@ -162,7 +162,7 @@ class NewVideoForm extends React.Component {
             id: this.sectionId,
             slide_id: slideId,
             kind: 0,
-            order: 1, // needs to become dynamic somehow
+            order: this.state.entities.slides[slideId].sections.length +1,
             content: "",
             desc: "",
             show_desc: false
