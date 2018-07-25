@@ -1,12 +1,12 @@
 import React from 'react'
-import VideoPreviewCard from '../components/VideoPreviewCard'     
+import VideoThumbnailCard from '../components/VideoThumbnailCard'     
 
 const VideoPreviewsContainer = (props) => {
   const {username, videos} = props.user
   return (
     <div className="video-previews-container">
       <h2>Here are all of {username}'s projects</h2>
-      {videos.map(video => <VideoPreviewCard video={video} key={video.id}/>)}
+      {videos.map(video => <VideoThumbnailCard video={video} key={video.id}/>)}
     </div>
   )
 }
