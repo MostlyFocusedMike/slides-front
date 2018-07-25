@@ -18,7 +18,7 @@ class SlideCard extends React.Component {
   displaySlide = () => {
     let slide = this.pickSlide() 
     return (
-      <div className ="slide">
+      <div className ="slide-show">
         <h1>{slide.title}</h1>
         <SectionsContainer slide={slide} entities={this.props.entities} />
       </div>

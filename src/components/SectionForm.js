@@ -1,9 +1,6 @@
 import React from 'react'
 
 class SectionForm extends React.Component {
-  // handleChange = (e) => {
-  //   console.log(e.target.dataset.key);
-  // }
   
   renderInputs = (kind) => {
     const {content, id, desc, "show_desc": showDesc} = this.props.section
@@ -97,23 +94,25 @@ class SectionForm extends React.Component {
     const {id, kind, order} = this.props.section
     return (
       <div className="section">
-        <label>Type: </label>
-        <select 
-          onChange={this.handleChange}
-          data-key="kind"
-        >
-          <option value="0">Text</option>
-          <option value="1">Code</option>
-          <option value="2">Link</option>
-          <option value="3">Picture</option>
-        </select>
-        <label htmlFor={`order-${id}`}>Order: </label>
-        <input
-          onChange={this.handleChange}
-          id={`order-${id}`}
-          value={order}
-          data-key="order"
-        />
+        <div className="section-data">
+          <label>Type: </label>
+          <select 
+            onChange={this.handleChange}
+            data-key="kind"
+          >
+            <option value="0">Text</option>
+            <option value="1">Code</option>
+            <option value="2">Link</option>
+            <option value="3">Picture</option>
+          </select>
+          <label htmlFor={`order-${id}`}>Order: </label>
+          <input
+            onChange={this.handleChange}
+            id={`order-${id}`}
+            value={order}
+            data-key="order"
+          />
+        </div>
        {this.renderInputs(kind)}
        
       </div>

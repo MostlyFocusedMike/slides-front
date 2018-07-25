@@ -132,27 +132,106 @@ img {
   height: 10rem;
 }
 .slide {
+  background: #555;
+  padding: .5rem;
   margin: 1rem;
-   background:#EEE ;
-   padding: .1rem;
-   border: $bor;
   .slide-data {
-    background: #DDD;
-    padding: .1rem .5rem;
-    margin: 0 0 1rem;
+    background: #4d94ff;
+    color: white;
+    padding: .5rem;
+    h2 {
+      margin: 0;
+    }
   }
-  .section {
-    @extend .slide-data;
-    textarea {
-      display: block;
-      width: 80%;
+  .sections {
+    margin: 1rem 0;
+    padding: .5rem 0;
+    background: #AAA;
+    h2 {
+      margin: 1rem;
+    }
+    .section {
+      background: #CCC;
+      padding: .5rem;
       margin: 1rem auto;
+      width: 90%; 
+      .section-data {
+        @extend .slide-data
+      }
+      textarea {
+        width: 80%;
+        display: block;
+        margin: 0 auto;
+      }
+      .code-snippet {
+        @extend %code-snippet;
+      }
     }
-    .code-snippet {
-      font-family: monospace;
-      color: lightgreen;
-      background: black;
-      height: 20rem;
+  }
+}
+%code-snippet {
+  color: lightgreen;
+  background: black;
+  width: 80%;
+  height: 20rem;
+  margin: 1rem auto;
+  display: block;
+}
+
+.slide-show {
+  margin: 1rem auto;
+  border: $bor;
+  width: 50%;
+  h2 {
+    color: #777;
+    margin:1rem ;
+  }
+  p {
+    text-align: center;
+  }
+  pre {
+    @extend %code-snippet;
+    height: auto;
+    padding: 1rem;
+  }
+  a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0;
+  }
+  figure {
+    width: 95%;
+    display: block;
+    margin: 1rem auto;
+    padding: .5rem;
+    img {
+      display: block;
+      margin: 0 auto;
+      height: 100%;
+      max-height: 15rem;
     }
+    figcaption {
+      color: #111;
+      text-align: center;
+      margin-top: .5rem;
+    }
+  }
+}
+
+.video-previews-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  h2 {
+    width: 100%;
+    margin: 1rem;
+  }
+  .video-preview {
+    margin: 1rem auto;
+    display: block;
+    border: 2px solid black;
+    text-align: center;
+    padding-bottom: 1rem;
   }
 }

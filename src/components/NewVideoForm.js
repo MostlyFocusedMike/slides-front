@@ -218,7 +218,6 @@ class NewVideoForm extends React.Component {
           }
           </div>
         </fieldset>
-        <button onClick={this.newSlide}>Make new slide</button>
         { videos[0].slides.map(slideId => {
              return (
                <SlideForm 
@@ -233,6 +232,7 @@ class NewVideoForm extends React.Component {
              )
           })
         }
+        <button onClick={this.newSlide}>Make new slide</button>
         <button>Create Video Project</button>
 
       </form>

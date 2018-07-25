@@ -5,24 +5,40 @@ class SectionCard extends React.Component {
     const {kind, content, desc, "show_desc": showDesc} = this.props.section
     switch(kind) {
       case 0:
-        return <p>{content}</p>;
+        return (
+          <div>
+          <p>{content}</p>
+          </div>
+        )
       case 1:
-        return <pre>{content}</pre>
+        return (
+          <div>
+          <pre>{content}</pre>
+          </div>
+        )
       case 2:
-        return <a href={content}>{desc}</a>
+        return (
+          <div>
+            <a href={content}>{desc}</a>
+          </div>
+        )
       case 3:
         if (showDesc) {
           return (
-            <figure>
-              <img src={content} alt={desc} />
-              <figcaption>{desc}</figcaption>
-            </figure>
+            <div>
+              <figure>
+                <img src={content} alt={desc} />
+                <figcaption>{desc}</figcaption>
+              </figure>
+          </div>
           )
         } else {
           return (
-            <figure>
-              <img src={content} alt={desc} />
-            </figure>
+            <div>
+              <figure>
+                <img src={content} alt={desc} />
+              </figure>
+            </div>
           )
         }
       default:
