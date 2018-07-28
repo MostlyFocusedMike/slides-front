@@ -1,33 +1,15 @@
 import * as types from "./types"
 
 const initState = {
-  videoInfo: {},
-  videoPlayer: {} 
 }
-function videoInfoReducer(state = initState, action) {
+function videoInfoReducer(state = {}, action) {
   switch (action.type) {
     case types.LOAD_VIDEO:
       return {
-        ...state,
-        videoInfo: action.video 
+        entities: action.video.entities
       }   
     case types.CLEAR_VIDEO:
-      return {
-        ...state,
-        videoInfo: {}
-      }
-    case types.SET_CURRENT_USER:
-      return {
-        ...state,
-        currentUser: action.currentUser
-      }   
-    case types.ADD_TEST:
-      return {
-        ...state,
-        test: state.test + action.num
-        // remember we don't need prevState since we are 
-        // literally passing the state in as an object
-      }
+      return ( {})
     default:
       return state;
   }

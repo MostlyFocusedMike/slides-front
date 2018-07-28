@@ -1,15 +1,16 @@
 import * as types from "./types"
+
 const initState = {
-  currentUser: {},
+  currentUser: {}
 }
 
-function currentUserReducer(state = initState, action) {
+function currentUserReducer(state = {}, action) {
   switch (action.type) {
     case types.SET_CURRENT_USER:
-      return {
-        ...state,
-        currentUser: action.currentUser
-      }   
+      return ({
+        id: action.currentUser.id,
+        username: action.currentUser.username
+      })
     default:
       return state;
   }
