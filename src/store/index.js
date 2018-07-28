@@ -1,11 +1,11 @@
 import thunk from "redux-thunk"
 import { createStore, applyMiddleware, compose } from "redux";
-import videoReducer from './reducers'
+import rootReducer from './rootReducer'
 
 
 function configureStore(){
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-    return createStore(videoReducer, composeEnhancers(applyMiddleware(thunk))
+    return createStore(rootReducer, composeEnhancers(applyMiddleware(thunk))
   );
 }
 

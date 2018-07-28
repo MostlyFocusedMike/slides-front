@@ -1,11 +1,10 @@
 import * as types from "./types"
+
 const initState = {
-  test: 0,
-  currentUser: {},
   videoInfo: {},
   videoPlayer: {} 
 }
-export default function videoReducer(state = initState, action) {
+function videoInfoReducer(state = initState, action) {
   switch (action.type) {
     case types.LOAD_VIDEO:
       return {
@@ -33,3 +32,5 @@ export default function videoReducer(state = initState, action) {
       return state;
   }
 }
+
+export default videoInfoReducer
