@@ -13,8 +13,9 @@ const store = configureStore()
 export default store
 
 // this lets you import action creators from 
-// './store' and not './store/actions
-export * from "./actions"
+// './example' and not './example/actions
+export {logIn, logOut, createUser, reauthUser} from "./currentUserReducer"
+export {loadVideo, clearVideo} from "./videoInfoReducer"
 
 
 

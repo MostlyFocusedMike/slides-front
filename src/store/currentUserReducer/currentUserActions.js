@@ -26,6 +26,7 @@ export const reauthUser = (token) => {
     })
   }
 }
+
 export const logIn = (user) => {
   console.log("Log in action");
   return (dispatch) => {
@@ -34,6 +35,7 @@ export const logIn = (user) => {
     })
   }
 }
+
 export const logOut = () => {
   localStorage.token = ""
   return ({
