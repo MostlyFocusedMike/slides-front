@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom'
 import YouTube from 'react-youtube';
 import SlideForm from './SlideForm';
 import VideoPreviewFieldset from './VideoPreviewFieldset';
-import {videoAdapter} from '../adapters';
+import {videoAdapter} from '../../adapters';
 
 class NewVideoForm extends React.Component {
   constructor(props) {
