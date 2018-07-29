@@ -1,8 +1,4 @@
-import * as types from "./types"
-
-const initState = {
-  currentUser: {}
-}
+import * as types from "./currentUserTypes"
 
 function currentUserReducer(state = {}, action) {
   switch (action.type) {

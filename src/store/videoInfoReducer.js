@@ -9,7 +9,7 @@ function videoInfoReducer(state = {}, action) {
         entities: action.video.entities
       }   
     case types.CLEAR_VIDEO:
-      return ( {})
+      return {}
     default:
       return state;
   }

@@ -1,23 +1,6 @@
 // Action Creators
-import * as types from './types'
-import {videoAdapter, userAdapter} from '../adapters'
-
-export const loadVideo = (videoId) => {
-  // CHANGE HERE BETWEEN NORMALIZED OR NOT DATA
-  return dispatch => {
-    videoAdapter.getOneNormalized(videoId)
-      .then(video =>{
-      dispatch({type: types.LOAD_VIDEO, video: video})
-    })
-  }
-}
-
-export const clearVideo = () => {
-  return {
-    type: types.CLEAR_VIDEO
-  }
-}
-
+import * as types from './currentUserTypes'
+import {userAdapter} from '../../adapters'
 
 function setCurrentUserHelper(response, dispatch) {
   if (response.user.id) {
