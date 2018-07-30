@@ -11,6 +11,7 @@ export const handleVideoChange  = (e) => {
 }
 
 export const handleSlideChange  = (e, id) => {
+  e.preventDefault()
   return {type: types.HANDLE_SLIDE_CHANGE, e: e, id: id} 
 }
 

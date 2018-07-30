@@ -206,7 +206,7 @@ class NewVideoForm extends React.Component {
         <VideoPreviewFieldset
           handleFieldSubmit={this.props.handleFieldSubmit}
           handleVideoChange={this.props.handleVideoChange}
-          loadPreview={this.props.loadPreview}
+          loadPreview={this.props.newVideo.loadPreview}
           youtube_vid={youtube_vid}
           desc={desc}
         />

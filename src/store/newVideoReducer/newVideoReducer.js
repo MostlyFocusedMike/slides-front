@@ -67,7 +67,7 @@ function newVideoReducer(state = initState, action) {
             ...state.entities.videos,
             0: {
               ...state.entities.videos[0],
-              [e.target.name]: e.target.value
+              [action.e.target.name]: action.e.target.value
             }
           }
         }
