@@ -16,6 +16,12 @@ export default store
 // './example' and not './example/actions
 export {logIn, logOut, createUser, reauthUser} from "./currentUserReducer"
 export {loadVideo, clearVideo} from "./videoInfoReducer"
-
-
-
+export {
+  handleLoadPreview,
+  handleVideoChange,
+  handleSlideChange,
+  handleSectionChange,
+  handleFormSubmit,
+  newSlide,
+  newSection,
+} from "./newVideoReducer"

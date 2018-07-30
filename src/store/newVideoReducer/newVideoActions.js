@@ -1,5 +1,5 @@
 // Action Creators
-import * as types from `./newVideoTypes'
+import * as types from './newVideoTypes'
 import {videoAdapter} from '../../adapters';
 
 export const handleLoadPreview = (e) => {
@@ -28,10 +28,6 @@ export const handleFormSubmit  = (e, entities) => {
         })
       })
   }
-}
-
-export const handleFieldSubmit  = (e) => {
-  return {type: types.HANDLE_FIELD_SUBMIT, e: e} 
 }
 
 export const newSlide  = (e) => {

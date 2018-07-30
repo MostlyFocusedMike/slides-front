@@ -5,6 +5,7 @@ import YouTube from 'react-youtube';
 import SlideForm from './SlideForm';
 import VideoPreviewFieldset from './VideoPreviewFieldset';
 import {videoAdapter} from '../../adapters';
+import {handleLoadPreview} from '../../store';
 
 class NewVideoForm extends React.Component {
   constructor(props) {
@@ -117,7 +118,6 @@ class NewVideoForm extends React.Component {
   handleFieldSubmit = (e) => {
     // fieldsets seem to not submit forms, and activate inputs
     e.preventDefault()
-    this.setUser()
   }
 
   newSlide = (e) => {
@@ -234,4 +234,13 @@ class NewVideoForm extends React.Component {
 const mapState = (state) => ({
   currentUser: state.currentUser
 })
+
+const mapDispatch = (dispatch) => ({ // the () give us implicit return
+  // addTest: function(num) {
+  handleLoadPreview(e) {
+    dispatch(handleLoadPreview(e))
+  }
+})
+
+
 export default connect(mapState)(NewVideoForm)

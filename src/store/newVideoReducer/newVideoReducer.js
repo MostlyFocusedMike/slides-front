@@ -1,42 +1,42 @@
+import * as types from './newVideoTypes'
 const initState = {
-      fireRedirect: null,
-      loadPreview: false,
-      slideId = 1,
-      sectionId = 1, //video id will always be 0 for these forms, but slides and sections need to increment
-      entities: {
-        videos: {
-          0: { 
-            id: 0,
-            desc: "",
-            youtube_vid: "",
-            topics: {selected: [], others: []},
-            user: props.currentUser,
-            slides: [0] 
-          }
-        },
-        slides: {
-          0: {
-            id: 0,
-            video_id: 0,
-            start: 0,
-            title: "",
-            sections: [0]
-          }
-        },
-        sections: {
-          0: {
-            id: 0,
-            slide_id: 0,
-            kind: 0,
-            order: 1,
-            content: "",
-            desc: "",
-            show_desc: false
-          }
-        }
+  fireRedirect: null,
+  loadPreview: false,
+  slideId: 1,
+  sectionId: 1, //video id will always be 0 for these forms, but slides and sections need to increment
+  entities: {
+    videos: {
+      0: { 
+        id: 0,
+        desc: "",
+        youtube_vid: "",
+        topics: {selected: [], others: []},
+        user: {},
+        slides: [0] 
+      }
+    },
+    slides: {
+      0: {
+        id: 0,
+        video_id: 0,
+        start: 0,
+        title: "",
+        sections: [0]
+      }
+    },
+    sections: {
+      0: {
+        id: 0,
+        slide_id: 0,
+        kind: 0,
+        order: 1,
+        content: "",
+        desc: "",
+        show_desc: false
       }
     }
   }
+}
 function newVideoReducer(state = initState, action) {
   switch(action.type) {
     case types.HANDLE_LOAD_PREVIEW: 
@@ -59,35 +59,32 @@ function newVideoReducer(state = initState, action) {
           }
         }
       })
-    }
 
     case types.HANDLE_SLIDE_CHANGE: 
-      const {e, id} = action
       return ({
         entities: {
           ...state.entities,
           slides: {
             ...state.entities.slides,
-            [id]: {
-              ...state.entities.slides[id],
-              [e.target.dataset.key]: e.target.value
+            [action.id]: {
+              ...state.entities.slides[action.id],
+              [action.e.target.dataset.key]: action.e.target.value
             }
           }
         }
       })
 
   case types.HANDLE_SECTION_CHANGE:
-    const {e, id} = action
-    const value = e.target.type === 'checkbox' ? 
-      e.target.checked : e.target.value;
+    let value = action.e.target.type === 'checkbox' ? 
+      action.e.target.checked : action.e.target.value;
     return ({
       entities: {
         ...state.entities,
         sections: {
           ...state.entities.sections,
-          [id]: {
-            ...state.entities.sections[id],
-            [e.target.dataset.key]: value
+          [action.id]: {
+            ...state.entities.sections[action.id],
+            [action.e.target.dataset.key]: value
           }
         }
       }
@@ -99,7 +96,7 @@ function newVideoReducer(state = initState, action) {
     })
 
   case types.NEW_SLIDE:
-    currentSlideId = state.slideId
+    let currentSlideId = state.slideId
     return ({
       entities: {
         ...state.entities,
@@ -127,9 +124,9 @@ function newVideoReducer(state = initState, action) {
     case types.NEW_SECTION: 
       const {slides, sections} = state.entities
       const {e,slideId} = action
-      const currentSection = state.sectionId
-      this.setState({
-        sectionId: sectionId + 1,
+      const currentSectionId = state.sectionId
+      return ({
+        sectionId: state.sectionId + 1,
         entities: {
           ...this.state.entities,
           slides: {
@@ -143,7 +140,7 @@ function newVideoReducer(state = initState, action) {
           sections: {
             ...sections,
             [currentSectionId]: {
-              id: currentSectionId
+              id: currentSectionId,
               slide_id: slideId,
               kind: 0,
               order: slides[slideId].sections.length +1,
