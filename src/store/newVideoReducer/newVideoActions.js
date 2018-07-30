@@ -1,4 +1,4 @@
-
+// Action Creators
 import * as types from `./newVideoTypes'
 import {videoAdapter} from '../../adapters';
 
@@ -27,11 +27,7 @@ export const handleFormSubmit  = (e, entities) => {
           fireRedirect: videoId.id
         })
       })
-
   }
-  return {type: types.HANDLE_FORM_SUBMIT, 
-    e: e, 
-    fireRedirect: videoId.id} 
 }
 
 export const handleFieldSubmit  = (e) => {

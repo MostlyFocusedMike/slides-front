@@ -7,8 +7,8 @@ export const loadVideo = (videoId) => {
   return dispatch => {
     videoAdapter.getOneNormalized(videoId)
       .then(video =>{
-      dispatch({type: types.LOAD_VIDEO, video: video})
-    })
+        dispatch({type: types.LOAD_VIDEO, video: video})
+      })
   }
 }
 

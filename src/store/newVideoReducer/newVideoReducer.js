@@ -98,7 +98,62 @@ function newVideoReducer(state = initState, action) {
       fireRedirect: action.fireRedirect
     })
 
+  case types.NEW_SLIDE:
+    currentSlideId = state.slideId
+    return ({
+      entities: {
+        ...state.entities,
+        videos: {
+          0: {
+            ...state.entities.videos[0],
+            slides: [...state.entities.videos[0].slides,
+                    currentSlideId]
+          }
+        },
+        slides: {
+          ...state.entities.slides,
+          [state.currentSlideId]: {
+            id: state.currentSlideId,
+            video_id: 0,
+            start: state.currentSlideId,
+            title: "",
+            sections: []
+          }
+        }
+      },
+      slideId: slideId + 1
+    })
 
+    case types.NEW_SECTION: 
+      const {slides, sections} = state.entities
+      const {e,slideId} = action
+      const currentSection = state.sectionId
+      this.setState({
+        sectionId: sectionId + 1,
+        entities: {
+          ...this.state.entities,
+          slides: {
+            ...slides,
+            [slideId]: {
+              ...slides[slideId], 
+              sections: [...slides[slideId].sections,
+                         currentSectionId]
+            }
+          },
+          sections: {
+            ...sections,
+            [currentSectionId]: {
+              id: currentSectionId
+              slide_id: slideId,
+              kind: 0,
+              order: slides[slideId].sections.length +1,
+              content: "",
+              desc: "",
+              show_desc: false
+            }
+          }
+        }
+      })
 
     default:
       return state;
