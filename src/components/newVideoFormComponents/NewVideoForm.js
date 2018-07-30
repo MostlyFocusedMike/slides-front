@@ -190,32 +190,23 @@ class NewVideoForm extends React.Component {
   //
  componentDidUpdate = (prevProps) => {
    if (prevProps.currentUser.id !== this.props.currentUser.id) {
-     this.setState({
-        entities: {
-          ...this.state.entities,
-          videos: {
-            0: {
-              ...this.state.entities.videos[0],
-              user: this.props.currentUser
-            }
-          }
-        }
-      })
+     console.log(this.props.setVideoUser);
+     this.props.setVideoUser(this.props.currentUser)
     }
   }
 
   render() {
-    const {videos, videos: {0: {youtube_vid, desc, start}}, sections, slides} = this.state.entities
+    const {videos, videos: {0: {youtube_vid, desc, start}}, sections, slides} = this.props.newVideo.entities
     console.log(this.props);
     return (
-      <form onSubmit={this.handleFormSubmit}>
-        {this.state.fireRedirect ? 
+      <form onSubmit={this.props.handleFormSubmit}>
+        {this.props.newVideo.fireRedirect ? 
           <Redirect to={`/videos/${this.state.fireRedirect}`} /> : null
         }
         <VideoPreviewFieldset
-          handleFieldSubmit={this.handleFieldSubmit}
-          handleVideoChange={this.handleVideoChange}
-          loadPreview={this.state.loadPreview}
+          handleFieldSubmit={this.props.handleFieldSubmit}
+          handleVideoChange={this.props.handleVideoChange}
+          loadPreview={this.props.loadPreview}
           youtube_vid={youtube_vid}
           desc={desc}
         />
@@ -226,14 +217,14 @@ class NewVideoForm extends React.Component {
                 slide={slides[slideId]}
                 slides={slides}
                 sections={sections}
-                handleSectionChange={this.handleSectionChange}
-                handleSlideChange={this.handleSlideChange}
-                newSection={this.newSection}
+                handleSectionChange={this.props.handleSectionChange}
+                handleSlideChange={this.props.handleSlideChange}
+                newSection={this.props.newSection}
                />
              )
           })
         }
-        <button onClick={this.newSlide}>Make new slide</button>
+        <button onClick={this.props.newSlide}>Make new slide</button>
         <button>Create Video Project</button>
 
       </form>

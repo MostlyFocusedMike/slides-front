@@ -43,6 +43,19 @@ function newVideoReducer(state = initState, action) {
       action.e.preventDefault() 
       return ({loadPreview: true})
 
+    case types.SET_VIDEO_USER:
+      return ({
+        entities: {
+          ...state.entities,
+          videos: {
+            0: {
+              ...state.entities.videos[0],
+              user: action.user
+            }
+          }
+        }
+      })
+
     case types.HANDLE_VIDEO_CHANGE:
       let loadPreview = (action.e.target.name === "youtube_vid") ?
         action.e.target.value.length >= 11 : state.loadPreview

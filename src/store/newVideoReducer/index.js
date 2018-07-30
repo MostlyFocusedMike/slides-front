@@ -2,6 +2,7 @@ import newVideoReducer from './newVideoReducer'
 
 export default newVideoReducer 
 export {
+  setVideoUser,
   handleLoadPreview,
   handleVideoChange,
   handleSlideChange,
