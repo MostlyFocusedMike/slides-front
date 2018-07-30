@@ -14,15 +14,6 @@ export default store
 
 // this lets you import action creators from 
 // './example' and not './example/actions
-export {logIn, logOut, createUser, reauthUser} from "./currentUserReducer"
-export {loadVideo, clearVideo} from "./videoInfoReducer"
-export {
-  setVideoUser,
-  handleLoadPreview,
-  handleVideoChange,
-  handleSlideChange,
-  handleSectionChange,
-  handleFormSubmit,
-  newSlide,
-  newSection,
-} from "./newVideoReducer"
+export * from "./currentUserReducer"
+export * from "./videoInfoReducer"
+export * from "./newVideoReducer"
