@@ -30,6 +30,10 @@ export const handleFormSubmit  = (e, entities) => {
   }
 }
 
+export const setVideoUser = (user) => {
+  return ({type: types.SET_VIDEO_USER, user})
+}
+
 export const newSlide  = (e) => {
   return {type: types.NEW_SLIDE, e: e} 
 }

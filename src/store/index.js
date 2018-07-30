@@ -17,6 +17,7 @@ export default store
 export {logIn, logOut, createUser, reauthUser} from "./currentUserReducer"
 export {loadVideo, clearVideo} from "./videoInfoReducer"
 export {
+  setVideoUser,
   handleLoadPreview,
   handleVideoChange,
   handleSlideChange,
