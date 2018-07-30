@@ -5,7 +5,15 @@ import YouTube from 'react-youtube';
 import SlideForm from './SlideForm';
 import VideoPreviewFieldset from './VideoPreviewFieldset';
 import {videoAdapter} from '../../adapters';
-import {handleLoadPreview} from '../../store';
+import {
+  handleLoadPreview,
+  handleVideoChange,
+  handleSlideChange,
+  handleSectionChange,
+  handleFormSubmit,
+  newSlide,
+  newSection,
+} from '../../store';
 
 class NewVideoForm extends React.Component {
   constructor(props) {
@@ -197,6 +205,7 @@ class NewVideoForm extends React.Component {
 
   render() {
     const {videos, videos: {0: {youtube_vid, desc, start}}, sections, slides} = this.state.entities
+    console.log(this.props);
     return (
       <form onSubmit={this.handleFormSubmit}>
         {this.state.fireRedirect ? 
@@ -232,7 +241,8 @@ class NewVideoForm extends React.Component {
 }
 
 const mapState = (state) => ({
-  currentUser: state.currentUser
+  currentUser: state.currentUser,
+  newVideo: state.newVideo
 })
 
 const mapDispatch = (dispatch) => ({ // the () give us implicit return
@@ -243,4 +253,12 @@ const mapDispatch = (dispatch) => ({ // the () give us implicit return
 })
 
 
-export default connect(mapState)(NewVideoForm)
+export default connect(mapState, {
+  handleLoadPreview,
+  handleVideoChange,
+  handleSlideChange,
+  handleSectionChange,
+  handleFormSubmit,
+  newSlide,
+  newSection,
+})(NewVideoForm)
