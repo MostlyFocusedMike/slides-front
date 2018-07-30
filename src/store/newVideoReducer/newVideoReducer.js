@@ -60,6 +60,46 @@ function newVideoReducer(state = initState, action) {
         }
       })
     }
+
+    case types.HANDLE_SLIDE_CHANGE: 
+      const {e, id} = action
+      return ({
+        entities: {
+          ...state.entities,
+          slides: {
+            ...state.entities.slides,
+            [id]: {
+              ...state.entities.slides[id],
+              [e.target.dataset.key]: e.target.value
+            }
+          }
+        }
+      })
+
+  case types.HANDLE_SECTION_CHANGE:
+    const {e, id} = action
+    const value = e.target.type === 'checkbox' ? 
+      e.target.checked : e.target.value;
+    return ({
+      entities: {
+        ...state.entities,
+        sections: {
+          ...state.entities.sections,
+          [id]: {
+            ...state.entities.sections[id],
+            [e.target.dataset.key]: value
+          }
+        }
+      }
+    })
+
+  case types.HANDLE_FORM_SUBMIT:
+    return ({
+      fireRedirect: action.fireRedirect
+    })
+
+
+
     default:
       return state;
   }

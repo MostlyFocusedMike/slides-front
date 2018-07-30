@@ -18,8 +18,20 @@ export const handleSectionChange  = (e, id) => {
   return {type: types.HANDLE_SECTION_CHANGE, e: e, id: id} 
 }
 
-export const handleFormSubmit  = (e) => {
-  return {type: types.HANDLE_FORM_SUBMIT, e: e} 
+export const handleFormSubmit  = (e, entities) => {
+  return dispatch => {
+    videoAdapter.create(entities)
+      .then(videoId => {
+        dispatch({
+          type: types.HANDLE_FORM_SUBMIT, 
+          fireRedirect: videoId.id
+        })
+      })
+
+  }
+  return {type: types.HANDLE_FORM_SUBMIT, 
+    e: e, 
+    fireRedirect: videoId.id} 
 }
 
 export const handleFieldSubmit  = (e) => {
