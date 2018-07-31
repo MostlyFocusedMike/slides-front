@@ -6,7 +6,7 @@ const SectionsContainer = (props) => {
   let selectedSections = allSections.filter(section => {
     return props.slide.sections.includes(section.id)
   })
-  const orderThem = (a,b) => a.order - b.order
+  const orderThem = (a,b) => parseInt(a.order, 10) - parseInt(b.order, 10)
   selectedSections.sort(orderThem)
 
   const handleNewSection = () => {
