@@ -38,6 +38,7 @@ const initState = {
   }
 }
 function newVideoReducer(state = initState, action) {
+  const {slides, sections} = state.entities
   switch(action.type) {
     case types.HANDLE_LOAD_PREVIEW: 
       action.e.preventDefault() 
@@ -108,7 +109,11 @@ function newVideoReducer(state = initState, action) {
     })
 
   case types.HANDLE_ORDER_CHANGE:
-      console.log("ORDER CHANGE DETECTED");
+    let currentPlace = sections[action.id].order
+    let newPlace = action.e.target.value 
+    console.log("this is the current order:", currentPlace);
+    console.log("this is the new order:", newPlace);
+    
     return ({
       ...state,
       entities: {
@@ -117,7 +122,7 @@ function newVideoReducer(state = initState, action) {
           ...state.entities.sections,
           [action.id]: {
             ...state.entities.sections[action.id],
-            [action.e.target.dataset.key]: value
+            [action.e.target.dataset.key]: newPlace
           }
         }
       }
@@ -157,7 +162,6 @@ function newVideoReducer(state = initState, action) {
     })
 
     case types.NEW_SECTION: 
-      const {slides, sections} = state.entities
       const {slideId} = action
       const currentSectionId = state.sectionId
       return ({

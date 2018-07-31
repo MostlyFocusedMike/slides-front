@@ -100,7 +100,7 @@ class SectionForm extends React.Component {
     const {id, kind, order} = this.props.section
     return (
       <select 
-        onChange={this.handleChange}
+        onChange={this.handleOrderChange}
         id={`order-${id}`}
         value={order}
         data-key="order"
