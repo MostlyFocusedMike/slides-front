@@ -14,13 +14,16 @@ import {
 
 class SlideForm extends React.Component {
   handleChange = (e) => {
+    e.preventDefault()
     this.props.handleSlideChange(e, this.props.slide.id)
   }
   handleNewSection = (e) => {
+    e.preventDefault()
     this.props.newSection(e, this.props.slide.id)
   }
   render() {
-    const {videos, videos: {0: {youtube_vid, desc, start}}, sections, slides, slide} = this.props
+    // const {videos, sections, slides} = this.props.newVideo.entities
+    const {slide} = this.props
     return (
     <div className="slide">
       <div class="slide-data" onChange={this.handleChange} >
@@ -32,7 +35,7 @@ class SlideForm extends React.Component {
           className="title"
           name={`title-${slide.id}`}
           id={`title-${slide.id}`}
-          value={slides[slide.id].title}
+          value={slide.title}
         />
         <label htmlFor={`start-${slide.id}`}>Start:</label>
         <input type="text"
@@ -41,23 +44,10 @@ class SlideForm extends React.Component {
           className="start"
           name={`start-${slide.id}`}
           id={`start-${slide.id}`}
-          value={slides[slide.id].start}
+          value={slide.start}
         />
       </div>
-      <div className="sections">
-        <h2>Sections</h2>
-        { slides[slide.id].sections.map(sectionId => {
-             return (
-               <SectionForm
-                section={sections[sectionId]}
-                newSection={this.newSection}
-                handleSectionChange={this.props.handleSectionChange}
-               />
-             )
-          })
-        }
-        <button onClick={this.handleNewSection}>New Section</button>
-      </div>
+
     </div>
   )
   }
@@ -78,3 +68,19 @@ export default connect(mapState, {
   newSlide,
   newSection,
 })(SlideForm)
+
+
+      // <div className="sections">
+      //   <h2>Sections</h2>
+      //   { slides[slide.id].sections.map(sectionId => {
+      //        return (
+      //          <SectionForm
+      //           section={sections[sectionId]}
+      //           newSection={this.newSection}
+      //           handleSectionChange={this.props.handleSectionChange}
+      //          />
+      //        )
+      //     })
+      //   }
+      //   <button onClick={this.handleNewSection}>New Section</button>
+      // </div>

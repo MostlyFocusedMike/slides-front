@@ -6,7 +6,6 @@ const SectionsContainer = (props) => {
   let selectedSections = allSections.filter(section => {
     return props.slide.sections.includes(section.id)
   })
-  // pretty sure sorting isn't necessary, but just to be safe
   const orderThem = (a,b) => a.order - b.order
   selectedSections.sort(orderThem)
   return (

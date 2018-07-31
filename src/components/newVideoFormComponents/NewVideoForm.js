@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom'
 import YouTube from 'react-youtube';
 import SlideForm from './SlideForm';
 import VideoPreviewFieldset from './VideoPreviewFieldset';
+import SlidesContainer from '../../containers/SlidesContainer';
 import {videoAdapter} from '../../adapters';
 import {
   setVideoUser,
@@ -188,6 +189,11 @@ class NewVideoForm extends React.Component {
   //   this.sectionId++
   // }
   //
+    //
+ 
+ handleSubmit = (e) => {
+   e.preventDefault()
+ }
  componentDidUpdate = (prevProps) => {
    if (prevProps.currentUser.id !== this.props.currentUser.id) {
      this.props.setVideoUser(this.props.currentUser)
@@ -198,31 +204,18 @@ class NewVideoForm extends React.Component {
     const {videos, videos: {0: {youtube_vid, desc, start}}, sections, slides} = this.props.newVideo.entities
     console.log(this.props);
     return (
-      <form onSubmit={this.props.handleFormSubmit}>
+      <form onSubmit={this.handleSubmit}>
         {this.props.newVideo.fireRedirect ? 
           <Redirect to={`/videos/${this.state.fireRedirect}`} /> : null
         }
         <VideoPreviewFieldset
-          handleFieldSubmit={this.props.handleFieldSubmit}
+          handleFieldSubmit={this.handleSubmit}
           handleVideoChange={this.props.handleVideoChange}
           loadPreview={this.props.newVideo.loadPreview}
           youtube_vid={youtube_vid}
           desc={desc}
         />
-        { videos[0].slides.map(slideId => {
-             return (
-               <SlideForm 
-                videos={videos}
-                slide={slides[slideId]}
-                slides={slides}
-                sections={sections}
-                handleSectionChange={this.props.handleSectionChange}
-                handleSlideChange={this.props.handleSlideChange}
-                newSection={this.props.newSection}
-               />
-             )
-          })
-        }
+        <SlidesContainer />
         <button onClick={this.props.newSlide}>Make new slide</button>
         <button>Create Video Project</button>
 
@@ -235,14 +228,6 @@ const mapState = (state) => ({
   currentUser: state.currentUser,
   newVideo: state.newVideo
 })
-
-const mapDispatch = (dispatch) => ({ // the () give us implicit return
-  // addTest: function(num) {
-  handleLoadPreview(e) {
-    dispatch(handleLoadPreview(e))
-  }
-})
-
 
 export default connect(mapState, {
   setVideoUser,
