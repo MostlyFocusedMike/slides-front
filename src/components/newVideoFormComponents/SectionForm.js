@@ -1,4 +1,15 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {
+  setVideoUser,
+  handleLoadPreview,
+  handleVideoChange,
+  handleSlideChange,
+  handleSectionChange,
+  handleFormSubmit,
+  newSlide,
+  newSection,
+} from '../../store';
 
 class SectionForm extends React.Component {
   
@@ -120,4 +131,17 @@ class SectionForm extends React.Component {
   }
 }
 
-export default SectionForm
+const mapState = (state) => ({
+  newVideo: state.newVideo
+})
+
+export default connect(mapState, {
+  setVideoUser,
+  handleLoadPreview,
+  handleVideoChange,
+  handleSlideChange,
+  handleSectionChange,
+  handleFormSubmit,
+  newSlide,
+  newSection,
+})(SectionForm)
