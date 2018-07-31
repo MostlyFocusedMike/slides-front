@@ -109,24 +109,6 @@ function newVideoReducer(state = initState, action) {
     })
 
   case types.HANDLE_ORDER_CHANGE:
-    let currentPlace = sections[action.id].order
-    let newPlace = action.e.target.value 
-    let minPlace = Math.min(newPlace, currentPlace)
-    let maxPlace = Math.max(newPlace, currentPlace)
-    console.log("this is the new order:", newPlace);
-    console.log("this is the current order:", currentPlace);
-    console.log("This is the high", maxPlace);
-    console.log("This is the low", minPlace);
-    Object.values(sections).map(section => {
-      let mover = newPlace < currentPlace ? 1 : -1
-      if (section.id === action.id) {
-        console.log("this is the affected section, it's order is now", newPlace)
-      } else if (minPlace <= section.order && section.order <= maxPlace) {
-        console.log("this id would need to", mover, section.order)
-      } else {
-        console.log("this order is fine:", section.order);
-      }
-    })
     return ({
       ...state,
       entities: {
@@ -135,7 +117,7 @@ function newVideoReducer(state = initState, action) {
           ...state.entities.sections,
           [action.id]: {
             ...state.entities.sections[action.id],
-            [action.e.target.dataset.key]: newPlace
+            order: action.finalPlace
           }
         }
       }

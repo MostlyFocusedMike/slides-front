@@ -116,6 +116,23 @@ class SectionForm extends React.Component {
     this.props.handleSectionChange(e, this.props.section.id)
   }
   handleOrderChange = (e) => {
+    let currentPlace = this.props.section.order
+    let newPlace = e.target.value 
+    let minPlace = Math.min(newPlace, currentPlace)
+    let maxPlace = Math.max(newPlace, currentPlace)
+    Object.values(this.props.sections).map(section => {
+      let mover = newPlace < currentPlace ? 1 : -1
+      if (section.id === this.props.section.id) {
+        this.props.handleOrderChange(section.id, newPlace)
+      } else if (minPlace <= section.order && section.order <= maxPlace) {
+        let finalPlace = mover + parseInt(section.order)
+        this.props.handleOrderChange(section.id, finalPlace)
+      } else {
+        console.log("this order is fine:", section.order);
+      }
+    })
+
+
     this.props.handleOrderChange(e, this.props.section.id)
   }
   handleNewSection = (e) => {
