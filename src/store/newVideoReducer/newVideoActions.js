@@ -11,7 +11,6 @@ export const handleVideoChange  = (e) => {
 }
 
 export const handleSlideChange  = (e, id) => {
-  e.preventDefault()
   return {type: types.HANDLE_SLIDE_CHANGE, e: e, id: id} 
 }
 
@@ -39,5 +38,5 @@ export const newSlide  = (e) => {
   return {type: types.NEW_SLIDE, e: e} 
 }
 export const newSection  = (e, slideId) => {
-  return {type: types.NEW_SLIDE, e: e, slideId: slideId} 
+  return {type: types.NEW_SECTION, e: e, slideId: slideId} 
 }

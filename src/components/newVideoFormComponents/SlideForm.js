@@ -14,17 +14,15 @@ import {
 
 class SlideForm extends React.Component {
   handleChange = (e) => {
+    console.log("props here",this.props);
     this.props.handleSlideChange(e, this.props.slide.id)
-  }
-  handleNewSection = (e) => {
-    this.props.newSection(e, this.props.slide.id)
   }
   render() {
     // const {videos, sections, slides} = this.props.newVideo.entities
     const {slide} = this.props
     return (
     <div className="slide">
-      <div class="slide-data" onChange={this.handleChange} >
+      <div class="slide-data"  >
       <h2>Slide Info</h2>
         <label htmlFor={`title-${slide.id}`}>Slide Title:</label>
         <input type="text"
@@ -34,6 +32,7 @@ class SlideForm extends React.Component {
           name={`title-${slide.id}`}
           id={`title-${slide.id}`}
           value={slide.title}
+          onChange={this.handleChange}
         />
         <label htmlFor={`start-${slide.id}`}>Start:</label>
         <input type="text"
@@ -43,6 +42,7 @@ class SlideForm extends React.Component {
           name={`start-${slide.id}`}
           id={`start-${slide.id}`}
           value={slide.start}
+          onChange={this.handleChange}
         />
       </div>
 
@@ -51,11 +51,7 @@ class SlideForm extends React.Component {
   }
 }
 
-const mapState = (state) => ({
-  newVideo: state.newVideo
-})
-
-export default connect(mapState, {
+export default connect(null, {
   handleSlideChange,
   handleFormSubmit,
   newSection,

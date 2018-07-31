@@ -114,7 +114,6 @@ function newVideoReducer(state = initState, action) {
     })
 
   case types.NEW_SLIDE:
-
     let currentSlideId = parseInt(state.slideId, 10)
     return ({
       ...state,
@@ -130,7 +129,7 @@ function newVideoReducer(state = initState, action) {
         slides: {
           ...state.entities.slides,
           [currentSlideId]: {
-            id: state.currentSlideId,
+            id: currentSlideId,
             video_id: 0,
             start: currentSlideId,
             title: "",

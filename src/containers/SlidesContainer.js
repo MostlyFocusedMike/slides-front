@@ -5,12 +5,13 @@ import SlideForm from '../components/newVideoFormComponents/SlideForm'
 const SlidesContainer = (props) => {
   const orderThem = (a,b) => a.start - b.start
   const sortedSlides = Object.values(props.slides).sort(orderThem)
+  console.log("new slide made");
   return (
     <div>
-      { sortedSlides.map(slide => {
+      { sortedSlides.map((slide, idx) => {
            return (
              <SlideForm
-              key={slide.id}
+              key={idx}
               slide={slide}
              />
            )

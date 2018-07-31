@@ -210,7 +210,6 @@ class NewVideoForm extends React.Component {
           <Redirect to={`/videos/${this.state.fireRedirect}`} /> : null
         }
         <VideoPreviewFieldset
-          handleFieldSubmit={this.handleSubmit}
           handleVideoChange={this.props.handleVideoChange}
           loadPreview={this.props.newVideo.loadPreview}
           youtube_vid={youtube_vid}
