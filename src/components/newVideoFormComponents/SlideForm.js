@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import SectionForm from './SectionForm';
+import SectionsContainer from '../../containers/SectionsContainer';
 import {
   setVideoUser,
   handleLoadPreview,
@@ -46,6 +47,11 @@ class SlideForm extends React.Component {
         />
       </div>
 
+      <div className="sections">
+        <SectionsContainer 
+          slide={slide}
+        />
+      </div>
     </div>
   )
   }
@@ -70,5 +76,4 @@ export default connect(null, {
       //        )
       //     })
       //   }
-      //   <button onClick={this.handleNewSection}>New Section</button>
       // </div>
