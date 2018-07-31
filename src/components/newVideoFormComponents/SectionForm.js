@@ -6,6 +6,7 @@ import {
   handleVideoChange,
   handleSlideChange,
   handleSectionChange,
+  handleOrderChange,
   handleFormSubmit,
   newSlide,
   newSection,
@@ -99,7 +100,7 @@ class SectionForm extends React.Component {
     const {id, kind, order} = this.props.section
     return (
       <select 
-        onChange={this.handleChange}
+        onChange={this.handleOrderChange}
         id={`order-${id}`}
         value={order}
         data-key="order"
@@ -113,6 +114,9 @@ class SectionForm extends React.Component {
   }
   handleChange = (e) => {
     this.props.handleSectionChange(e, this.props.section.id)
+  }
+  handleOrderChange = (e) => {
+    this.props.handleOrderChange(e, this.props.section.id)
   }
   handleNewSection = (e) => {
     this.props.newSection(e, this.props.slideId)
@@ -153,7 +157,6 @@ export default connect(mapState, {
   handleVideoChange,
   handleSlideChange,
   handleSectionChange,
-  handleFormSubmit,
-  newSlide,
+  handleOrderChange,
   newSection,
 })(SectionForm)

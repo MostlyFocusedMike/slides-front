@@ -107,6 +107,22 @@ function newVideoReducer(state = initState, action) {
       }
     })
 
+  case types.HANDLE_ORDER_CHANGE:
+      console.log("ORDER CHANGE DETECTED");
+    return ({
+      ...state,
+      entities: {
+        ...state.entities,
+        sections: {
+          ...state.entities.sections,
+          [action.id]: {
+            ...state.entities.sections[action.id],
+            [action.e.target.dataset.key]: value
+          }
+        }
+      }
+    })
+
   case types.HANDLE_FORM_SUBMIT:
     return ({
       ...state,

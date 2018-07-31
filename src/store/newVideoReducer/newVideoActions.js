@@ -18,6 +18,10 @@ export const handleSectionChange  = (e, id) => {
   return {type: types.HANDLE_SECTION_CHANGE, e: e, id: id} 
 }
 
+export const handleOrderChange  = (e, sectionId) => {
+  return {type: types.HANDLE_ORDER_CHANGE, e, id:sectionId} 
+}
+
 export const handleFormSubmit  = (e, entities) => {
   return dispatch => {
     videoAdapter.create(entities)
