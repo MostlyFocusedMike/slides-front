@@ -194,6 +194,7 @@ class NewVideoForm extends React.Component {
  handleSubmit = (e) => {
    e.preventDefault()
  }
+ 
  componentDidUpdate = (prevProps) => {
    if (prevProps.currentUser.id !== this.props.currentUser.id) {
      this.props.setVideoUser(this.props.currentUser)

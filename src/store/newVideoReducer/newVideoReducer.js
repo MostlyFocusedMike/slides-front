@@ -1,6 +1,6 @@
 import * as types from './newVideoTypes'
 const initState = {
-  fireRedirect: null,
+  fireRedirect: false,
   loadPreview: false,
   slideId: 1,
   sectionId: 1, //video id will always be 0 for these forms, but slides and sections need to increment
@@ -45,6 +45,7 @@ function newVideoReducer(state = initState, action) {
 
     case types.SET_VIDEO_USER:
       return ({
+        ...state,
         entities: {
           ...state.entities,
           videos: {
@@ -60,6 +61,7 @@ function newVideoReducer(state = initState, action) {
       let loadPreview = (action.e.target.name === "youtube_vid") ?
         action.e.target.value.length >= 11 : state.loadPreview
       return ({
+        ...state,
         loadPreview,
         entities: {
           ...state.entities,
@@ -73,24 +75,26 @@ function newVideoReducer(state = initState, action) {
         }
       })
 
-    case types.HANDLE_SLIDE_CHANGE: 
-      return ({
-        entities: {
-          ...state.entities,
-          slides: {
-            ...state.entities.slides,
-            [action.id]: {
-              ...state.entities.slides[action.id],
-              [action.e.target.dataset.key]: action.e.target.value
-            }
+  case types.HANDLE_SLIDE_CHANGE: 
+    return ({
+      ...state,
+      entities: {
+        ...state.entities,
+        slides: {
+          ...state.entities.slides,
+          [action.id]: {
+            ...state.entities.slides[action.id],
+            [action.e.target.dataset.key]: action.e.target.value
           }
         }
-      })
+      }
+    })
 
   case types.HANDLE_SECTION_CHANGE:
     let value = action.e.target.type === 'checkbox' ? 
       action.e.target.checked : action.e.target.value;
     return ({
+      ...state,
       entities: {
         ...state.entities,
         sections: {
@@ -105,12 +109,15 @@ function newVideoReducer(state = initState, action) {
 
   case types.HANDLE_FORM_SUBMIT:
     return ({
+      ...state,
       fireRedirect: action.fireRedirect
     })
 
   case types.NEW_SLIDE:
-    let currentSlideId = state.slideId
+
+    let currentSlideId = parseInt(state.slideId, 10)
     return ({
+      ...state,
       entities: {
         ...state.entities,
         videos: {
@@ -122,16 +129,16 @@ function newVideoReducer(state = initState, action) {
         },
         slides: {
           ...state.entities.slides,
-          [state.currentSlideId]: {
+          [currentSlideId]: {
             id: state.currentSlideId,
             video_id: 0,
-            start: state.currentSlideId,
+            start: currentSlideId,
             title: "",
             sections: []
           }
         }
       },
-      slideId: slideId + 1
+      slideId: state.slideId + 1
     })
 
     case types.NEW_SECTION: 
@@ -139,6 +146,7 @@ function newVideoReducer(state = initState, action) {
       const {e,slideId} = action
       const currentSectionId = state.sectionId
       return ({
+        ...state,
         sectionId: state.sectionId + 1,
         entities: {
           ...this.state.entities,

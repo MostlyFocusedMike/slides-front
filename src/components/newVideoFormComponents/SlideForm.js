@@ -14,11 +14,9 @@ import {
 
 class SlideForm extends React.Component {
   handleChange = (e) => {
-    e.preventDefault()
     this.props.handleSlideChange(e, this.props.slide.id)
   }
   handleNewSection = (e) => {
-    e.preventDefault()
     this.props.newSection(e, this.props.slide.id)
   }
   render() {
@@ -54,18 +52,12 @@ class SlideForm extends React.Component {
 }
 
 const mapState = (state) => ({
-  currentUser: state.currentUser,
   newVideo: state.newVideo
 })
 
 export default connect(mapState, {
-  setVideoUser,
-  handleLoadPreview,
-  handleVideoChange,
   handleSlideChange,
-  handleSectionChange,
   handleFormSubmit,
-  newSlide,
   newSection,
 })(SlideForm)
 
