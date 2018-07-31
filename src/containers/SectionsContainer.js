@@ -19,7 +19,7 @@ const SectionsContainer = (props) => {
     { selectedSections.map(section => {
         return <SectionForm 
                  section={section} 
-                 totalSections={selectedSections.length}
+                 sections={selectedSections}
                  key={section.id}
                />
       })

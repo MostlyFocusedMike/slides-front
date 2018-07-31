@@ -94,6 +94,23 @@ class SectionForm extends React.Component {
         return <p>Error loading section</p>
     }
   }
+
+  renderOrder = () => {
+    const {id, kind, order} = this.props.section
+    return (
+      <select 
+        onChange={this.handleChange}
+        id={`order-${id}`}
+        value={order}
+        data-key="order"
+      >
+        { this.props.sections.map((section, idx) => {
+            return <option value={idx + 1}>{idx +1}</option>
+          })
+        }
+      </select>
+    )
+  }
   handleChange = (e) => {
     this.props.handleSectionChange(e, this.props.section.id)
   }
@@ -117,12 +134,7 @@ class SectionForm extends React.Component {
             <option value="3">Picture</option>
           </select>
           <label htmlFor={`order-${id}`}>Order: </label>
-          <input
-            onChange={this.handleChange}
-            id={`order-${id}`}
-            value={order}
-            data-key="order"
-          />
+          {this.renderOrder()}
         </div>
        {this.renderInputs(kind)}
        
