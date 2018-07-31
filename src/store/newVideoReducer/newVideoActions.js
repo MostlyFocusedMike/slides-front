@@ -34,9 +34,10 @@ export const setVideoUser = (user) => {
   return ({type: types.SET_VIDEO_USER, user: user})
 }
 
-export const newSlide  = (e) => {
-  return {type: types.NEW_SLIDE, e: e} 
+export const newSlide  = () => {
+  return {type: types.NEW_SLIDE} 
 }
-export const newSection  = (e, slideId) => {
-  return {type: types.NEW_SECTION, e: e, slideId: slideId} 
+
+export const newSection  = (slideId) => {
+  return {type: types.NEW_SECTION, slideId: slideId} 
 }

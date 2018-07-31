@@ -142,13 +142,13 @@ function newVideoReducer(state = initState, action) {
 
     case types.NEW_SECTION: 
       const {slides, sections} = state.entities
-      const {e,slideId} = action
+      const {slideId} = action
       const currentSectionId = state.sectionId
       return ({
         ...state,
         sectionId: state.sectionId + 1,
         entities: {
-          ...this.state.entities,
+          ...state.entities,
           slides: {
             ...slides,
             [slideId]: {

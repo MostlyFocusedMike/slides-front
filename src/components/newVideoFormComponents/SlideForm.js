@@ -50,16 +50,21 @@ class SlideForm extends React.Component {
       <div className="sections">
         <SectionsContainer 
           slide={slide}
+          sections={this.props.sections}
+          newSection={this.props.newSection}
         />
       </div>
     </div>
   )
   }
 }
-
-export default connect(null, {
+const mapState = (state) => ({
+  sections: state.newVideo.entities.sections
+})
+export default connect(mapState, {
   handleSlideChange,
   handleFormSubmit,
+  handleSectionChange,
   newSection,
 })(SlideForm)
 
