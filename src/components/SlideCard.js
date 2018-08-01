@@ -1,5 +1,5 @@
 import React from "react" 
-import SectionsContainer from '../containers/SectionsContainer'
+import SectionCardsContainer from '../containers/SectionCardsContainer'
 
 class SlideCard extends React.Component {
 
@@ -20,7 +20,7 @@ class SlideCard extends React.Component {
     return (
       <div className ="slide-show">
         <h1>{slide.title}</h1>
-        <SectionsContainer slide={slide} entities={this.props.entities} />
+        <SectionCardsContainer slide={slide} entities={this.props.entities} />
       </div>
     )
   }
