@@ -166,6 +166,7 @@ class SectionForm extends React.Component {
           }
         </div>
         {this.renderInputs(kind)}
+        <button>Delete this section</button>
       </div>
     )
   }
