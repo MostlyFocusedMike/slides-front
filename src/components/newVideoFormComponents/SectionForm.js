@@ -120,6 +120,11 @@ class SectionForm extends React.Component {
     this.reorder(parseInt(this.props.section.order), parseInt(e.target.value))
   }
 
+  upDownOrderChange = (e) => {
+    const {order} = this.props.section,
+      direction = parseInt(e.target.dataset.direct)
+    this.reorder(parseInt(order), parseInt(order + direction))
+  }
   reorder = (currentPlace, newPlace) => {
     const {handleOrderChange, "section": currentSection, sections} = this.props
     let mover = newPlace < currentPlace ? 1 : -1,
@@ -157,8 +162,16 @@ class SectionForm extends React.Component {
           </select>
           <label htmlFor={`order-${id}`}>Order: </label>
           {this.renderOrder()}
-        {order > 1 ?  <button>Move up</button> : null}
-        {order < max ?  <button>Move down</button> : null}
+        {order > 1 ? 
+            <button 
+              data-direct="-1" onClick={this.upDownOrderChange}
+            >Move Up</button> : null
+        }
+        {order < max ? 
+            <button 
+              data-direct="1" onClick={this.upDownOrderChange}
+            >Move Down</button> : null
+        }
         </div>
        {this.renderInputs(kind)}
         
