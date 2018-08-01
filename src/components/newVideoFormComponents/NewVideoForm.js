@@ -19,7 +19,8 @@ import {
 
 class NewVideoForm extends React.Component {
   state = {
-    slideStart: ""
+    slideStart: "",
+    timeCode: ""
   }
   handleSubmit = (e) => {
     e.preventDefault()
@@ -46,10 +47,16 @@ class NewVideoForm extends React.Component {
     }
   }
 
-  handleSlideStartChange = (e) => {
-    this.setState({
-      slideStart: e.target.value
-    })
+  handleTimeCodeChange = (e) => {
+    const re = /^[\d:\b]+$/;
+    // if value is not blank, then test the regex
+    let val = e.target.value
+    // val = val.replace(/:/g, "").replace(/(..?)/g, ':$1').slice(0)
+    // .replace(/(..?)/g, ':$1').slice(0,-1)
+    if ((val === '' || re.test(val)) && val.length < 9) {
+       this.setState({timeCode: val, slideStart: this.hmsToSeconds(val)})
+    }
+    console.log("start", this.state.slideStart);
   }
 
   componentDidUpdate = (prevProps) => {
@@ -75,8 +82,8 @@ class NewVideoForm extends React.Component {
 
         <label> Make a new slide at </label>
         <input 
-          value={this.state.slideStart} 
-          onChange={this.handleSlideStartChange}
+          value={this.state.timeCode} 
+          onChange={this.handleTimeCodeChange}
         /> 
         <button onClick={this.props.newSlide}>Make new slide</button>
 
