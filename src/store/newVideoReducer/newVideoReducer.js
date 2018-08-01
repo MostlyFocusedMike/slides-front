@@ -187,6 +187,11 @@ function newVideoReducer(state = initState, action) {
         }
       })
     case types.DELETE_SECTION:
+      let sectionsCopy = state.entities.sections 
+      let sectionIdsCopy = state.entities.slides[action.slideId].sections
+      let idxOfRemoved = sectionIdsCopy.indexOf(parseInt(action.sectionId))
+      delete sectionsCopy[action.sectionId]
+      sectionIdsCopy.splice(idxOfRemoved, 1)
       return ({
         ...state,
         entities: {
@@ -195,13 +200,10 @@ function newVideoReducer(state = initState, action) {
             ...slides,
             [action.slideId]: {
               ...slides[action.slideId], 
-              sections: [...slides[action.slideId].sections,
-                         currentSectionId]
+              sections: sectionIdsCopy
             }
           },
-          sections: {
-            ...sections.filter(section => section.id !== action.sectionId)
-          }
+          sections: sectionsCopy
         }
       })
 

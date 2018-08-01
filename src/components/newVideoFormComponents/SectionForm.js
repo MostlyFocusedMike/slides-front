@@ -132,14 +132,14 @@ class SectionForm extends React.Component {
     })
   }
 
-  deleteSection = () => {
+  handleDeleteSection = () => {
     const {handleOrderChange, "section": currentSection, sections, slideId} = this.props
     Object.values(sections).map(section => {
       if (section.order > currentSection.order) {
         handleOrderChange(section.id, parseInt(section.order -1))
       }
     })
-    deleteSection(slideId, currentSection.id)
+    this.props.deleteSection(slideId, currentSection.id)
   }
 
   render() {
@@ -174,7 +174,7 @@ class SectionForm extends React.Component {
           }
         </div>
         {this.renderInputs(kind)}
-        <button onClick={this.deleteSection}>Delete this section</button>
+        <button onClick={this.handleDeleteSection}>Delete this section</button>
       </div>
     )
   }

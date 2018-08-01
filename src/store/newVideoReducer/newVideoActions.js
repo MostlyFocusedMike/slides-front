@@ -47,5 +47,6 @@ export const newSection  = (slideId) => {
 }
 
 export const deleteSection  = (slideId, sectionId) => {
-  return {type: types.DELETE_SECTION, sectionId} 
+  console.log("Action delete");
+  return {type: types.DELETE_SECTION, slideId, sectionId} 
 }
