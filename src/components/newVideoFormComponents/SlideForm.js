@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import SectionForm from './SectionForm';
-import SectionsContainer from '../../containers/SectionsContainer';
+import SectionFormsContainer from '../../containers/SectionFormsContainer';
 import {
   setVideoUser,
   handleLoadPreview,
@@ -48,7 +48,7 @@ class SlideForm extends React.Component {
       </div>
 
       <div className="sections">
-        <SectionsContainer 
+        <SectionFormsContainer 
           slide={slide}
           sections={this.props.sections}
           newSection={this.props.newSection}
