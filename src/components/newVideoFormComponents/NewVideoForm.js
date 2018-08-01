@@ -25,22 +25,25 @@ class NewVideoForm extends React.Component {
     e.preventDefault()
   }
    
-  secondsToHMS(input) {
-      let parts = this.state.slideStart.split(':'),
-          seconds = parts[parts.length - 1],
-          minutes = parts[parts.length - 2] || 0,
-          hours = parts[parts.length - 3] || 0;
-      return (hours * 3600 + minutes * 60 + seconds)
+  hmsToSeconds(input) {
+    let parts = input.split(':'),
+      seconds = parseInt(parts[parts.length - 1]),
+      minutes = parseInt(parts[parts.length - 2]) || 0,
+      hours = parseInt(parts[parts.length - 3]) || 0;
+    return (hours * 3600 + minutes * 60 + seconds)
   }
 
-  function secondsToHms(d) {
-      d = Number(d);
+  secondsToHms(d) {
+      d = parseInt(d);
 
-      var h = Math.floor(d / 3600);
-      var m = Math.floor(d % 3600 / 60);
-      var s = Math.floor(d % 3600 % 60);
-
-      return (h) + ":" + ('0' + m).slice(-2) + ":" + ('0' + s).slice(-2);
+      let h = Math.floor(d / 3600);
+      let m = Math.floor(d % 3600 / 60);
+      let s = Math.floor(d % 3600 % 60);
+      if (h) {
+        return (h) + ":" + ('0' + m).slice(-2) + ":" + ('0' + s).slice(-2);
+      } else {
+        return  m + ":" + ('0' + s).slice(-2);
+      }
   }
 
   componentDidUpdate = (prevProps) => {
