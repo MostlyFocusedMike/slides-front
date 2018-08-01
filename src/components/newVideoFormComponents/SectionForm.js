@@ -1,10 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {
-  setVideoUser,
-  handleLoadPreview,
-  handleVideoChange,
-  handleSlideChange,
   handleSectionChange,
   handleOrderChange,
   handleFormSubmit,
@@ -138,10 +134,6 @@ class SectionForm extends React.Component {
     })
   }
 
-  handleNewSection = (e) => {
-    this.props.newSection(e, this.props.slideId)
-  }
-
   render() {
     const {id, kind, order} = this.props.section
     let max = Object.values(this.props.sections).sort((a,b) => b.order - a.order)[0].order
@@ -162,19 +154,18 @@ class SectionForm extends React.Component {
           </select>
           <label htmlFor={`order-${id}`}>Order: </label>
           {this.renderOrder()}
-        {order > 1 ? 
+          {order > 1 ? 
             <button 
               data-direct="-1" onClick={this.upDownOrderChange}
             >Move Up</button> : null
-        }
-        {order < max ? 
+          }
+          {order < max ? 
             <button 
               data-direct="1" onClick={this.upDownOrderChange}
             >Move Down</button> : null
-        }
+          }
         </div>
-       {this.renderInputs(kind)}
-        
+        {this.renderInputs(kind)}
       </div>
     )
   }
@@ -184,12 +175,4 @@ const mapState = (state) => ({
   newVideo: state.newVideo
 })
 
-export default connect(mapState, {
-  setVideoUser,
-  handleLoadPreview,
-  handleVideoChange,
-  handleSlideChange,
-  handleSectionChange,
-  handleOrderChange,
-  newSection,
-})(SectionForm)
+export default connect(mapState, {handleSectionChange, handleOrderChange})(SectionForm)

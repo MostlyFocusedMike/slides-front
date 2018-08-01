@@ -17,11 +17,13 @@ const SectionsContainer = (props) => {
     <div>
     <h1>Sections</h1>
     { selectedSections.map(section => {
-        return <SectionForm 
-                 section={section} 
-                 sections={selectedSections}
-                 key={section.id}
-               />
+        return (
+          <SectionForm 
+            section={section} 
+            sections={selectedSections}
+            key={section.id}
+          />
+        )
       })
     }
       <button onClick={handleNewSection}>New Section</button>
