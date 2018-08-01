@@ -19,7 +19,7 @@ import {
 
 class NewVideoForm extends React.Component {
   state = {
-    slideStart: "0:00"
+    slideStart: ""
   }
   handleSubmit = (e) => {
     e.preventDefault()
@@ -34,16 +34,22 @@ class NewVideoForm extends React.Component {
   }
 
   secondsToHms(d) {
-      d = parseInt(d);
+    d = parseInt(d);
 
-      let h = Math.floor(d / 3600);
-      let m = Math.floor(d % 3600 / 60);
-      let s = Math.floor(d % 3600 % 60);
-      if (h) {
-        return (h) + ":" + ('0' + m).slice(-2) + ":" + ('0' + s).slice(-2);
-      } else {
-        return  m + ":" + ('0' + s).slice(-2);
-      }
+    let h = Math.floor(d / 3600);
+    let m = Math.floor(d % 3600 / 60);
+    let s = Math.floor(d % 3600 % 60);
+    if (h) {
+      return (h) + ":" + ('0' + m).slice(-2) + ":" + ('0' + s).slice(-2);
+    } else {
+      return  m + ":" + ('0' + s).slice(-2);
+    }
+  }
+
+  handleSlideStartChange = (e) => {
+    this.setState({
+      slideStart: e.target.value
+    })
   }
 
   componentDidUpdate = (prevProps) => {
@@ -66,9 +72,14 @@ class NewVideoForm extends React.Component {
           youtube_vid={youtube_vid}
           desc={desc}
         />
+
         <label> Make a new slide at </label>
-        <input value={this.state.slideStart} onChange={(e) => this.setState({slideStart: e.target.value})}/> 
+        <input 
+          value={this.state.slideStart} 
+          onChange={this.handleSlideStartChange}
+        /> 
         <button onClick={this.props.newSlide}>Make new slide</button>
+
         <SlidesContainer />
         <button>Create Video Project</button>
 
