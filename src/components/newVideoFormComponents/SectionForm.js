@@ -3,9 +3,7 @@ import {connect} from 'react-redux'
 import {
   handleSectionChange,
   handleOrderChange,
-  handleFormSubmit,
-  newSlide,
-  newSection,
+  deleteSection
 } from '../../store';
 
 class SectionForm extends React.Component {
@@ -134,6 +132,16 @@ class SectionForm extends React.Component {
     })
   }
 
+  deleteSection = () => {
+    const {handleOrderChange, "section": currentSection, sections, slideId} = this.props
+    Object.values(sections).map(section => {
+      if (section.order > currentSection.order) {
+        handleOrderChange(section.id, parseInt(section.order -1))
+      }
+    })
+    deleteSection(slideId, currentSection.id)
+  }
+
   render() {
     const {id, kind, order} = this.props.section
     let max = Object.values(this.props.sections).sort((a,b) => b.order - a.order)[0].order
@@ -166,7 +174,7 @@ class SectionForm extends React.Component {
           }
         </div>
         {this.renderInputs(kind)}
-        <button>Delete this section</button>
+        <button onClick={this.deleteSection}>Delete this section</button>
       </div>
     )
   }
@@ -176,4 +184,8 @@ const mapState = (state) => ({
   newVideo: state.newVideo
 })
 
-export default connect(mapState, {handleSectionChange, handleOrderChange})(SectionForm)
+export default connect(mapState, {
+  handleSectionChange, 
+  handleOrderChange,
+  deleteSection
+})(SectionForm)

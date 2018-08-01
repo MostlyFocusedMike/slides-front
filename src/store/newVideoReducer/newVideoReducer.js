@@ -186,6 +186,24 @@ function newVideoReducer(state = initState, action) {
           }
         }
       })
+    case types.DELETE_SECTION:
+      return ({
+        ...state,
+        entities: {
+          ...state.entities,
+          slides: {
+            ...slides,
+            [action.slideId]: {
+              ...slides[action.slideId], 
+              sections: [...slides[action.slideId].sections,
+                         currentSectionId]
+            }
+          },
+          sections: {
+            ...sections.filter(section => section.id !== action.sectionId)
+          }
+        }
+      })
 
     default:
       return state;

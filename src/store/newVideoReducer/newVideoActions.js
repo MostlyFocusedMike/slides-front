@@ -45,3 +45,7 @@ export const newSlide  = () => {
 export const newSection  = (slideId) => {
   return {type: types.NEW_SECTION, slideId: slideId} 
 }
+
+export const deleteSection  = (slideId, sectionId) => {
+  return {type: types.DELETE_SECTION, sectionId} 
+}

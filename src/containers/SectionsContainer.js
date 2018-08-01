@@ -19,6 +19,7 @@ const SectionsContainer = (props) => {
     { selectedSections.map(section => {
         return (
           <SectionForm 
+            slideId={props.slide.id} 
             section={section} 
             sections={selectedSections}
             key={section.id}
