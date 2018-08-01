@@ -100,7 +100,7 @@ class SectionForm extends React.Component {
     const {id, kind, order} = this.props.section
     return (
       <select 
-        onChange={this.handleOrderChange}
+        onChange={this.selectOrderChange}
         id={`order-${id}`}
         value={order}
         data-key="order"
@@ -115,17 +115,19 @@ class SectionForm extends React.Component {
   handleChange = (e) => {
     this.props.handleSectionChange(e, this.props.section.id)
   }
-  handleOrderChange = (e) => {
+
+  selectOrderChange = (e) => {
+    this.reorder(parseInt(this.props.section.order), parseInt(e.target.value))
+  }
+
+  reorder = (currentPlace, newPlace) => {
     const {handleOrderChange, "section": currentSection, sections} = this.props
-    let currentPlace = currentSection.order,
-      newPlace = e.target.value,
-      minPlace = Math.min(newPlace, currentPlace),
-      maxPlace = parseInt(minPlace) === parseInt(newPlace) ? currentPlace : newPlace,
-      mover = newPlace < currentPlace ? 1 : -1
+    let mover = newPlace < currentPlace ? 1 : -1,
+      minMax = [currentPlace, newPlace].sort((a,b) => a - b)
     Object.values(sections).map(section => {
       if (section.id === currentSection.id) {
         handleOrderChange(section.id, newPlace)
-      } else if (minPlace <= section.order && section.order <= maxPlace) {
+      } else if (minMax[0] <= section.order && section.order <= minMax[1]) {
         handleOrderChange(section.id, mover + parseInt(section.order))
       } 
     })
@@ -137,6 +139,9 @@ class SectionForm extends React.Component {
 
   render() {
     const {id, kind, order} = this.props.section
+    let max = Object.values(this.props.sections).sort((a,b) => b.order - a.order)[0].order
+    console.log("max", max);
+    console.log("order", order);
     return (
       <div className="section">
         <div className="section-data">
@@ -152,9 +157,11 @@ class SectionForm extends React.Component {
           </select>
           <label htmlFor={`order-${id}`}>Order: </label>
           {this.renderOrder()}
+        {order > 1 ?  <button>Move up</button> : null}
+        {order < max ?  <button>Move down</button> : null}
         </div>
        {this.renderInputs(kind)}
-       
+        
       </div>
     )
   }
