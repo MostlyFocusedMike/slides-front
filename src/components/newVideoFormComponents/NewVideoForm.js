@@ -19,11 +19,22 @@ import {
 } from '../../store';
 
 class NewVideoForm extends React.Component {
-  
+  state={
+    fireRedirect: false
+  }
   componentDidUpdate = (prevProps) => {
     if (prevProps.currentUser.id !== this.props.currentUser.id) {
       this.props.setVideoUser(this.props.currentUser)
     }
+  }
+
+  makeVideo = (e) => {
+    e.preventDefault()
+    console.log("make vidoe:");
+    videoAdapter.create(this.props.newVideo.entities)
+      .then(videoId => {
+        this.setState({fireRedirect: videoId.id}) 
+      })
   }
 
   render() {
@@ -31,7 +42,7 @@ class NewVideoForm extends React.Component {
     console.log(this.props);
     return (
       <div id="big-form">
-        {this.props.newVideo.fireRedirect ? 
+        {this.state.fireRedirect ? 
           <Redirect to={`/videos/${this.state.fireRedirect}`} /> : null
         }
         <VideoPreviewFieldset
@@ -43,7 +54,7 @@ class NewVideoForm extends React.Component {
 
         <SlideMakerInputs />
         <SlidesContainer />
-        <button onClick={this.handleSubmit}>Create Video Project</button>
+        <button onClick={this.makeVideo}>Create Video Project</button>
 
       </div>
     )
