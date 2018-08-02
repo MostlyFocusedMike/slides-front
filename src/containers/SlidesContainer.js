@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import SlideForm from '../components/newVideoFormComponents/SlideForm'
 
 const SlidesContainer = (props) => {
-  const orderThem = (a,b) => a.start - b.start
+  const orderThem = (a,b) => b.start - a.start
   const sortedSlides = Object.values(props.slides).sort(orderThem)
   console.log("new slide made");
   return (
