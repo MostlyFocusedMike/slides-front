@@ -24,6 +24,23 @@ $bor: 2px solid black;
   }
 }
 
+@mixin basic-button($font-color, $font-hover, $main, $hover, $active) {
+  background: $main;
+  color: $font-color;
+  border: none;
+  padding: .3rem .7rem;
+  margin: .5rem auto;
+  display: block;
+  transition: background 150ms;
+  &:hover {
+    background: $hover;
+    color: $font-hover;
+  }
+  &:active {
+    background: $active;
+  }
+}
+
 %basic-form {
   width: 50%;
   min-width: 360px;
@@ -246,55 +263,68 @@ img {
   justify-content: space-around;
   border: none;
   margin: 0;
-  fieldset {
-    width: 500px;
-    height: fit-content;
-    @extend %basic-flex;
-    border: none;
-    background: #2C2F34;
-    box-shadow: 4px 4px 4px rbga(0,0,0,.5);
-    color: white;
-    border-radius: 5px;
-    padding: 0;
-    margin: 1rem 0;
-    h2 {
-      font-size: 2rem;
-      background: #444;
-      padding: .5rem 1.5rem;
-      margin: 0;
-      border-radius: 5px 5px 0 0;
-      font-weight: 100;
-    }
-    div {
-      margin: 1rem auto;
-      width: 480px;
-      label, p {
-        display: inline-block;
-        margin: 0 .5rem 0 0 ;
-         color: #BBB;
+  div {
+    fieldset {
+      width: 500px;
+      height: fit-content;
+      @extend %basic-flex;
+      border: none;
+      background: #2C2F34;
+      box-shadow: 4px 4px 4px rbga(0,0,0,.5);
+      color: white;
+      border-radius: 5px;
+      padding: 0;
+      margin: 1rem 0;
+      h2 {
+        font-size: 2rem;
+        background: #444;
+        padding: .5rem 1.5rem;
+        margin: 0;
+        border-radius: 5px 5px 0 0;
+        font-weight: 100;
       }
-      input[type="text"] {
-        display: inline;
-      }
-      #desc {
-        width: 320px;
-      }
-      iframe {
+      div {
+        margin: 1rem auto;
         width: 480px;
-        height: 270px;
-        display: block;
-        margin: .5rem auto;
+        label, p {
+          display: inline-block;
+          margin: 0 .5rem 0 0 ;
+           color: #BBB;
+        }
+        input[type="text"] {
+          display: inline;
+        }
+        #desc {
+          width: 320px;
+        }
+        iframe {
+          width: 480px;
+          height: 270px;
+          display: block;
+          margin: .5rem auto;
+        }
+        p {
+          text-align: center;
+          width: 100%;
+        }
       }
-      p {
-        text-align: center;
-        width: 100%;
+    }
+    #create-project {
+      margin: 5rem 0;
+      button {
+        @include basic-button(white, white, #1D88E3, #10BC24, #31D044);
+        font-size: 1.5rem;
       }
     }
   }
   #main-forms {
-    background: orange;
+    background: #2C2F34;
+    border-radius: 5px;
     min-width: 350px;
     width: 50%;
+    height: 83vh;
+    overflow: auto;
   }
+
   
 }

@@ -49,16 +49,23 @@ class NewVideoForm extends React.Component {
         {this.state.fireRedirect ? 
           <Redirect to={`/videos/${this.state.fireRedirect}`} /> : null
         }
-        <VideoPreviewFieldset
-          handleVideoChange={this.props.handleVideoChange}
-          loadPreview={this.props.newVideo.loadPreview}
-          youtube_vid={youtube_vid}
-          desc={desc}
-        />
+        <div>
+          <VideoPreviewFieldset
+            handleVideoChange={this.props.handleVideoChange}
+            loadPreview={this.props.newVideo.loadPreview}
+            youtube_vid={youtube_vid}
+            desc={desc}
+          />
+
+          <div id="create-project">
+            <button id="create-project-btn" onClick={this.makeVideo}>Create Video Project</button>
+          </div>
+        </div>
+
+
         <div id="main-forms">
           <SlideMakerInputs />
           <SlidesContainer />
-          <button onClick={this.makeVideo}>Create Video Project</button>
         </div>
 
       </div>

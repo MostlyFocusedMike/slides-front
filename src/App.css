@@ -1,4 +1,4 @@
-.video-previews-container, #big-form, #big-form fieldset {
+.video-previews-container, #big-form, #big-form div fieldset {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
@@ -147,7 +147,7 @@ img {
   justify-content: space-around;
   border: none;
   margin: 0; }
-  #big-form fieldset {
+  #big-form div fieldset {
     width: 500px;
     height: fit-content;
     border: none;
@@ -157,35 +157,54 @@ img {
     border-radius: 5px;
     padding: 0;
     margin: 1rem 0; }
-    #big-form fieldset h2 {
+    #big-form div fieldset h2 {
       font-size: 2rem;
       background: #444;
       padding: .5rem 1.5rem;
       margin: 0;
       border-radius: 5px 5px 0 0;
       font-weight: 100; }
-    #big-form fieldset div {
+    #big-form div fieldset div {
       margin: 1rem auto;
       width: 480px; }
-      #big-form fieldset div label, #big-form fieldset div p {
+      #big-form div fieldset div label, #big-form div fieldset div p {
         display: inline-block;
         margin: 0 0.5rem 0 0;
         color: #BBB; }
-      #big-form fieldset div input[type="text"] {
+      #big-form div fieldset div input[type="text"] {
         display: inline; }
-      #big-form fieldset div #desc {
+      #big-form div fieldset div #desc {
         width: 320px; }
-      #big-form fieldset div iframe {
+      #big-form div fieldset div iframe {
         width: 480px;
         height: 270px;
         display: block;
         margin: .5rem auto; }
-      #big-form fieldset div p {
+      #big-form div fieldset div p {
         text-align: center;
         width: 100%; }
+  #big-form div #create-project {
+    margin: 5rem 0; }
+    #big-form div #create-project button {
+      background: #1D88E3;
+      color: white;
+      border: none;
+      padding: .3rem .7rem;
+      margin: .5rem auto;
+      display: block;
+      transition: background 150ms;
+      font-size: 1.5rem; }
+      #big-form div #create-project button:hover {
+        background: #10BC24;
+        color: white; }
+      #big-form div #create-project button:active {
+        background: #31D044; }
   #big-form #main-forms {
-    background: orange;
+    background: #2C2F34;
+    border-radius: 5px;
     min-width: 350px;
-    width: 50%; }
+    width: 50%;
+    height: 83vh;
+    overflow: auto; }
 
 /*# sourceMappingURL=App.css.map */
