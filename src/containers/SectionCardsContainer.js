@@ -11,8 +11,8 @@ const SectionCardsContainer = (props) => {
   selectedSections.sort(orderThem)
   return (
     <div>
-    {selectedSections.map(section => {
-      return <SectionCard section={section} key={section.id}/>
+    { selectedSections.map(section => {
+        return <SectionCard section={section} key={section.id}/>
       })
     }
     </div>

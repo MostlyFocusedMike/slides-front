@@ -19,6 +19,7 @@ const initState = {
       0: {
         id: 0,
         video_id: 0,
+        timecode: "0:00",
         start: 0,
         title: "",
         sections: [0]
@@ -37,6 +38,7 @@ const initState = {
     }
   }
 }
+
 function newVideoReducer(state = initState, action) {
   const {slides, sections} = state.entities
   switch(action.type) {
@@ -147,7 +149,8 @@ function newVideoReducer(state = initState, action) {
           [currentSlideId]: {
             id: currentSlideId,
             video_id: 0,
-            start: currentSlideId,
+            start: action.start,
+            timecode: action.timecode,
             title: "",
             sections: []
           }

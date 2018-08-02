@@ -67,18 +67,3 @@ export default connect(mapState, {
   handleSectionChange,
   newSection,
 })(SlideForm)
-
-
-      // <div className="sections">
-      //   <h2>Sections</h2>
-      //   { slides[slide.id].sections.map(sectionId => {
-      //        return (
-      //          <SectionForm
-      //           section={sections[sectionId]}
-      //           newSection={this.newSection}
-      //           handleSectionChange={this.props.handleSectionChange}
-      //          />
-      //        )
-      //     })
-      //   }
-      // </div>

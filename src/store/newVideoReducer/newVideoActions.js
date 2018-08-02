@@ -38,8 +38,8 @@ export const setVideoUser = (user) => {
   return ({type: types.SET_VIDEO_USER, user: user})
 }
 
-export const newSlide  = () => {
-  return {type: types.NEW_SLIDE} 
+export const newSlide  = (start, timecode) => {
+  return {type: types.NEW_SLIDE, start, timecode} 
 }
 
 export const newSection  = (slideId) => {
