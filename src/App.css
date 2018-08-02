@@ -1,3 +1,8 @@
+.video-previews-container, #big-form, #big-form fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+
 #big-form button {
   background: #4d94ff;
   color: white;
@@ -22,7 +27,8 @@
 
 html, body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  background: #141518; }
 
 nav {
   background: #0C0032;
@@ -120,18 +126,59 @@ img {
       text-align: center;
       margin-top: .5rem; }
 
-.video-previews-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; }
-  .video-previews-container h2 {
-    width: 100%;
-    margin: 1rem; }
-  .video-previews-container .video-preview {
-    margin: 1rem auto;
-    display: block;
-    border: 2px solid black;
-    text-align: center;
-    padding-bottom: 1rem; }
+.video-previews-container h2 {
+  width: 100%;
+  margin: 1rem; }
+.video-previews-container .video-preview {
+  margin: 1rem auto;
+  display: block;
+  border: 2px solid black;
+  text-align: center;
+  padding-bottom: 1rem; }
+
+#big-form {
+  width: 100%;
+  justify-content: space-around;
+  border: none; }
+  #big-form fieldset {
+    width: 500px;
+    height: fit-content;
+    border: none;
+    background: #2C2F34;
+    box-shadow: 4px 4px 4px rbga(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 5px;
+    padding: 0;
+    margin: 1rem 0; }
+    #big-form fieldset h2 {
+      font-size: 2rem;
+      background: #444;
+      padding: .5rem 1.5rem;
+      margin: 0;
+      border-radius: 5px 5px 0 0;
+      font-weight: 100; }
+    #big-form fieldset div {
+      margin: 1rem auto;
+      width: 480px; }
+      #big-form fieldset div label, #big-form fieldset div p {
+        display: inline-block;
+        margin: 0 0.5rem 0 0;
+        color: #BBB; }
+      #big-form fieldset div input[type="text"] {
+        display: inline; }
+      #big-form fieldset div #desc {
+        width: 320px; }
+      #big-form fieldset div iframe {
+        width: 480px;
+        height: 270px;
+        display: block;
+        margin: .5rem auto; }
+      #big-form fieldset div p {
+        text-align: center;
+        width: 100%; }
+  #big-form #main-forms {
+    background: orange;
+    min-width: 350px;
+    width: 50%; }
 
 /*# sourceMappingURL=App.css.map */

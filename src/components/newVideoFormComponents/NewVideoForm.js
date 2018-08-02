@@ -55,10 +55,11 @@ class NewVideoForm extends React.Component {
           youtube_vid={youtube_vid}
           desc={desc}
         />
-
-        <SlideMakerInputs />
-        <SlidesContainer />
-        <button onClick={this.makeVideo}>Create Video Project</button>
+        <div id="main-forms">
+          <SlideMakerInputs />
+          <SlidesContainer />
+          <button onClick={this.makeVideo}>Create Video Project</button>
+        </div>
 
       </div>
     )
