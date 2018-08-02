@@ -61,11 +61,6 @@ class SlideForm extends React.Component {
     deleteSlide(slide.id)
   }
 
-  componentWillUnmount() {
-    this.props.resetNewVideo()    
-  }
-
-
   render() {
     const {slide} = this.props
     return (

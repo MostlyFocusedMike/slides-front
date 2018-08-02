@@ -37,6 +37,10 @@ class NewVideoForm extends React.Component {
       })
   }
 
+  componentWillUnmount() {
+    this.props.resetNewVideo()
+  }
+
   render() {
     const {videos, videos: {0: {youtube_vid, desc, start}}, sections, slides} = this.props.newVideo.entities
     console.log(this.props);
