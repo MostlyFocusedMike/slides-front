@@ -10,8 +10,8 @@ export const handleVideoChange  = (e) => {
   return {type: types.HANDLE_VIDEO_CHANGE, e: e} 
 }
 
-export const handleSlideChange  = (e, id) => {
-  return {type: types.HANDLE_SLIDE_CHANGE, e: e, id: id} 
+export const handleSlideChange  = (key, value, id) => {
+  return {type: types.HANDLE_SLIDE_CHANGE, key, value, id} 
 }
 
 export const handleSectionChange  = (e, id) => {

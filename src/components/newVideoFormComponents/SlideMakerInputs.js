@@ -37,33 +37,30 @@ class SlideMakerInputs extends React.Component {
     // val = val.replace(/:/g, "").replace(/(..?)/g, ':$1').slice(0)
     // .replace(/(..?)/g, ':$1').slice(0,-1)
     if ((val === '' || re.test(val)) && val.length < 9) {
-      if (val.match(":")) {
-        this.setState({timecode: val, slideStart: this.hmsToSeconds(val)})
-      } else {
-        this.setState({timecode: this.secondsToHms(val), slideStart: this.hmsToSeconds(val)})
-      }
+      this.setState({timecode: val, slideStart: this.hmsToSeconds(val)})
     }
   }
 
   handleNewSlide = (e) => {
     e.preventDefault()
-    this.props.newSlide(this.state.slideStart, this.state.timecode)
+    if (this.state.timecode.match(":")) {
+      this.props.newSlide(this.state.slideStart, this.state.timecode)
+    } else {
+      this.props.newSlide(this.state.slideStart, this.secondsToHms(this.state.timecode))
+    }
+    this.setState({slideStart: "", timecode: ""})
   }
-
-
-
-
 
   render() {
     return (
-      <div> 
+      <form onSubmit={this.handleNewSlide}> 
         <label> Make a new slide at </label>
         <input 
-          value={this.state.timeCode} 
+          value={this.state.timecode} 
           onChange={this.handleTimeCodeChange}
         /> 
-        <button value="nothing" onClick={this.handleNewSlide}>Make new slide</button>
-      </div>
+        <button>Make new slide</button>
+      </form>
     )
 
   }

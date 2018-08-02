@@ -19,17 +19,34 @@ class SlideForm extends React.Component {
     showStartSave: false 
   }
 
+  secondsToHms(d) {
+    d = parseInt(d);
+
+    let h = Math.floor(d / 3600);
+    let m = Math.floor(d % 3600 / 60);
+    let s = Math.floor(d % 3600 % 60);
+    if (h) {
+      return (h) + ":" + ('0' + m).slice(-2) + ":" + ('0' + s).slice(-2);
+    } else {
+      return  m + ":" + ('0' + s).slice(-2);
+    }
+  }
+
   handleChange = (e) => {
     e.preventDefault()
-    this.props.handleSlideChange(e, this.props.slide.id)
+    let value = e.target.value
     if (e.target.dataset.key === "timecode") {
+      // if (!value.match(":")) {
+      //   value = this.secondsToHms(value)
+      // }
       this.setState({showStartSave: true})
     }
+    this.props.handleSlideChange(e.target.dataset.key, value, this.props.slide.id)
   }
 
   handleSlideOrderChange = (e) => {
     e.preventDefault()
-    this.props.handleSlideChange(e, this.props.slide.id)
+    this.handleChange(e)
     const {slide} = this.props
     const newStart = this.hmsToSeconds(slide.timecode)
     this.props.handleSlideStartChange(slide.id, newStart) 

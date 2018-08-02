@@ -87,7 +87,7 @@ function newVideoReducer(state = initState, action) {
           ...state.entities.slides,
           [action.id]: {
             ...state.entities.slides[action.id],
-            [action.e.target.dataset.key]: action.e.target.value
+            [action.key]: action.value
           }
         }
       }
