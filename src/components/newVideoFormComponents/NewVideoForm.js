@@ -16,6 +16,7 @@ import {
   handleFormSubmit,
   newSlide,
   newSection,
+  resetNewVideo
 } from '../../store';
 
 class NewVideoForm extends React.Component {
@@ -79,4 +80,5 @@ export default connect(mapState, {
   handleFormSubmit,
   newSlide,
   newSection,
+  resetNewVideo
 })(NewVideoForm)
