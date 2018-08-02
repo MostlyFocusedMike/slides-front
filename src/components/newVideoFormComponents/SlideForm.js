@@ -7,9 +7,7 @@ import {
   handleLoadPreview,
   handleVideoChange,
   handleSlideChange,
-  handleSectionChange,
   handleSlideStartChange,
-  handleFormSubmit,
   newSlide,
   newSection,
 } from '../../store';
@@ -66,7 +64,9 @@ class SlideForm extends React.Component {
     console.log(this.state.showStartSave);
     return (
     <div className="slide">
-      <div class="slide-data"  >
+      <form 
+      onSubmit={this.handleSlideOrderChange}
+      class="slide-data"  >
       <h2>Slide Info</h2>
         <label htmlFor={`title-${slide.id}`}>Slide Title:</label>
         <input type="text"
@@ -89,9 +89,9 @@ class SlideForm extends React.Component {
           onChange={this.handleChange}
         />
         {this.state.showStartSave ? 
-          <button onClick={this.handleSlideOrderChange}>Save New Start</button> : null 
+          <button>Save New Start</button> : null 
         }
-      </div>
+      </form>
 
       <div className="sections">
         <SectionFormsContainer 
@@ -109,8 +109,6 @@ const mapState = (state) => ({
 })
 export default connect(mapState, {
   handleSlideChange,
-  handleFormSubmit,
-  handleSectionChange,
   handleSlideStartChange,
   newSection,
 })(SlideForm)
