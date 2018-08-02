@@ -3,13 +3,10 @@ import {connect} from 'react-redux'
 import SectionForm from './SectionForm';
 import SectionFormsContainer from '../../containers/SectionFormsContainer';
 import {
-  setVideoUser,
-  handleLoadPreview,
-  handleVideoChange,
   handleSlideChange,
   handleSlideStartChange,
-  newSlide,
   newSection,
+  deleteSlide
 } from '../../store';
 
 class SlideForm extends React.Component {
@@ -34,9 +31,6 @@ class SlideForm extends React.Component {
     e.preventDefault()
     let value = e.target.value
     if (e.target.dataset.key === "timecode") {
-      // if (!value.match(":")) {
-      //   value = this.secondsToHms(value)
-      // }
       this.setState({showStartSave: true})
     }
     this.props.handleSlideChange(e.target.dataset.key, value, this.props.slide.id)
@@ -59,9 +53,15 @@ class SlideForm extends React.Component {
     return (hours * 3600 + minutes * 60 + seconds)
   }
 
+  handleDeleteSlide = (e) => {
+    e.preventDefault()
+    console.log("dleelte props", this.props);
+    const {deleteSlide, slide} = this.props
+    deleteSlide(slide.id)
+  }
+
   render() {
     const {slide} = this.props
-    console.log(this.state.showStartSave);
     return (
     <div className="slide">
       <form 
@@ -88,9 +88,16 @@ class SlideForm extends React.Component {
           value={slide.timecode}
           onChange={this.handleChange}
         />
-        {this.state.showStartSave ? 
-          <button>Save New Start</button> : null 
-        }
+        <div id="slide-buttons">
+          { this.props.slidesLength > 1 ? 
+            <button 
+              onClick={this.handleDeleteSlide}
+            > Delete Slide </button> : null
+          }
+          {this.state.showStartSave ? 
+            <button>Save New Start</button> : null 
+          }
+        </div>
       </form>
 
       <div className="sections">
@@ -105,10 +112,12 @@ class SlideForm extends React.Component {
   }
 }
 const mapState = (state) => ({
-  sections: state.newVideo.entities.sections
+  sections: state.newVideo.entities.sections,
+  slidesLength: state.newVideo.entities.videos[0].slides.length
 })
 export default connect(mapState, {
   handleSlideChange,
   handleSlideStartChange,
   newSection,
+  deleteSlide
 })(SlideForm)

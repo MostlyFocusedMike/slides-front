@@ -204,8 +204,8 @@ function newVideoReducer(state = initState, action) {
         }
       })
     case types.DELETE_SECTION:
-      let sectionsCopy = state.entities.sections 
-      let sectionIdsCopy = state.entities.slides[action.slideId].sections
+      let sectionsCopy = {...state.entities.sections}
+      let sectionIdsCopy = [...state.entities.slides[action.slideId].sections]
       let idxOfRemoved = sectionIdsCopy.indexOf(parseInt(action.sectionId))
       delete sectionsCopy[action.sectionId]
       sectionIdsCopy.splice(idxOfRemoved, 1)
@@ -223,7 +223,22 @@ function newVideoReducer(state = initState, action) {
           sections: sectionsCopy
         }
       })
-
+    case types.DELETE_SLIDE:
+      let slidesCopy = {...state.entities.slides}
+      let videoCopy = {...state.entities.videos[0]}
+      let idxOfSlide = videoCopy.slides.indexOf(action.slideId)
+      delete slidesCopy[action.slideId]
+      videoCopy.slides.splice(idxOfSlide, 1)
+      return ({
+        ...state,
+        entities: {
+          ...state.entities,
+          slides: slidesCopy,
+          videos: {
+            0: videoCopy
+          }
+        }
+      })
     default:
       return state;
   }
