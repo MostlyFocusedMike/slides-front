@@ -313,7 +313,8 @@ img {
       margin: 5rem 0;
       button {
         @include basic-button(white, white, #1D88E3, #10BC24, #31D044);
-        font-size: 1.5rem;
+        font-size: 2rem;
+        padding: 1rem;
       }
     }
   }

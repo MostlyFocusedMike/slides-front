@@ -193,7 +193,8 @@ img {
       margin: .5rem auto;
       display: block;
       transition: background 150ms;
-      font-size: 1.5rem; }
+      font-size: 2rem;
+      padding: 1rem; }
       #big-form div #create-project button:hover {
         background: #10BC24;
         color: white; }
