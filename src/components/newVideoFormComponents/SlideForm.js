@@ -6,7 +6,8 @@ import {
   handleSlideChange,
   handleSlideStartChange,
   newSection,
-  deleteSlide
+  deleteSlide,
+  resetNewVideo
 } from '../../store';
 
 class SlideForm extends React.Component {
@@ -59,6 +60,11 @@ class SlideForm extends React.Component {
     const {deleteSlide, slide} = this.props
     deleteSlide(slide.id)
   }
+
+  componentWillUnmount() {
+    this.props.resetNewVideo()    
+  }
+
 
   render() {
     const {slide} = this.props
@@ -119,5 +125,6 @@ export default connect(mapState, {
   handleSlideChange,
   handleSlideStartChange,
   newSection,
-  deleteSlide
+  deleteSlide,
+  resetNewVideo
 })(SlideForm)

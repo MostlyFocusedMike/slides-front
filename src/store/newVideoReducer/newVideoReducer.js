@@ -239,6 +239,10 @@ function newVideoReducer(state = initState, action) {
           }
         }
       })
+
+    case types.RESET_NEW_VIDEO: 
+      return initState
+
     default:
       return state;
   }
