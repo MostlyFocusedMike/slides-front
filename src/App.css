@@ -1,4 +1,4 @@
-form button {
+#big-form button {
   background: #4d94ff;
   color: white;
   border: none;
@@ -6,17 +6,17 @@ form button {
   margin: .5rem auto;
   display: block;
   transition: background 150ms; }
-  form button:hover {
+  #big-form button:hover {
     background: #1D88E3; }
-  form button:active {
+  #big-form button:active {
     background: #6EB0E8; }
 
-form {
+#big-form {
   width: 50%;
   min-width: 360px;
   border: 2px solid black;
   margin: 1rem auto; }
-  form label {
+  #big-form label {
     display: block;
     margin-top: 1rem; }
 

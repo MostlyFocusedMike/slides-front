@@ -125,7 +125,7 @@ function newVideoReducer(state = initState, action) {
       }
     })
 
-  case types.HANDLE_SLIDE_ORDER_CHANGE:
+  case types.HANDLE_SLIDE_START_CHANGE:
     return ({
       ...state,
       entities: {

@@ -8,21 +8,32 @@ import {
   handleVideoChange,
   handleSlideChange,
   handleSectionChange,
-  handleSlideOrderChange,
+  handleSlideStartChange,
   handleFormSubmit,
   newSlide,
   newSection,
 } from '../../store';
 
 class SlideForm extends React.Component {
+  state = {
+    showStartSave: false 
+  }
+
   handleChange = (e) => {
+    e.preventDefault()
     this.props.handleSlideChange(e, this.props.slide.id)
+    if (e.target.dataset.key === "timecode") {
+      this.setState({showStartSave: true})
+    }
   }
 
   handleSlideOrderChange = (e) => {
+    e.preventDefault()
+    this.props.handleSlideChange(e, this.props.slide.id)
     const {slide} = this.props
     const newStart = this.hmsToSeconds(slide.timecode)
-    this.props.handleSlideOrderChange(slide.id, newStart) 
+    this.props.handleSlideStartChange(slide.id, newStart) 
+    this.setState({showStartSave: false})
   }
 
   hmsToSeconds(input) {
@@ -35,6 +46,7 @@ class SlideForm extends React.Component {
 
   render() {
     const {slide} = this.props
+    console.log(this.state.showStartSave);
     return (
     <div className="slide">
       <div class="slide-data"  >
@@ -59,8 +71,10 @@ class SlideForm extends React.Component {
           value={slide.timecode}
           onChange={this.handleChange}
         />
+        {this.state.showStartSave ? 
+          <button onClick={this.handleSlideOrderChange}>Save New Start</button> : null 
+        }
       </div>
-      <button onClick={this.handleSlideOrderChange}>Reorder Slides</button>
 
       <div className="sections">
         <SectionFormsContainer 
@@ -80,6 +94,6 @@ export default connect(mapState, {
   handleSlideChange,
   handleFormSubmit,
   handleSectionChange,
-  handleSlideOrderChange,
+  handleSlideStartChange,
   newSection,
 })(SlideForm)

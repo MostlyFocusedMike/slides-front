@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom'
 import YouTube from 'react-youtube';
 import SlideForm from './SlideForm';
 import VideoPreviewFieldset from './VideoPreviewFieldset';
+import SlideMakerInputs from './SlideMakerInputs';
 import SlidesContainer from '../../containers/SlidesContainer';
 import {videoAdapter} from '../../adapters';
 import {
@@ -18,57 +19,7 @@ import {
 } from '../../store';
 
 class NewVideoForm extends React.Component {
-  state = {
-    slideStart: "",
-    timecode: ""
-  }
-  handleSubmit = (e) => {
-    e.preventDefault()
-  }
-   
-  hmsToSeconds(input) {
-    let parts = input.split(':'),
-      seconds = parseInt(parts[parts.length - 1]),
-      minutes = parseInt(parts[parts.length - 2]) || 0,
-      hours = parseInt(parts[parts.length - 3]) || 0;
-    return (hours * 3600 + minutes * 60 + seconds)
-  }
-
-  secondsToHms(d) {
-    d = parseInt(d);
-
-    let h = Math.floor(d / 3600);
-    let m = Math.floor(d % 3600 / 60);
-    let s = Math.floor(d % 3600 % 60);
-    if (h) {
-      return (h) + ":" + ('0' + m).slice(-2) + ":" + ('0' + s).slice(-2);
-    } else {
-      return  m + ":" + ('0' + s).slice(-2);
-    }
-  }
-
-  handleTimeCodeChange = (e) => {
-    const re = /^[\d:\b]+$/;
-    // if value is not blank, then test the regex
-    let val = e.target.value
-    // val = val.replace(/:/g, "").replace(/(..?)/g, ':$1').slice(0)
-    // .replace(/(..?)/g, ':$1').slice(0,-1)
-    if ((val === '' || re.test(val)) && val.length < 9) {
-      if (val.match(":")) {
-        this.setState({timecode: val, slideStart: this.hmsToSeconds(val)})
-      } else {
-        this.setState({timecode: this.secondsToHms(val), slideStart: this.hmsToSeconds(val)})
-      }
-    }
-  }
-
-  handleNewSlide = (e) => {
-    e.preventDefault()
-    console.log("start", this.state.slideStart);
-    console.log("timecode", this.state.timecode);
-    this.props.newSlide(this.state.slideStart, this.state.timecode)
-  }
-
+  
   componentDidUpdate = (prevProps) => {
     if (prevProps.currentUser.id !== this.props.currentUser.id) {
       this.props.setVideoUser(this.props.currentUser)
@@ -79,7 +30,7 @@ class NewVideoForm extends React.Component {
     const {videos, videos: {0: {youtube_vid, desc, start}}, sections, slides} = this.props.newVideo.entities
     console.log(this.props);
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div id="big-form">
         {this.props.newVideo.fireRedirect ? 
           <Redirect to={`/videos/${this.state.fireRedirect}`} /> : null
         }
@@ -90,17 +41,11 @@ class NewVideoForm extends React.Component {
           desc={desc}
         />
 
-        <label> Make a new slide at </label>
-        <input 
-          value={this.state.timeCode} 
-          onChange={this.handleTimeCodeChange}
-        /> 
-        <button onClick={this.handleNewSlide}>Make new slide</button>
-
+        <SlideMakerInputs />
         <SlidesContainer />
-        <button>Create Video Project</button>
+        <button onClick={this.handleSubmit}>Create Video Project</button>
 
-      </form>
+      </div>
     )
   }
 }
