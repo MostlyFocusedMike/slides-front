@@ -59,7 +59,7 @@ class SlideMakerInputs extends React.Component {
           value={this.state.timecode} 
           onChange={this.handleTimeCodeChange}
         /> 
-        <button>Make new slide</button>
+        <button disabled={!this.state.timecode.match(/\d/)} >Make new slide</button>
       </form>
     )
 
