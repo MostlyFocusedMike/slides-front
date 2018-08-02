@@ -15,11 +15,9 @@ import {
 
 class SlideForm extends React.Component {
   handleChange = (e) => {
-    console.log("props here",this.props);
     this.props.handleSlideChange(e, this.props.slide.id)
   }
   render() {
-    // const {videos, sections, slides} = this.props.newVideo.entities
     const {slide} = this.props
     return (
     <div className="slide">
@@ -35,14 +33,14 @@ class SlideForm extends React.Component {
           value={slide.title}
           onChange={this.handleChange}
         />
-        <label htmlFor={`start-${slide.id}`}>Start:</label>
+        <label htmlFor={`timecode-${slide.id}`}>Start:</label>
         <input type="text"
           data-id={slide.id}
-          data-key="start"
-          className="start"
-          name={`start-${slide.id}`}
-          id={`start-${slide.id}`}
-          value={slide.start}
+          data-key="timecode"
+          className="timecode"
+          name={`timecode-${slide.id}`}
+          id={`timecode-${slide.id}`}
+          value={slide.timecode}
           onChange={this.handleChange}
         />
       </div>

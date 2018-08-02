@@ -20,7 +20,7 @@ import {
 class NewVideoForm extends React.Component {
   state = {
     slideStart: "",
-    timeCode: ""
+    timecode: ""
   }
   handleSubmit = (e) => {
     e.preventDefault()
@@ -54,9 +54,19 @@ class NewVideoForm extends React.Component {
     // val = val.replace(/:/g, "").replace(/(..?)/g, ':$1').slice(0)
     // .replace(/(..?)/g, ':$1').slice(0,-1)
     if ((val === '' || re.test(val)) && val.length < 9) {
-       this.setState({timeCode: val, slideStart: this.hmsToSeconds(val)})
+      if (val.match(":")) {
+        this.setState({timecode: val, slideStart: this.hmsToSeconds(val)})
+      } else {
+        this.setState({timecode: this.secondsToHms(val), slideStart: this.hmsToSeconds(val)})
+      }
     }
+  }
+
+  handleNewSlide = (e) => {
+    e.preventDefault()
     console.log("start", this.state.slideStart);
+    console.log("timecode", this.state.timecode);
+    this.props.newSlide(this.state.slideStart, this.state.timecode)
   }
 
   componentDidUpdate = (prevProps) => {
@@ -85,7 +95,7 @@ class NewVideoForm extends React.Component {
           value={this.state.timeCode} 
           onChange={this.handleTimeCodeChange}
         /> 
-        <button onClick={this.props.newSlide}>Make new slide</button>
+        <button onClick={this.handleNewSlide}>Make new slide</button>
 
         <SlidesContainer />
         <button>Create Video Project</button>
