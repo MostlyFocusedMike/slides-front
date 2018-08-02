@@ -70,6 +70,12 @@ class SlideForm extends React.Component {
     const {slide} = this.props
     return (
     <div className="slide">
+      { this.props.slidesLength > 1 ?
+        <button
+          className="delete-slide-button"
+          onClick={this.handleDeleteSlide}
+        > Delete Slide </button> : null
+      }
       <form 
       onSubmit={this.handleSlideOrderChange}
       class="slide-data"  >
@@ -95,11 +101,7 @@ class SlideForm extends React.Component {
           onChange={this.handleChange}
         />
         <div id="slide-buttons">
-          { this.props.slidesLength > 1 ? 
-            <button 
-              onClick={this.handleDeleteSlide}
-            > Delete Slide </button> : null
-          }
+
           {this.state.showStartSave ? 
             <button>Save New Start</button> : null 
           }
