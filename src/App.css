@@ -331,4 +331,12 @@ img {
               #big-form #main-forms #slides-container .slide .section-forms-container .section-form .delete-section-btn:active {
                 background: #CE0303; }
 
+#video-show-page {
+  background: red; }
+  #video-show-page iframe {
+    width: 640px;
+    height: 390px;
+    display: block;
+    margin: .5rem auto; }
+
 /*# sourceMappingURL=App.css.map */

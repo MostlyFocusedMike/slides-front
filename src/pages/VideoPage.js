@@ -72,8 +72,7 @@ class VideoPage extends React.Component {
     if (!!videoInfo.entities) {
       let ytVid = videoInfo.entities.videos[id].youtube_vid
       return (
-        <div>
-          <h1>VideoPage</h1>
+        <div id="video-show-page">
           <VideoShowPlayer
             youtubeVid={ytVid}
             handlePlayState={this.handlePlayState}

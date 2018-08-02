@@ -466,6 +466,16 @@ img {
       }
     }
   }
+}
+
+#video-show-page {
+  background: red;
+  iframe {
+    width: 640px;
+    height: 390px;
+    display: block;
+    margin: .5rem auto;
+  }
 
   
 }
