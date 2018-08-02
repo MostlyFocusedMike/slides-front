@@ -106,6 +106,7 @@ $bor: 2px solid black;
 html, body {
   margin: 0;
   padding: 2rem 0 0 0;
+  font-size: 18px;
   background: #141518;
   position: relative;
 }
@@ -274,7 +275,7 @@ img {
       color: white;
       border-radius: 5px;
       padding: 0;
-      margin: 1rem 0;
+      margin: 0;
       h2 {
         font-size: 2rem;
         background: #444;
@@ -289,7 +290,8 @@ img {
         label, p {
           display: inline-block;
           margin: 0 .5rem 0 0 ;
-           color: #BBB;
+          color: #BBB;
+          font-weight: 100;
         }
         input[type="text"] {
           display: inline;
@@ -319,12 +321,53 @@ img {
     }
   }
   #main-forms {
-    background: #2C2F34;
     border-radius: 5px;
     min-width: 350px;
     width: 50%;
-    height: 83vh;
-    overflow: auto;
+    position: relative;
+    padding-top: 8rem;
+    #slide-maker {
+      background: #2C2F34;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      @extend %basic-flex;
+      justify-content: space-between;
+      h2 {
+        font-size: 2rem;
+        background: #444;
+        padding: .5rem 1.5rem;
+        margin: 0;
+        border-radius: 5px 5px 0 0;
+        font-weight: 100;
+        color: white;
+        width: 100%;
+      }
+      div {
+        margin: .5rem;
+        label {
+          display: inline-block;
+          margin: 1rem .5rem;
+          color: #BBB;
+          font-weight: 100;
+        }
+        input[type="text"] {
+          display: inline;
+        }
+      }  
+      button {
+        display: block;
+        margin: 1rem; 
+      }
+    }
+    #slides-container {
+      height: 70vh;
+      overflow: auto;
+      margin: 0;
+      .slide {
+        margin: 0 0 1rem
+      }
+    }
   }
 
   

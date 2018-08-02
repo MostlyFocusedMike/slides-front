@@ -53,12 +53,16 @@ class SlideMakerInputs extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleNewSlide}> 
-        <label> Make a new slide at </label>
-        <input 
-          value={this.state.timecode} 
-          onChange={this.handleTimeCodeChange}
-        /> 
+      <form id="slide-maker" onSubmit={this.handleNewSlide}> 
+        <h2>Make your Slides</h2>
+        <div>
+          <label> Make a new slide at </label>
+          <input 
+            placeholder="0:00"
+            value={this.state.timecode} 
+            onChange={this.handleTimeCodeChange}
+          /> 
+        </div>
         <button disabled={!this.state.timecode.match(/\d/)} >Make new slide</button>
       </form>
     )

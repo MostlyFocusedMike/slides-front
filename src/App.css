@@ -1,4 +1,4 @@
-.video-previews-container, #big-form, #big-form div fieldset {
+.video-previews-container, #big-form, #big-form div fieldset, #big-form #main-forms #slide-maker {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
@@ -28,6 +28,7 @@
 html, body {
   margin: 0;
   padding: 2rem 0 0 0;
+  font-size: 18px;
   background: #141518;
   position: relative; }
 
@@ -156,7 +157,7 @@ img {
     color: white;
     border-radius: 5px;
     padding: 0;
-    margin: 1rem 0; }
+    margin: 0; }
     #big-form div fieldset h2 {
       font-size: 2rem;
       background: #444;
@@ -170,7 +171,8 @@ img {
       #big-form div fieldset div label, #big-form div fieldset div p {
         display: inline-block;
         margin: 0 0.5rem 0 0;
-        color: #BBB; }
+        color: #BBB;
+        font-weight: 100; }
       #big-form div fieldset div input[type="text"] {
         display: inline; }
       #big-form div fieldset div #desc {
@@ -201,11 +203,43 @@ img {
       #big-form div #create-project button:active {
         background: #31D044; }
   #big-form #main-forms {
-    background: #2C2F34;
     border-radius: 5px;
     min-width: 350px;
     width: 50%;
-    height: 83vh;
-    overflow: auto; }
+    position: relative;
+    padding-top: 8rem; }
+    #big-form #main-forms #slide-maker {
+      background: #2C2F34;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      justify-content: space-between; }
+      #big-form #main-forms #slide-maker h2 {
+        font-size: 2rem;
+        background: #444;
+        padding: .5rem 1.5rem;
+        margin: 0;
+        border-radius: 5px 5px 0 0;
+        font-weight: 100;
+        color: white;
+        width: 100%; }
+      #big-form #main-forms #slide-maker div {
+        margin: .5rem; }
+        #big-form #main-forms #slide-maker div label {
+          display: inline-block;
+          margin: 1rem .5rem;
+          color: #BBB;
+          font-weight: 100; }
+        #big-form #main-forms #slide-maker div input[type="text"] {
+          display: inline; }
+      #big-form #main-forms #slide-maker button {
+        display: block;
+        margin: 1rem; }
+    #big-form #main-forms #slides-container {
+      height: 70vh;
+      overflow: auto;
+      margin: 0; }
+      #big-form #main-forms #slides-container .slide {
+        margin: 0 0 1rem; }
 
 /*# sourceMappingURL=App.css.map */

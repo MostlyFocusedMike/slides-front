@@ -7,7 +7,7 @@ const SlidesContainer = (props) => {
   const sortedSlides = Object.values(props.slides).sort(orderThem)
   console.log("new slide made");
   return (
-    <div>
+    <div id="slides-container">
       { sortedSlides.map((slide, idx) => {
            return (
              <SlideForm
