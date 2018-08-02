@@ -98,13 +98,11 @@ class SlideForm extends React.Component {
         </div>
       </form>
 
-      <div className="sections">
-        <SectionFormsContainer 
-          slide={slide}
-          sections={this.props.sections}
-          newSection={this.props.newSection}
-        />
-      </div>
+      <SectionFormsContainer 
+        slide={slide}
+        sections={this.props.sections}
+        newSection={this.props.newSection}
+      />
       { this.props.slidesLength > 1 ?
           <button
             className="delete-slide-button"

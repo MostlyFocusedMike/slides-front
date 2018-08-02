@@ -14,8 +14,7 @@ const SectionsContainer = (props) => {
   }
 
   return (
-    <div>
-    <h1>Sections</h1>
+    <div class="section-forms-container">
     { selectedSections.map(section => {
         return (
           <SectionForm 

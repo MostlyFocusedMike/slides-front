@@ -196,6 +196,8 @@ img {
   color: lightgreen;
   background: black;
   width: 80%;
+  font-family: monospace;
+  overflow: auto;
   height: 20rem;
   margin: 1rem auto;
   display: block;
@@ -405,6 +407,61 @@ img {
               margin: 0 1rem;
             }
           }  
+        }
+
+        .section-forms-container {
+          margin: 1rem 0;
+          padding: .5rem 0;
+          h2 {
+            margin: 1rem;
+          }
+          .section-form {
+            background: #CCC;
+            border-radius: 6px 6px 0 0;
+            padding: 0 0 .25rem;
+            margin: 1rem auto;
+            width: 90%; 
+            .section-form-data {
+              @extend .slide-data;
+              @extend %basic-flex;
+              justify-content: space-between;
+              padding: 0;
+              .section-form-inputs {
+                @extend %basic-flex;
+                margin: 0;
+                padding: 0;
+                div {
+                  margin: 0;
+                  padding: 0;
+                  width: 100%;
+                }
+              }
+              .section-nav-buttons {
+                @extend %basic-flex;
+                button {
+
+                }
+              }
+            }
+            textarea {
+              width: 80%;
+              display: block;
+              margin: 0 auto;
+            }
+            .code-snippet {
+              @extend %code-snippet;
+            }
+            .kind-inputs {
+              padding-top: 1rem;
+              label, input {
+                margin: .25rem 1rem;
+              }
+            }
+            .delete-section-btn {
+              @include basic-button(white, white, #D03131, #E63434, #CE0303);
+              margin: .5rem 0 .5rem 27rem;
+            }
+          }
         }
       }
     }

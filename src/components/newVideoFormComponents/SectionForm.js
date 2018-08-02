@@ -148,33 +148,43 @@ class SectionForm extends React.Component {
     console.log("max", max);
     console.log("order", order);
     return (
-      <div className="section">
-        <div className="section-data">
-          <label>Type: </label>
-          <select 
-            onChange={this.handleChange}
-            data-key="kind"
-          >
-            <option value="0">Text</option>
-            <option value="1">Code</option>
-            <option value="2">Link</option>
-            <option value="3">Picture</option>
-          </select>
-          <label htmlFor={`order-${id}`}>Order: </label>
-          {this.renderOrder()}
-          {order > 1 ? 
-            <button 
-              data-direct="-1" onClick={this.upDownOrderChange}
-            >Move Up</button> : null
-          }
-          {order < max ? 
-            <button 
-              data-direct="1" onClick={this.upDownOrderChange}
-            >Move Down</button> : null
-          }
+      <div className="section-form">
+        <div className="section-form-data">
+          <div className="section-form-inputs">
+            <div>
+              <label>Section Type: </label>
+              <select 
+                onChange={this.handleChange}
+                data-key="kind"
+              >
+                <option value="0">Text</option>
+                <option value="1">Code</option>
+                <option value="2">Link</option>
+                <option value="3">Picture</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor={`order-${id}`}>Order: </label>
+              {this.renderOrder()}
+            </div>
+          </div>
+          <div className="section-nav-buttons">
+            {order > 1 ? 
+              <button 
+                data-direct="-1" onClick={this.upDownOrderChange}
+              >Move Up</button> : null
+            }
+            {order < max ? 
+              <button 
+                data-direct="1" onClick={this.upDownOrderChange}
+              >Move Down</button> : null
+            }
+          </div>
         </div>
-        {this.renderInputs(kind)}
-        <button onClick={this.handleDeleteSection}>Delete this section</button>
+        <div className="kind-inputs">
+          {this.renderInputs(kind)}
+        </div>
+        <button className="delete-section-btn" onClick={this.handleDeleteSection}>Delete This Section</button>
       </div>
     )
   }

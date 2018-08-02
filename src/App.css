@@ -1,4 +1,4 @@
-.video-previews-container, #big-form, #big-form div fieldset, #big-form #main-forms #slide-maker {
+.video-previews-container, #big-form, #big-form div fieldset, #big-form #main-forms #slide-maker, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data .section-form-inputs, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data .section-nav-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
@@ -72,11 +72,11 @@ img {
   background: #555;
   padding: .5rem;
   margin: 1rem; }
-  .slide .slide-data, .slide .sections .section .section-data {
+  .slide .slide-data, .slide .sections .section .section-data, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data {
     background: #4d94ff;
     color: white;
     padding: .5rem; }
-    .slide .slide-data h2, .slide .sections .section .section-data h2 {
+    .slide .slide-data h2, .slide .sections .section .section-data h2, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data h2 {
       margin: 0; }
   .slide .sections {
     margin: 1rem 0;
@@ -94,10 +94,12 @@ img {
         display: block;
         margin: 0 auto; }
 
-.slide .sections .section .code-snippet, .slide-show pre {
+.slide .sections .section .code-snippet, .slide-show pre, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .code-snippet {
   color: lightgreen;
   background: black;
   width: 80%;
+  font-family: monospace;
+  overflow: auto;
   height: 20rem;
   margin: 1rem auto;
   display: block; }
@@ -263,27 +265,70 @@ img {
             color: white; }
           #big-form #main-forms #slides-container .slide .delete-slide-button:active {
             background: #CE0303; }
-        #big-form #main-forms #slides-container .slide .slide-data, #big-form #main-forms #slides-container .slide .sections .section .section-data {
+        #big-form #main-forms #slides-container .slide .slide-data, #big-form #main-forms #slides-container .slide .sections .section .section-data, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data {
           border-radius: 5px 5px 0 0;
           background: #444;
           margin: 0;
           font-weight: 100;
           color: white; }
-          #big-form #main-forms #slides-container .slide .slide-data div, #big-form #main-forms #slides-container .slide .sections .section .section-data div {
+          #big-form #main-forms #slides-container .slide .slide-data div, #big-form #main-forms #slides-container .slide .sections .section .section-data div, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data div {
             display: flex;
             justify-content: flex-start;
             align-items: center; }
-            #big-form #main-forms #slides-container .slide .slide-data div label, #big-form #main-forms #slides-container .slide .sections .section .section-data div label {
+            #big-form #main-forms #slides-container .slide .slide-data div label, #big-form #main-forms #slides-container .slide .sections .section .section-data div label, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data div label {
               display: inline-block;
               margin: .5rem .5rem;
               font-weight: 100; }
-            #big-form #main-forms #slides-container .slide .slide-data div input, #big-form #main-forms #slides-container .slide .sections .section .section-data div input {
+            #big-form #main-forms #slides-container .slide .slide-data div input, #big-form #main-forms #slides-container .slide .sections .section .section-data div input, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data div input {
               font-size: 1.1rem;
               display: inline; }
-            #big-form #main-forms #slides-container .slide .slide-data div .title, #big-form #main-forms #slides-container .slide .sections .section .section-data div .title {
+            #big-form #main-forms #slides-container .slide .slide-data div .title, #big-form #main-forms #slides-container .slide .sections .section .section-data div .title, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data div .title {
               width: 22rem; }
-            #big-form #main-forms #slides-container .slide .slide-data div button, #big-form #main-forms #slides-container .slide .sections .section .section-data div button {
+            #big-form #main-forms #slides-container .slide .slide-data div button, #big-form #main-forms #slides-container .slide .sections .section .section-data div button, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data div button {
               display: inline-block;
               margin: 0 1rem; }
+        #big-form #main-forms #slides-container .slide .section-forms-container {
+          margin: 1rem 0;
+          padding: .5rem 0; }
+          #big-form #main-forms #slides-container .slide .section-forms-container h2 {
+            margin: 1rem; }
+          #big-form #main-forms #slides-container .slide .section-forms-container .section-form {
+            background: #CCC;
+            border-radius: 6px 6px 0 0;
+            padding: 0 0 .25rem;
+            margin: 1rem auto;
+            width: 90%; }
+            #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data {
+              justify-content: space-between;
+              padding: 0; }
+              #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data .section-form-inputs {
+                margin: 0;
+                padding: 0; }
+                #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data .section-form-inputs div {
+                  margin: 0;
+                  padding: 0;
+                  width: 100%; }
+            #big-form #main-forms #slides-container .slide .section-forms-container .section-form textarea {
+              width: 80%;
+              display: block;
+              margin: 0 auto; }
+            #big-form #main-forms #slides-container .slide .section-forms-container .section-form .kind-inputs {
+              padding-top: 1rem; }
+              #big-form #main-forms #slides-container .slide .section-forms-container .section-form .kind-inputs label, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .kind-inputs input {
+                margin: .25rem 1rem; }
+            #big-form #main-forms #slides-container .slide .section-forms-container .section-form .delete-section-btn {
+              background: #D03131;
+              color: white;
+              border: none;
+              padding: .3rem .7rem;
+              margin: .5rem auto;
+              display: block;
+              transition: background 150ms;
+              margin: .5rem 0 .5rem 27rem; }
+              #big-form #main-forms #slides-container .slide .section-forms-container .section-form .delete-section-btn:hover {
+                background: #E63434;
+                color: white; }
+              #big-form #main-forms #slides-container .slide .section-forms-container .section-form .delete-section-btn:active {
+                background: #CE0303; }
 
 /*# sourceMappingURL=App.css.map */
