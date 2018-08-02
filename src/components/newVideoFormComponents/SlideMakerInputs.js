@@ -54,7 +54,7 @@ class SlideMakerInputs extends React.Component {
   render() {
     return (
       <form id="slide-maker" onSubmit={this.handleNewSlide}> 
-        <h2>Make your Slides</h2>
+        <h2>Make Your Slides</h2>
         <div>
           <label> Make a new slide at </label>
           <input 
@@ -63,7 +63,7 @@ class SlideMakerInputs extends React.Component {
             onChange={this.handleTimeCodeChange}
           /> 
         </div>
-        <button disabled={!this.state.timecode.match(/\d/)} >Make new slide</button>
+        <button disabled={!this.state.timecode.match(/\d/)} >Make New Slide</button>
       </form>
     )
 

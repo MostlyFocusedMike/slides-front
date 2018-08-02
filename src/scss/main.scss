@@ -16,6 +16,7 @@ $bor: 2px solid black;
   margin: .5rem auto;
   display: block;
   transition: background 150ms;
+  font-size: .75rem;
   &:hover {
     background: #1D88E3;
   }
@@ -332,6 +333,7 @@ img {
       top: 0;
       width: 100%;
       @extend %basic-flex;
+      border-radius: 5px 5px 0 0;
       justify-content: space-between;
       h2 {
         font-size: 2rem;
@@ -351,13 +353,15 @@ img {
           color: #BBB;
           font-weight: 100;
         }
-        input[type="text"] {
+        input {
+          font-size: 1.1rem;
           display: inline;
         }
       }  
       button {
         display: block;
         margin: 1rem; 
+        font-size: 1rem;
       }
     }
     #slides-container {
@@ -365,7 +369,43 @@ img {
       overflow: auto;
       margin: 0;
       .slide {
-        margin: 0 0 1rem
+        margin: 0 0 1rem;
+        border-radius: 5px 5px 0 0;
+        padding: 0 0 1rem;
+        position: relative;
+        background: #2C2F34;
+        .delete-slide-button {
+          @include basic-button(white, white, #D03131, #E63434, #CE0303);
+          margin: 0 0 0 34rem;
+        }
+        .slide-data {
+          border-radius: 5px 5px 0 0;
+          background: #444;
+          margin: 0;
+          font-weight: 100;
+          color: white;
+          div {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            label {
+              display: inline-block;
+              margin: .5rem .5rem;
+              font-weight: 100;
+            }
+            input {
+              font-size: 1.1rem;
+              display: inline;
+            }
+            .title {
+              width: 22rem;
+            }
+            button {
+              display: inline-block;
+              margin: 0 1rem;
+            }
+          }  
+        }
       }
     }
   }

@@ -65,40 +65,35 @@ class SlideForm extends React.Component {
     const {slide} = this.props
     return (
     <div className="slide">
-      { this.props.slidesLength > 1 ?
-        <button
-          className="delete-slide-button"
-          onClick={this.handleDeleteSlide}
-        > Delete Slide </button> : null
-      }
+
       <form 
       onSubmit={this.handleSlideOrderChange}
       class="slide-data"  >
-      <h2>Slide Info</h2>
-        <label htmlFor={`title-${slide.id}`}>Slide Title:</label>
-        <input type="text"
-          data-id={slide.id}
-          data-key="title"
-          className="title"
-          name={`title-${slide.id}`}
-          id={`title-${slide.id}`}
-          value={slide.title}
-          onChange={this.handleChange}
-        />
-        <label htmlFor={`timecode-${slide.id}`}>Start:</label>
-        <input type="text"
-          data-id={slide.id}
-          data-key="timecode"
-          className="timecode"
-          name={`timecode-${slide.id}`}
-          id={`timecode-${slide.id}`}
-          value={slide.timecode}
-          onChange={this.handleChange}
-        />
-        <div id="slide-buttons">
-
-          {this.state.showStartSave ? 
-            <button>Save New Start</button> : null 
+        <div>
+          <label htmlFor={`title-${slide.id}`}>Slide Title:</label>
+          <input type="text"
+            data-id={slide.id}
+            data-key="title"
+            className="title"
+            name={`title-${slide.id}`}
+            id={`title-${slide.id}`}
+            value={slide.title}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor={`timecode-${slide.id}`}>Start at:</label>
+          <input type="text"
+            data-id={slide.id}
+            data-key="timecode"
+            className="timecode"
+            name={`timecode-${slide.id}`}
+            id={`timecode-${slide.id}`}
+            value={slide.timecode}
+            onChange={this.handleChange}
+          />
+          {this.state.showStartSave ?
+            <button>Save New Start</button> : null
           }
         </div>
       </form>
@@ -110,6 +105,12 @@ class SlideForm extends React.Component {
           newSection={this.props.newSection}
         />
       </div>
+      { this.props.slidesLength > 1 ?
+          <button
+            className="delete-slide-button"
+            onClick={this.handleDeleteSlide}
+          > Delete Slide </button> : null
+      }
     </div>
   )
   }

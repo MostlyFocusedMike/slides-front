@@ -10,7 +10,8 @@
   padding: .3rem .7rem;
   margin: .5rem auto;
   display: block;
-  transition: background 150ms; }
+  transition: background 150ms;
+  font-size: .75rem; }
   #big-form button:hover {
     background: #1D88E3; }
   #big-form button:active {
@@ -213,6 +214,7 @@ img {
       position: absolute;
       top: 0;
       width: 100%;
+      border-radius: 5px 5px 0 0;
       justify-content: space-between; }
       #big-form #main-forms #slide-maker h2 {
         font-size: 2rem;
@@ -230,16 +232,58 @@ img {
           margin: 1rem .5rem;
           color: #BBB;
           font-weight: 100; }
-        #big-form #main-forms #slide-maker div input[type="text"] {
+        #big-form #main-forms #slide-maker div input {
+          font-size: 1.1rem;
           display: inline; }
       #big-form #main-forms #slide-maker button {
         display: block;
-        margin: 1rem; }
+        margin: 1rem;
+        font-size: 1rem; }
     #big-form #main-forms #slides-container {
       height: 70vh;
       overflow: auto;
       margin: 0; }
       #big-form #main-forms #slides-container .slide {
-        margin: 0 0 1rem; }
+        margin: 0 0 1rem;
+        border-radius: 5px 5px 0 0;
+        padding: 0 0 1rem;
+        position: relative;
+        background: #2C2F34; }
+        #big-form #main-forms #slides-container .slide .delete-slide-button {
+          background: #D03131;
+          color: white;
+          border: none;
+          padding: .3rem .7rem;
+          margin: .5rem auto;
+          display: block;
+          transition: background 150ms;
+          margin: 0 0 0 34rem; }
+          #big-form #main-forms #slides-container .slide .delete-slide-button:hover {
+            background: #E63434;
+            color: white; }
+          #big-form #main-forms #slides-container .slide .delete-slide-button:active {
+            background: #CE0303; }
+        #big-form #main-forms #slides-container .slide .slide-data, #big-form #main-forms #slides-container .slide .sections .section .section-data {
+          border-radius: 5px 5px 0 0;
+          background: #444;
+          margin: 0;
+          font-weight: 100;
+          color: white; }
+          #big-form #main-forms #slides-container .slide .slide-data div, #big-form #main-forms #slides-container .slide .sections .section .section-data div {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center; }
+            #big-form #main-forms #slides-container .slide .slide-data div label, #big-form #main-forms #slides-container .slide .sections .section .section-data div label {
+              display: inline-block;
+              margin: .5rem .5rem;
+              font-weight: 100; }
+            #big-form #main-forms #slides-container .slide .slide-data div input, #big-form #main-forms #slides-container .slide .sections .section .section-data div input {
+              font-size: 1.1rem;
+              display: inline; }
+            #big-form #main-forms #slides-container .slide .slide-data div .title, #big-form #main-forms #slides-container .slide .sections .section .section-data div .title {
+              width: 22rem; }
+            #big-form #main-forms #slides-container .slide .slide-data div button, #big-form #main-forms #slides-container .slide .sections .section .section-data div button {
+              display: inline-block;
+              margin: 0 1rem; }
 
 /*# sourceMappingURL=App.css.map */
