@@ -27,16 +27,19 @@
 
 html, body {
   margin: 0;
-  padding: 0;
-  background: #141518; }
+  padding: 2rem 0 0 0;
+  background: #141518;
+  position: relative; }
 
 nav {
-  background: #0C0032;
+  background: #3576D4;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
-  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
   margin: 0; }
   nav a {
     text-decoration: none;
@@ -49,12 +52,15 @@ nav {
     width: auto;
     transition: background 150ms; }
     nav a:visited {
-      background: #0C0032; }
+      background: #3576D4; }
     nav a:hover {
-      background: #190061; }
+      background: #3C8CFF; }
     nav a:active {
-      background: #240090; }
+      background: #89B9FF; }
+    nav a:last-child {
+      margin-right: 1rem; }
   nav #nav-logo {
+    margin-top: 0;
     margin-right: auto; }
 
 img {
@@ -139,7 +145,8 @@ img {
 #big-form {
   width: 100%;
   justify-content: space-around;
-  border: none; }
+  border: none;
+  margin: 0; }
   #big-form fieldset {
     width: 500px;
     height: fit-content;

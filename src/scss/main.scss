@@ -88,17 +88,20 @@ $bor: 2px solid black;
 
 html, body {
   margin: 0;
-  padding: 0;
+  padding: 2rem 0 0 0;
   background: #141518;
+  position: relative;
 }
 
 nav {
-  background: #0C0032;
+  background: #3576D4;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
-  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
   margin: 0;
   a {
     text-decoration: none;
@@ -111,23 +114,24 @@ nav {
     width: auto;
     transition: background 150ms;
     &:visited {
-      background:#0C0032;
+      background: #3576D4;
     }
     &:hover {
-      background: #190061;
+      background: #3C8CFF;
     }
     &:active {
-      background: #240090;
+      background: #89B9FF;
+    }
+    &:last-child {
+      margin-right: 1rem;
     }
   }
   #nav-logo {
+    margin-top: 0;
     margin-right: auto; 
   }
 }
 
-#big-form {
-  @extend %basic-form;
-}
 img {
   height: 10rem;
 }
@@ -238,8 +242,10 @@ img {
 #big-form {
   width: 100%;
   @extend %basic-flex;
+  @extend %basic-form;
   justify-content: space-around;
   border: none;
+  margin: 0;
   fieldset {
     width: 500px;
     height: fit-content;
