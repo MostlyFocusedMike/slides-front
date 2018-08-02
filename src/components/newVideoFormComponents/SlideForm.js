@@ -7,6 +7,7 @@ import {
   handleSlideStartChange,
   newSection,
   deleteSlide,
+  resetNewVideo
 } from '../../store';
 
 class SlideForm extends React.Component {
