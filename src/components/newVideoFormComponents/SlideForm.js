@@ -8,6 +8,7 @@ import {
   handleVideoChange,
   handleSlideChange,
   handleSectionChange,
+  handleSlideOrderChange,
   handleFormSubmit,
   newSlide,
   newSection,
@@ -17,6 +18,21 @@ class SlideForm extends React.Component {
   handleChange = (e) => {
     this.props.handleSlideChange(e, this.props.slide.id)
   }
+
+  handleSlideOrderChange = (e) => {
+    const {slide} = this.props
+    const newStart = this.hmsToSeconds(slide.timecode)
+    this.props.handleSlideOrderChange(slide.id, newStart) 
+  }
+
+  hmsToSeconds(input) {
+    let parts = input.split(':'),
+      seconds = parseInt(parts[parts.length - 1]),
+      minutes = parseInt(parts[parts.length - 2]) || 0,
+      hours = parseInt(parts[parts.length - 3]) || 0;
+    return (hours * 3600 + minutes * 60 + seconds)
+  }
+
   render() {
     const {slide} = this.props
     return (
@@ -44,6 +60,7 @@ class SlideForm extends React.Component {
           onChange={this.handleChange}
         />
       </div>
+      <button onClick={this.handleSlideOrderChange}>Reorder Slides</button>
 
       <div className="sections">
         <SectionFormsContainer 
@@ -63,5 +80,6 @@ export default connect(mapState, {
   handleSlideChange,
   handleFormSubmit,
   handleSectionChange,
+  handleSlideOrderChange,
   newSection,
 })(SlideForm)

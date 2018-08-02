@@ -42,6 +42,10 @@ export const newSlide  = (start, timecode) => {
   return {type: types.NEW_SLIDE, start, timecode} 
 }
 
+export const handleSlideOrderChange  = (id, start) => {
+  return {type: types.HANDLE_SLIDE_ORDER_CHANGE, id, start}
+}
+
 export const newSection  = (slideId) => {
   return {type: types.NEW_SECTION, slideId: slideId} 
 }
