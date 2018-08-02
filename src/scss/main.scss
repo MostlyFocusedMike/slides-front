@@ -207,9 +207,10 @@ img {
   margin: 1rem auto;
   border: $bor;
   width: 50%;
-  h2 {
-    color: #777;
-    margin:1rem ;
+  background: #FFF;
+  color: #222;
+  h1 {
+    margin: 1rem ;
   }
   p {
     text-align: center;
@@ -218,6 +219,8 @@ img {
     @extend %code-snippet;
     height: auto;
     padding: 1rem;
+    box-shadow: 5px 5px 10px rgba(0,0,0,.2);
+    margin: 3rem auto;
   }
   a {
     display: block;
@@ -242,6 +245,13 @@ img {
       margin-top: .5rem;
     }
   }
+}
+
+.pic-card {
+  background: #DDD;
+  width: fit-content;
+  margin: 3rem auto;
+  box-shadow: 5px 5px 10px rgba(0,0,0,.2);
 }
 
 .video-previews-container {
@@ -469,13 +479,33 @@ img {
 }
 
 #video-show-page {
-  background: red;
   iframe {
     width: 640px;
     height: 390px;
     display: block;
     margin: .5rem auto;
   }
+  #nav-buttons {
+    margin: .5rem auto;
+    #scroll-buttons {
+      @extend %basic-flex;
+      justify-content: center;
+      button {
+        @extend %basic-button;
+        margin: .25rem;
+      }
+      #back-btn {
+        margin-right: 1.5rem;
+      }
+      #next-btn {
+        margin-left: 1.5rem;
+      }
+    }
+
+    #play-pause {
+        @extend %basic-button;
+    }
+  } 
 
   
 }

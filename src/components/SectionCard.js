@@ -25,7 +25,7 @@ class SectionCard extends React.Component {
       case 3:
         if (showDesc) {
           return (
-            <div>
+            <div className="pic-card">
               <figure>
                 <img src={content} alt={desc} />
                 <figcaption>{desc}</figcaption>

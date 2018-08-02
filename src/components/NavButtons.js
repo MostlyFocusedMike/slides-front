@@ -29,20 +29,22 @@ class NavButtons extends React.Component {
   render() {
     let {jumpTo, playPause} = this.props
     return (
-      <div className="nav-buttons">
-        <button data-time={this.back()} onClick={jumpTo}>Back</button>
-        {this.startTimes()
-          .map((startTime,idx) => (
-          <button 
-              onClick={jumpTo}
-              data-time={startTime}
-              key={startTime}
-            >{idx + 1}
-            </button>
-          ))
-        }
-        <button onClick={playPause}>Play/Pause</button>
-        <button data-time={this.next()} onClick={jumpTo}>Next</button>
+      <div id="nav-buttons">
+        <div id="scroll-buttons">
+          <button id="back-btn" data-time={this.back()} onClick={jumpTo}>Back</button>
+          {this.startTimes()
+            .map((startTime,idx) => (
+            <button 
+                onClick={jumpTo}
+                data-time={startTime}
+                key={startTime}
+              >{idx + 1}
+              </button>
+            ))
+          }
+          <button id="next-btn" data-time={this.next()} onClick={jumpTo}>Next</button>
+        </div>
+        <button id="play-pause" onClick={playPause}>Play/Pause</button>
       </div>
     )
   }

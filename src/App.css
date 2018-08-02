@@ -1,9 +1,9 @@
-.video-previews-container, #big-form, #big-form div fieldset, #big-form #main-forms #slide-maker, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data .section-form-inputs, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data .section-nav-buttons {
+.video-previews-container, #big-form, #big-form div fieldset, #big-form #main-forms #slide-maker, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data .section-form-inputs, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data .section-nav-buttons, #video-show-page #nav-buttons #scroll-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
 
-#big-form button {
+#big-form button, #video-show-page #nav-buttons #scroll-buttons button, #video-show-page #nav-buttons #play-pause {
   background: #4d94ff;
   color: white;
   border: none;
@@ -12,9 +12,9 @@
   display: block;
   transition: background 150ms;
   font-size: .75rem; }
-  #big-form button:hover {
+  #big-form button:hover, #video-show-page #nav-buttons #scroll-buttons button:hover, #video-show-page #nav-buttons #play-pause:hover {
     background: #1D88E3; }
-  #big-form button:active {
+  #big-form button:active, #video-show-page #nav-buttons #scroll-buttons button:active, #video-show-page #nav-buttons #play-pause:active {
     background: #6EB0E8; }
 
 #big-form {
@@ -107,15 +107,18 @@ img {
 .slide-show {
   margin: 1rem auto;
   border: 2px solid black;
-  width: 50%; }
-  .slide-show h2 {
-    color: #777;
+  width: 50%;
+  background: #FFF;
+  color: #222; }
+  .slide-show h1 {
     margin: 1rem; }
   .slide-show p {
     text-align: center; }
   .slide-show pre {
     height: auto;
-    padding: 1rem; }
+    padding: 1rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    margin: 3rem auto; }
   .slide-show a {
     display: block;
     width: 100%;
@@ -135,6 +138,12 @@ img {
       color: #111;
       text-align: center;
       margin-top: .5rem; }
+
+.pic-card {
+  background: #DDD;
+  width: fit-content;
+  margin: 3rem auto;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); }
 
 .video-previews-container h2 {
   width: 100%;
@@ -331,12 +340,20 @@ img {
               #big-form #main-forms #slides-container .slide .section-forms-container .section-form .delete-section-btn:active {
                 background: #CE0303; }
 
-#video-show-page {
-  background: red; }
-  #video-show-page iframe {
-    width: 640px;
-    height: 390px;
-    display: block;
-    margin: .5rem auto; }
+#video-show-page iframe {
+  width: 640px;
+  height: 390px;
+  display: block;
+  margin: .5rem auto; }
+#video-show-page #nav-buttons {
+  margin: .5rem auto; }
+  #video-show-page #nav-buttons #scroll-buttons {
+    justify-content: center; }
+    #video-show-page #nav-buttons #scroll-buttons button {
+      margin: .25rem; }
+    #video-show-page #nav-buttons #scroll-buttons #back-btn {
+      margin-right: 1.5rem; }
+    #video-show-page #nav-buttons #scroll-buttons #next-btn {
+      margin-left: 1.5rem; }
 
 /*# sourceMappingURL=App.css.map */
