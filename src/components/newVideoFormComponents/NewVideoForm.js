@@ -43,6 +43,10 @@ class NewVideoForm extends React.Component {
     this.props.resetNewVideo()
   }
 
+  componentDidMount() {
+    this.props.setVideoUser(this.props.currentUser)
+  }
+
   render() {
     const {videos, videos: {0: {youtube_vid, desc, start}}, sections, slides} = this.props.newVideo.entities
     return (

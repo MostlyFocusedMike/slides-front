@@ -18,11 +18,12 @@ class App extends React.Component {
     this.getCurrentUser()
   }
 
+
   render() {
     return (
       <div className="App">
         <Nav />
-        <Routes />
+        <Routes /> 
       </div>
     );
   }
