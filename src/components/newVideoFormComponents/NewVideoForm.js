@@ -23,6 +23,7 @@ class NewVideoForm extends React.Component {
   state={
     fireRedirect: false
   }
+
   componentDidUpdate = (prevProps) => {
     if (prevProps.currentUser.id !== this.props.currentUser.id) {
       this.props.setVideoUser(this.props.currentUser)

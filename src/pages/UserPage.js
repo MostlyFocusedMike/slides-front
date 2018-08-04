@@ -30,11 +30,13 @@ class UserPage extends React.Component {
     // we won't load anything until our fetch is complete
     return (
       shouldLoad ?
-        <div>
-          <ProfileInfoCard user={user} />
-          {this.props.currentUser.username === user.username ? 
-            <button onClick={this.props.logOut}>Log Out</button> : null
-          }
+        <div id="user-page">
+          <div id="user-stuff">
+            <ProfileInfoCard user={user} />
+            {this.props.currentUser.username === user.username ? 
+              <button id="log-out-btn" onClick={this.props.logOut}>Log Out</button> : null
+            }
+          </div>
           <VideoPreviewsContainer user={user} />
         </div> : null
     )

@@ -8,9 +8,6 @@ class Home extends React.Component {
     return (
       <div>
        <h1> HOME PAGE </h1>
-       <button onClick={() => this.props.loadVideo(12)}>load video</button>
-       <br />
-       <br />
       </div>
     )
   }

@@ -24,7 +24,30 @@ $bor: 2px solid black;
     background: #6EB0E8;
   }
 }
+%basic-card {
+  box-shadow: 1px 1px 10px rgba(0,0,0,.3);
+  z-index: 10;
+  display: block;
+  margin: 1.5rem auto;
+  font-size: 1rem;
+  background: white;
+  text-align: center;
+}
 
+%card-animation {
+  color: #5CA6E5;
+  transform: scale(1);
+  text-decoration: none;
+  transition: all 500ms;
+  -moz-animation: fadein 1s; /* Firefox */
+  -webkit-animation: fadein 1s; /* Safari and Chrome */
+  -o-animation: fadein 1s; /* Opera */
+  &:hover {
+    box-shadow: 0px 0px 15px rgba(0,0,0,.4);
+    color: #FFBA21;
+    transform: scale(1.01);
+  }
+}
 @mixin basic-button($font-color, $font-hover, $main, $hover, $active) {
   background: $main;
   color: $font-color;
@@ -254,20 +277,6 @@ img {
   box-shadow: 5px 5px 10px rgba(0,0,0,.2);
 }
 
-.video-previews-container {
-  @extend %basic-flex;
-  h2 {
-    width: 100%;
-    margin: 1rem;
-  }
-  .video-preview {
-    margin: 1rem auto;
-    display: block;
-    border: 2px solid black;
-    text-align: center;
-    padding-bottom: 1rem;
-  }
-}
 
 
 #big-form {
@@ -509,3 +518,50 @@ img {
 
   
 }
+
+#user-page {
+  @extend %basic-flex;
+}
+.profile-info {
+  width: 350px;
+  margin: 1rem;
+  padding: 1rem;
+  background: #4d94ff;
+  color: white;
+  img {
+    display: block;
+    margin: 1rem auto;
+    border-radius: 100%;
+  }
+  h2 {
+    font-weight: 100;
+  }
+}
+#log-out-btn {
+  @extend %basic-button;
+  margin: 2rem auto;
+  font-size: 1.25rem;
+}
+.video-previews-container {
+  @extend %basic-flex;
+  justify-content: center;
+  background: #999;
+  width: 70%;
+  overflow: auto;
+  height: 85vh;
+  h2 {
+    width: 100%;
+    margin: 1rem;
+  }
+  .video-preview {
+    @extend %basic-card;
+    @extend %card-animation;
+    font-size: 1rem;
+    width: 320px;
+    a {
+      @extend %basic-link;
+    }
+  }
+}
+
+

@@ -1,9 +1,9 @@
-.video-previews-container, #big-form, #big-form div fieldset, #big-form #main-forms #slide-maker, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data .section-form-inputs, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data .section-nav-buttons, #video-show-page #nav-buttons #scroll-buttons {
+#big-form, #big-form div fieldset, #big-form #main-forms #slide-maker, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data .section-form-inputs, #big-form #main-forms #slides-container .slide .section-forms-container .section-form .section-form-data .section-nav-buttons, #video-show-page #nav-buttons #scroll-buttons, #user-page, .video-previews-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
 
-#big-form button, #video-show-page #nav-buttons #scroll-buttons button, #video-show-page #nav-buttons #play-pause {
+#big-form button, #video-show-page #nav-buttons #scroll-buttons button, #video-show-page #nav-buttons #play-pause, #log-out-btn {
   background: #4d94ff;
   color: white;
   border: none;
@@ -12,10 +12,35 @@
   display: block;
   transition: background 150ms;
   font-size: .75rem; }
-  #big-form button:hover, #video-show-page #nav-buttons #scroll-buttons button:hover, #video-show-page #nav-buttons #play-pause:hover {
+  #big-form button:hover, #video-show-page #nav-buttons #scroll-buttons button:hover, #video-show-page #nav-buttons #play-pause:hover, #log-out-btn:hover {
     background: #1D88E3; }
-  #big-form button:active, #video-show-page #nav-buttons #scroll-buttons button:active, #video-show-page #nav-buttons #play-pause:active {
+  #big-form button:active, #video-show-page #nav-buttons #scroll-buttons button:active, #video-show-page #nav-buttons #play-pause:active, #log-out-btn:active {
     background: #6EB0E8; }
+
+.video-previews-container .video-preview {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  display: block;
+  margin: 1.5rem auto;
+  font-size: 1rem;
+  background: white;
+  text-align: center; }
+
+.video-previews-container .video-preview {
+  color: #5CA6E5;
+  transform: scale(1);
+  text-decoration: none;
+  transition: all 500ms;
+  -moz-animation: fadein 1s;
+  /* Firefox */
+  -webkit-animation: fadein 1s;
+  /* Safari and Chrome */
+  -o-animation: fadein 1s;
+  /* Opera */ }
+  .video-previews-container .video-preview:hover {
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+    color: #FFBA21;
+    transform: scale(1.01); }
 
 #big-form {
   width: 50%;
@@ -25,6 +50,47 @@
   #big-form label {
     display: block;
     margin-top: 1rem; }
+
+.video-previews-container .video-preview a {
+  width: 100%;
+  text-align: center;
+  display: block;
+  transition: color 150ms; }
+  .video-previews-container .video-preview a:link {
+    color: #5CA6E5; }
+  .video-previews-container .video-preview a:visited {
+    color: #5CA6E5; }
+  .video-previews-container .video-preview a:hover {
+    color: #FFBA21; }
+  .video-previews-container .video-preview a:active {
+    color: #FFEF33; }
+
+.video-previews-container .video-preview {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  display: block;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  width: 20rem;
+  font-size: 2rem;
+  background: white;
+  text-align: center; }
+
+.video-previews-container .video-preview {
+  color: #5CA6E5;
+  transform: scale(1);
+  text-decoration: none;
+  transition: all 500ms;
+  -moz-animation: fadein 1s;
+  /* Firefox */
+  -webkit-animation: fadein 1s;
+  /* Safari and Chrome */
+  -o-animation: fadein 1s;
+  /* Opera */ }
+  .video-previews-container .video-preview:hover {
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+    color: #FFBA21;
+    transform: scale(1.01); }
 
 html, body {
   margin: 0;
@@ -144,16 +210,6 @@ img {
   width: fit-content;
   margin: 3rem auto;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); }
-
-.video-previews-container h2 {
-  width: 100%;
-  margin: 1rem; }
-.video-previews-container .video-preview {
-  margin: 1rem auto;
-  display: block;
-  border: 2px solid black;
-  text-align: center;
-  padding-bottom: 1rem; }
 
 #big-form {
   width: 100%;
@@ -355,5 +411,35 @@ img {
       margin-right: 1.5rem; }
     #video-show-page #nav-buttons #scroll-buttons #next-btn {
       margin-left: 1.5rem; }
+
+.profile-info {
+  width: 350px;
+  margin: 1rem;
+  padding: 1rem;
+  background: #4d94ff;
+  color: white; }
+  .profile-info img {
+    display: block;
+    margin: 1rem auto;
+    border-radius: 100%; }
+  .profile-info h2 {
+    font-weight: 100; }
+
+#log-out-btn {
+  margin: 2rem auto;
+  font-size: 1.25rem; }
+
+.video-previews-container {
+  justify-content: center;
+  background: #999;
+  width: 70%;
+  overflow: auto;
+  height: 85vh; }
+  .video-previews-container h2 {
+    width: 100%;
+    margin: 1rem; }
+  .video-previews-container .video-preview {
+    font-size: 1rem;
+    width: 320px; }
 
 /*# sourceMappingURL=App.css.map */

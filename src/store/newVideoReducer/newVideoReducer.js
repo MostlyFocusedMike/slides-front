@@ -47,6 +47,7 @@ function newVideoReducer(state = initState, action) {
       return ({loadPreview: true})
 
     case types.SET_VIDEO_USER:
+      console.log(action.user);
       return ({
         ...state,
         entities: {
