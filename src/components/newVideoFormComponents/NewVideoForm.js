@@ -48,7 +48,8 @@ class NewVideoForm extends React.Component {
   }
 
   render() {
-    const {videos, videos: {0: {youtube_vid, desc, start}}, sections, slides} = this.props.newVideo.entities
+    let videoId = Object.keys(this.props.newVideo.entities.videos)[0]
+    const {videos, videos: {[videoId]: {youtube_vid, desc, start}}, sections, slides} = this.props.newVideo.entities
     return (
       <div id="big-form">
         {this.state.fireRedirect ? 

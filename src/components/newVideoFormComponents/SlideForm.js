@@ -113,10 +113,13 @@ class SlideForm extends React.Component {
   )
   }
 }
-const mapState = (state) => ({
-  sections: state.newVideo.entities.sections,
-  slidesLength: state.newVideo.entities.videos[0].slides.length
-})
+const mapState = (state) => {
+  let videoId = Object.keys(state.newVideo.entities.videos)[0]
+  return ({
+    sections: state.newVideo.entities.sections,
+    slidesLength: state.newVideo.entities.videos[videoId].slides.length
+  })
+}
 export default connect(mapState, {
   handleSlideChange,
   handleSlideStartChange,

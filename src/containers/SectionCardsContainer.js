@@ -1,4 +1,4 @@
-import React from 'react' 
+import React from 'react'
 import SectionCard from '../components/SectionCard'
 
 const SectionCardsContainer = (props) => {
@@ -6,7 +6,6 @@ const SectionCardsContainer = (props) => {
   let selectedSections = allSections.filter(section => {
     return props.slide.sections.includes(section.id)
   })
-  // pretty sure sorting isn't necessary, but just to be safe
   const orderThem = (a,b) => a.order - b.order
   selectedSections.sort(orderThem)
   return (

@@ -6,7 +6,7 @@ const initState = {
   sectionId: 1, //video id will always be 0 for these forms, but slides and sections need to increment
   entities: {
     videos: {
-      0: { 
+      10: { 
         id: 0,
         desc: "",
         youtube_vid: "",
@@ -41,20 +41,21 @@ const initState = {
 
 function newVideoReducer(state = initState, action) {
   const {slides, sections} = state.entities
+  let videoId = Object.keys(state.entities.videos)[0]
+
   switch(action.type) {
     case types.HANDLE_LOAD_PREVIEW: 
       action.e.preventDefault() 
       return ({loadPreview: true})
 
     case types.SET_VIDEO_USER:
-      console.log(action.user);
       return ({
         ...state,
         entities: {
           ...state.entities,
           videos: {
-            0: {
-              ...state.entities.videos[0],
+            [videoId]: {
+              ...state.entities.videos[videoId],
               user: action.user
             }
           }
@@ -71,8 +72,8 @@ function newVideoReducer(state = initState, action) {
           ...state.entities,
           videos: {
             ...state.entities.videos,
-            0: {
-              ...state.entities.videos[0],
+            [videoId]: {
+              ...state.entities.videos[videoId],
               [action.e.target.name]: action.e.target.value
             }
           }
@@ -153,9 +154,9 @@ function newVideoReducer(state = initState, action) {
       entities: {
         ...state.entities,
         videos: {
-          0: {
-            ...state.entities.videos[0],
-            slides: [...state.entities.videos[0].slides,
+          [videoId]: {
+            ...state.entities.videos[videoId],
+            slides: [...state.entities.videos[videoId].slides,
                     currentSlideId]
           }
         },
@@ -163,7 +164,7 @@ function newVideoReducer(state = initState, action) {
           ...state.entities.slides,
           [currentSlideId]: {
             id: currentSlideId,
-            video_id: 0,
+            video_id: videoId,
             start: action.start,
             timecode: action.timecode,
             title: "",
@@ -226,7 +227,7 @@ function newVideoReducer(state = initState, action) {
       })
     case types.DELETE_SLIDE:
       let slidesCopy = {...state.entities.slides}
-      let videoCopy = {...state.entities.videos[0]}
+      let videoCopy = {...state.entities.videos[videoId]}
       let idxOfSlide = videoCopy.slides.indexOf(action.slideId)
       delete slidesCopy[action.slideId]
       videoCopy.slides.splice(idxOfSlide, 1)
@@ -236,7 +237,7 @@ function newVideoReducer(state = initState, action) {
           ...state.entities,
           slides: slidesCopy,
           videos: {
-            0: videoCopy
+            [videoId]: videoCopy
           }
         }
       })
