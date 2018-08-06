@@ -42,6 +42,9 @@ const initState = {
 function newVideoReducer(state = initState, action) {
   const {slides, sections} = state.entities
   let videoId = Object.keys(state.entities.videos)[0]
+  debugger
+  // this would be the way to set the highest key for new slides and sections
+  // Math.max(...Object.keys(state.entities.slides)) + 1 
 
   switch(action.type) {
     case types.HANDLE_LOAD_PREVIEW: 
